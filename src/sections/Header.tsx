@@ -43,7 +43,7 @@ export const Header = ({
       <div className="items-center block gap-1 row">
         <Image src="/images/logo.png" alt="Vivid logo" height="40" width="40" />
         <div className="text-3xl font-bold">
-          <GradientText className="pink-blue">Vivid</GradientText>
+          <GradientText className="pink-blue">Aspero</GradientText>
         </div>
       </div>
     </Link>
