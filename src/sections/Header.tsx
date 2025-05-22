@@ -77,7 +77,7 @@ export const Header = ({
 
   const Navigation = () => (
     <nav>
-      <ul className="items-center gap-4 row">
+      <ul className="flex flex-col md:flex-row gap-4 items-start md:items-center text-sm font-medium">
         {/* Section Links */}
         {sectionLinks.map(({ id, label }) => (
           <li key={id}>
@@ -140,7 +140,7 @@ export const Header = ({
       }`}
     >
       {/* Header Content */}
-      <div className="items-center justify-between h-16 px-5 mx-auto row md:h-20 max-w-7xl sm:px-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between px-5 py-4 mx-auto max-w-7xl sm:px-6">
         <Logo />
         <Navigation />
       </div>
