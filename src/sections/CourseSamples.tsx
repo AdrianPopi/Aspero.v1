@@ -2,10 +2,8 @@ import { Section } from "../components/Section";
 import { Title } from "../components/Title";
 import { GradientText } from "../components/GradientText";
 import { useLanguage } from "../context/LanguageContext";
-import { FaBookOpen, FaBookReader } from "react-icons/fa";
 import { Card } from "../components/Card";
 
-// Courses in both languages
 const courseContent = {
   ro: {
     title: "Sample-uri de cursuri",
@@ -65,7 +63,7 @@ export const CourseSamples = () => {
             className="flex items-center gap-4 p-6 hover:scale-[1.04] transition-transform duration-200 bg-gray-900/80 dark:bg-gray-800/70 shadow-2xl rounded-2xl border border-primary-700/20"
           >
             <span className="text-4xl text-primary-400 dark:text-primary-300 flex-shrink-0">
-              {idx % 2 === 0 ? <FaBookOpen /> : <FaBookReader />}
+              {idx % 2 === 0 ? "📖" : "👓"}
             </span>
             <span className="font-semibold text-lg text-strong text-left">
               {course}
