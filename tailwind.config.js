@@ -2,9 +2,7 @@ const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // Control dark pseudo-selector by ancestor's "dark" class
   darkMode: "class",
-  // Scan these files for Tailwind classes
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
@@ -28,8 +26,18 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        hero1: "#5566b8", // blue (main button/cta)
+        hero2: "#b3aaff", // light purple (hashtag badge)
+        hero3: "#e8aff6", // pinkish purple (optional, background shapes)
+        hero4: "#ced6ff", // soft blue (for backgrounds, optional)
+        hero5: "#0c0c29", // dark navy (background)
+        hero6: "#ffffff", //white
+      },
       fontFamily: {
-        sans: ["Avenir Next", "Helvetica Neue", "sans-serif"],
+        betm: ["Betm Rounded", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        sans: ["Poppins", "Avenir Next", "Helvetica Neue", "sans-serif"],
       },
     },
   },

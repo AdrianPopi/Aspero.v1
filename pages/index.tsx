@@ -2,11 +2,11 @@ import { AboutAspero } from "../src/sections/AboutAspero";
 import { FeaturesForStudents } from "../src/sections/FeaturesForStudents";
 import { Footer } from "../src/sections/Footer";
 import { Header } from "../src/sections/Header";
-import { OurVision } from "../src/sections/OurVision";
 import { FeaturesForInstitutions } from "../src/sections/FeaturesForInstitutions";
-import { AsperoTeam } from "../src/sections/AsperoTeam";
 import { FeaturesForTeachers } from "../src/sections/FeaturesForTeachers";
-import { CourseSamples } from "../src/sections/CourseSamples";
+import { Categories } from "../src/sections/Categories";
+import { Hero } from "../src/sections/Hero";
+import { ContactSection } from "../src/sections/ContactSection";
 
 const Home = ({
   isDarkMode,
@@ -19,13 +19,13 @@ const Home = ({
     <div className="overflow-hidden col text-strong">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main>
-        <OurVision />
+        <Hero />
         <AboutAspero />
-        <FeaturesForStudents />
+        <Categories />
         <FeaturesForInstitutions />
         <FeaturesForTeachers />
-        <CourseSamples />
-        <AsperoTeam />
+        <FeaturesForStudents />
+        <ContactSection />
       </main>
       <Footer />
     </div>

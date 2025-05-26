@@ -1,10 +1,10 @@
 /* Download Avenir */
-@import url('http://fonts.cdnfonts.com/css/avenir-next-cyr');
+@import url("http://fonts.cdnfonts.com/css/avenir-next-cyr");
 
 /* Import Tailwind classes */
 @tailwind base;
 @tailwind components;
-@tailwind utilities;  
+@tailwind utilities;
 
 /* Make focus ring prettier */
 *:focus {
@@ -113,5 +113,43 @@
   .col {
     @apply flex;
     @apply flex-col;
+  }
+
+  @font-face {
+    font-family: "Betm Rounded";
+    src: url("/fonts/BetmRounded.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+  .font-poppins {
+    font-family: "Poppins", sans-serif;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/Poppins-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
   }
 }

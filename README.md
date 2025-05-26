@@ -1,38 +1,70 @@
-# Vivid Landing Page Template
+# Aspero - Educational Platform
 
-This is a ready to use template for any landing page you need, built with React, NextJS, and Tailwind CSS. 
+**Aspero** is a modern web platform designed to enhance university-level education in Romania and beyond. Our aim is to merge the traditional strengths of Romanian higher education with cutting-edge digital practices, empowering students, teachers, and institutions alike.
 
-Modelled after the [Vivid landing page](https://vivid.lol).
+## 🚀 Features
 
-> NOTE: If you are looking for a simpler alternative that is flatter and uses JS instead of TS, check out our [simple template](https://github.com/vivid-labs/vivid-landing-template-simple)!
+### General
 
-## Preview
+- **Multi-language Support**: Available in Romanian and English, with easy switching.
+- **Fully Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices.
+- **Modern UI**: Gradient themes, custom icons, and interactive components.
 
-![vivid-template-pic](https://user-images.githubusercontent.com/62365335/202585708-82c27ea9-85fc-491f-b991-d4005651b0c2.png)
+### For Students
 
+- **Procedurally Generated Exercises**: Practice on a virtually unlimited set of exercises in various formats.
+- **Instant Feedback**: Immediate grading and suggestions to help you improve.
+- **Collaboration Tools**: Cooperative solving and chat functions.
+- **Progress Statistics**: Track your advancement across courses.
+- **AI-Powered Hints**: Optional AI analysis and feedback on solutions.
 
-## Features
+### For Teachers
 
-- Fully modular and easy to extend
+- **Flexible Exercise Formats**: Create single/multi-choice, text, math, code, or object selection exercises.
+- **Bulk Exercise Generation**: Generate exercise variants automatically to save time.
+- **Media-rich Courses**: Upload slides, PDFs, videos, and more.
+- **Student Analytics**: See engagement, completion rates, and time spent.
+- **Discussion Moderation**: Guide student discussions and monitor activity.
+- **AI Grading**: Let AI handle routine corrections when you want.
 
-- Perfect lighthouse scores for great SEO
+### For Institutions
 
-- Very accessible, passing checks for screen-readers and other browsing aids
+- **Centralized Course Management**: Handle all courses and user roles from a single dashboard.
+- **Observer Mode**: Inspect courses and statistics for continuous improvement.
+- **Custom Reports**: Receive expert-generated insights on institutional performance.
 
-- Easily customizable via Vivid, Tailwind configuration, global style presets, and component props
+## 🧑‍💻 Tech Stack
 
-- Built-in light and dark modes
+- **Frontend:** Next.js (React) + TailwindCSS
+- **Icons:** react-icons
+- **State:** React Context
+- **Hosting:** Vercel
+- **Version Control:** Git & GitHub
 
-## Getting Started
+## 📱 Responsive Design
 
-1. Install dependencies with `yarn install` (or the equivalent for other package managers)
+All sections (headers, footers, menus, feature lists, and course cards) are optimized for mobile devices.  
+If you encounter issues on mobile, please submit a screenshot and device info.
 
-2. Run the test app with `yarn dev`
+## 🗂️ Sections
 
-## Customizing
+- **Our Vision:** Learn about the core beliefs and mission of Aspero.
+- **About Aspero:** Platform overview and what makes us different.
+- **Aspero Team:** Meet the developers and educational experts.
+- **Features for Institutions, Teachers, Students:** See tailored benefits for each user group.
+- **Course Samples:** Preview example courses available in the platform.
 
-This template is made to be easily customizable! Using Vivid, you can command-click on any part of the page and immediately edit its code. Check out the [Vivid docs](https://docs.vivid.lol) for more information on how to style in-browser!
+Install dependencies:
 
-The components in the `src/components` directory provide an easy way to extend the page.
+bash
+Copy
+Edit
+npm install
+Start the development server:
+
+bash
+Copy
+Edit
+npm run dev
 
 If you want to edit colors or fonts, simply edit `styles/globals.css` or `tailwind.config.js`.

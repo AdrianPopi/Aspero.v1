@@ -1,133 +1,105 @@
-import { ReactNode } from "react";
-import {
-  CardsIcon,
-  MagicIcon,
-  DoorIcon,
-  ShuffleIcon,
-  SignalIcon,
-  TalkingIcon,
-} from "../svg/FeatureIcons";
-import { Card } from "../components/Card";
-import { Details } from "../components/Details";
-import { GradientText } from "../components/GradientText";
-import { Section } from "../components/Section";
-import { Title } from "../components/Title";
+import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
 
-// Titles and texts for EN/RO
-const featuresContent = {
+// Content for both languages
+const content = {
   ro: {
-    title: "Features - pentru studenți",
-    description: "",
-    blocks: [
-      {
-        icon: <ShuffleIcon />,
-        title: "Exerciții generate procedural",
-        text: `Una dintre funcțiile ale platformei noastre este selecția virtual nelimitată de exerciții generate procedural în cadrul diverselor cursuri: astfel este posibil pentru un student să continue să se pregătească pentru examene folosindu-se exerciții riguros pregătite în afara celor produse de către profesori, extinzându-și astfel gama de opțiuni.`,
-      },
-      {
-        icon: <SignalIcon />,
-        title: "Feedback instantaneu",
-        text: `Platforma poate da un feedback instantaneu problemelor rezolvate, subliniind atât elementele corecte, cât și pe cele eronate ale rezolvării, propunând de la caz la caz și soluții de rezolvare.`,
-      },
-      {
-        icon: <TalkingIcon />,
-        title: "Acces colaborativ la exerciții",
-        text: `Dincolo de accesul la materiale multimedia și la exerciții, platforma noastră oferă și posibilitatea de a rezolva exerciții în comun prin funcțiile de chat și rezolvare cooperativă: astfel, dincolo de componenta de învățare autonomă, platforma încurajează și învățatul cooperativ.`,
-      },
-      {
-        icon: <MagicIcon />,
-        title: "Analiză a soluțiilor cu inteligență artificială",
-        text: `De asemenea, la cerere, platforma poate integra și sugestii compuse de inteligență artificială în analiza răspunsurilor: astfel un feedback exhaustiv poate fi accesat la un click distanță oricând de către student care include nu doar răspunsul corect, cât și soluții de rezolvare, sugestii pentru îmbunătățirea textelor sau direcții pentru studiu aprofundat.`,
-      },
-      {
-        icon: <CardsIcon />,
-        title: "Statistici de verificare a progresului",
-        text: `Studenții pot vedea statistici detaliate despre studiile proprii, atât de la curs la curs, cât și global; de la cursurile la care au avut cel mai mare succes, la detalii minore ce trebuie amănunțite, aceste statistici îmbunătățesc calitatea procesului de învățare prin direcționarea eforturilor studenților.`,
-      },
-    ],
+    cardTitle: "Pentru studenți",
+    subtitle: "Învață eficient. În ritmul tău.",
+    description: (
+      <>
+        Aspero le oferă studenților un mediu educațional flexibil, modern și
+        adaptabil. Cu ajutorul exercițiilor generate procedural, al
+        feedback-ului instantaneu și al resurselor multimedia, fiecare student
+        poate învăța <b>în propriul ritm, oricând și de oriunde.</b> Platforma
+        încurajează și colaborarea prin funcții dedicate de lucru în echipă,
+        analiză asistată de inteligență artificială și urmărirea progresului
+        prin statistici personalizate, transformând învățarea într-o experiență
+        mai clară, mai motivantă și mai profundă.
+      </>
+    ),
+    cta: "Vezi cum funcționează",
   },
   en: {
-    title: "Features for students",
-    description: "",
-    blocks: [
-      {
-        icon: <ShuffleIcon />,
-        title: "Procedurally generated exercises",
-        text: `One of the features of our platform is the virtually unlimited selection of procedurally generated exercises within the various courses: this makes it possible for a student to continue preparing for exams using rigorously prepared exercises outside those produced by teachers, thus expanding their range of options.`,
-      },
-      {
-        icon: <SignalIcon />,
-        title: "Instant feedback",
-        text: `The platform can provide instant feedback on solved problems, highlighting both correct and incorrect elements of the solution, proposing case-by-case and comprehensive answers.`,
-      },
-      {
-        icon: <TalkingIcon />,
-        title: "Collaborative access to exercises",
-        text: `In addition to access to multimedia materials and exercises, our platform also offers the possibility to solve exercises together through cooperative solving features as well as a chat: thus, beyond the autonomous learning component, the platform also encourages cooperative learning.`,
-      },
-      {
-        icon: <MagicIcon />,
-        title: "Analysing solutions with artificial intelligence",
-        text: `Also, upon request, the platform can also integrate AI-created suggestions in the analysis of answers: an exhaustive feedback system can thus be accessed with only a click at any time by the student that includes not only the correct answer, but also means to resolve a question, suggestions for improving texts or directions for further study.`,
-      },
-      {
-        icon: <CardsIcon />,
-        title: "Progressing Statistics",
-        text: `Students can see detailed statistics about their own studies, both course-by-course and comprehensive; from the courses in which they were most successful to minor details that require expanded focus, these statistics improve the quality of the learning process by targeting students' efforts.`,
-      },
-    ],
+    cardTitle: "For Students",
+    subtitle: "Learn efficiently. At your own pace.",
+    description: (
+      <>
+        Aspero offers students a flexible, modern, and adaptable educational
+        environment. With procedurally generated exercises, instant feedback,
+        and multimedia resources, each student can learn{" "}
+        <b>at their own pace, anytime and anywhere.</b> The platform also
+        encourages collaboration through team features, AI-assisted analytics,
+        and personalized progress tracking, turning learning into a clearer,
+        more motivating, and deeper experience.
+      </>
+    ),
+    cta: "See how it works",
   },
 };
-
-const BlockTitle = ({ children }: { children: ReactNode }) => (
-  <h3 className="text-xl font-bold text-strong">{children}</h3>
-);
-
-const BlockText = ({ children }: { children: ReactNode }) => (
-  <p className="text-light">{children}</p>
-);
-
-const Block = ({
-  icon,
-  title,
-  text,
-}: {
-  icon: ReactNode;
-  title: string;
-  text: string;
-}) => (
-  <Card grayer className="items-center gap-1 p-6 col">
-    {icon}
-    <BlockTitle>{title}</BlockTitle>
-    <BlockText>{text}</BlockText>
-  </Card>
-);
 
 export const FeaturesForStudents = () => {
   const { lang } = useLanguage();
-  const t = featuresContent[lang];
+  const t = content[lang];
 
   return (
-    <Section id="featuresforstudents" className="gap-16 text-center">
-      {/* Header */}
-      <div className="gap-4 col">
-        <Title size="md">
-          <GradientText className="purple-teal">{t.title}</GradientText>
-        </Title>
-        {t.description && <Details>{t.description}</Details>}
-      </div>
-      {/* Blocks */}
-      <div className="grid items-start gap-6 lg:grid-cols-3">
-        {t.blocks.map((block, idx) => (
-          <Block
-            key={idx}
-            icon={block.icon}
-            title={block.title}
-            text={block.text}
+    <section
+      id="featuresforstudents"
+      className="w-full bg-[#dde3fc] px-0 py-0 relative overflow-hidden"
+    >
+      <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 py-10 md:py-16 px-4 md:px-24">
+        {/* Left: Content */}
+        <div className="flex-1 flex flex-col items-start gap-3 z-10 w-full max-w-xl">
+          <div className="flex items-center gap-2 mb-2">
+            <h2
+              className="text-2xl md:text-3xl font-bold text-[#131336] tracking-tight"
+              style={{ fontFamily: "Poppins-Bold, Poppins, sans-serif" }}
+            >
+              {t.cardTitle}
+            </h2>
+            <Image
+              src="/images/student-icon.png"
+              alt="student icon"
+              width={28}
+              height={28}
+              className="w-6 h-auto"
+            />
+          </div>
+          <div
+            className="text-base md:text-lg font-semibold text-[#5b6a8c] mb-2"
+            style={{ fontFamily: "Poppins-Regular, Poppins, sans-serif" }}
+          >
+            {t.subtitle}
+          </div>
+          <div className="text-[15px] md:text-base text-[#22223b] mb-4 max-w-2xl">
+            {t.description}
+          </div>
+          <button
+            className="mt-2 px-5 py-2 rounded-full bg-white text-[#22223b] border border-[#aaa] hover:bg-[#ece8ff] font-poppins text-[15px] shadow transition"
+            style={{ fontWeight: 500 }}
+          >
+            {t.cta}
+          </button>
+        </div>
+        {/* Right: Image */}
+        <div className="flex-1 flex items-center justify-center w-full max-w-xl">
+          <Image
+            src="/images/student.png"
+            alt="Student"
+            width={500}
+            height={380}
+            className="rounded-[18px] object-cover w-full h-52 md:h-[350px]"
+            style={{
+              minWidth: 240,
+              maxWidth: 480,
+              boxShadow: "0 8px 32px rgba(52,45,140,0.12)",
+            }}
+            priority
           />
-        ))}
+        </div>
       </div>
-    </Section>
+    </section>
   );
 };
+
+export default FeaturesForStudents;

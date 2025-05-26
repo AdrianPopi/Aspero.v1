@@ -10,8 +10,7 @@ import { useDarkMode, useEffectOnce } from "usehooks-ts";
 import { LanguageProvider } from "../src/context/LanguageContext";
 
 const siteTitle = "Aspero ";
-const siteDescription =
-  "Make CSS styling a breeze with Vivid's in-browser visual editor that automatically updates your code.";
+const siteDescription = "Aspero";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const { isDarkMode, toggle: toggleDarkMode } = useDarkMode();
@@ -40,17 +39,25 @@ const App = ({ Component, pageProps }: AppProps) => {
     <LanguageProvider>
       <>
         <Head>
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/apple-touch-icon.png"
-          />
+          <title>Aspero</title>
+          <meta name="description" content="Aspero Educational Platform" />
           <link rel="icon" href="/icons/favicon.ico" />
-          <meta
-            property="og:image"
-            content="https://vivid.lol/images/landing-page.png"
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/icons/favicon-16x16.png"
           />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/icons/favicon-32x32.png"
+          />
+          <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+          <link rel="manifest" href="/icons/site.webmanifest" />
         </Head>
+
         <NextSeo
           title={siteTitle}
           description={siteDescription}

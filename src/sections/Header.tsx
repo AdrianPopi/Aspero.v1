@@ -2,12 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useEffectOnce, useEventListener } from "usehooks-ts";
-import { Button } from "../components/Button";
-import { GradientText } from "../components/GradientText";
 import { LinkButton } from "../components/LinkButton";
 import { Moon, Sun } from "../svg/DarkModeIcons";
 import { useLanguage } from "../context/LanguageContext";
-import { Menu, X } from "lucide-react"; // Use any icon lib, or your own svg
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export const Header = ({
   isDarkMode,
@@ -20,8 +18,8 @@ export const Header = ({
   const [top, setTop] = useState(true);
   const [reloaded, setReloaded] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  // Close nav when resizing above md
   useEventListener("resize", () => {
     if (window.innerWidth >= 768) setNavOpen(false);
   });
@@ -33,119 +31,205 @@ export const Header = ({
 
   useEffectOnce(() => setReloaded(true));
 
+  const handleDropdown = (id: string) => {
+    setOpenDropdown(openDropdown === id ? null : id);
+  };
+
+  // NAVIGATION STRUCTURE
   const sectionLinks = [
     {
-      id: "ourvision",
-      label: lang === "ro" ? "Viziunea noastră" : "Our Vision",
+      id: "home",
+      label: lang === "ro" ? "Acasă" : "Home",
+      href: "#home",
     },
     {
       id: "aboutaspero",
-      label: lang === "ro" ? "Despre Aspero" : "About Aspero",
+      label: lang === "ro" ? "Despre Noi" : "About Us",
+      href: "#aboutaspero",
     },
     {
-      id: "asperoteam",
-      label: lang === "ro" ? "Echipa Aspero" : "Aspero Team",
+      id: "categories",
+      label: lang === "ro" ? "Categorii" : "Categories",
+      href: "#categories",
     },
     {
-      id: "featuresforinstitutions",
-      label: lang === "ro" ? "Pentru instituții" : "For Institutions",
+      id: "features",
+      label: lang === "ro" ? "Funcționalități" : "Features",
+      hasDropdown: true,
+      dropdown: [
+        {
+          label: lang === "ro" ? "Pentru instituții" : "For Institutions",
+          target: "#featuresforinstitutions",
+        },
+        {
+          label: lang === "ro" ? "Pentru profesori" : "For Teachers",
+          target: "#featuresforteachers",
+        },
+        {
+          label: lang === "ro" ? "Pentru studenți" : "For Students",
+          target: "#featuresforstudents",
+        },
+      ],
     },
     {
-      id: "featuresforstudents",
-      label: lang === "ro" ? "Pentru studenți" : "For Students",
-    },
-    {
-      id: "featuresforteachers",
-      label: lang === "ro" ? "Pentru profesori" : "For Teachers",
-    },
-    {
-      id: "coursesamples",
-      label: lang === "ro" ? "Exemple de cursuri" : "Course Samples",
+      id: "contact",
+      label: lang === "ro" ? "Contact" : "Contact",
+      href: "#contact",
     },
   ];
 
+  // LOGO
   const Logo = () => (
-    <Link href="/">
-      <div className="flex items-center gap-2">
-        <Image
-          src="/images/logo.png"
-          alt="Aspero logo"
-          height={40}
-          width={40}
-        />
-        <span className="text-3xl font-bold">
-          <GradientText className="pink-blue">Aspero</GradientText>
-        </span>
-      </div>
+    <Link
+      href="/"
+      className="flex items-center mr-8 group"
+      style={{ lineHeight: 1 }}
+    >
+      <Image
+        src="/images/logo-header.png" // Use the new file here!
+        alt="Aspero logo"
+        width={40}
+        height={40}
+        className="w-10 h-10 md:w-12 md:h-12 object-contain"
+        priority
+      />
+      <span
+        className="ml-2 font-bold text-2xl md:text-3xl text-white font-poppins"
+        style={{ letterSpacing: "-0.02em" }}
+      >
+        Aspero<sup className="text-xs font-normal align-super">®</sup>
+      </span>
     </Link>
   );
 
-  // Navigation links
+  // NAVIGATION LINKS RENDERING
   const NavLinks = () => (
-    <ul className="flex flex-col md:flex-row gap-4 md:gap-2 items-start md:items-center text-base font-medium">
-      {sectionLinks.map(({ id, label }) => (
-        <li key={id}>
-          <a
-            href={`#${id}`}
-            className="px-2 py-1 font-medium text-light hover:text-primary-400 transition"
-            onClick={() => setNavOpen(false)}
-          >
-            {label}
-          </a>
+    <ul className="flex flex-col md:flex-row gap-3 md:gap-6 items-start md:items-center text-base font-medium">
+      {sectionLinks.map(({ id, label, href, hasDropdown, dropdown }) => (
+        <li
+          key={id}
+          className="relative group"
+          tabIndex={0}
+          onBlur={() => setOpenDropdown(null)}
+        >
+          {hasDropdown ? (
+            <>
+              <button
+                className="flex items-center gap-1 px-2 py-1 font-semibold text-light hover:text-primary-400 transition rounded"
+                onClick={() => handleDropdown(id)}
+                aria-expanded={openDropdown === id}
+                aria-controls={`${id}-dropdown`}
+                type="button"
+              >
+                {label}
+                <ChevronDown
+                  size={16}
+                  className={`ml-1 transition-transform ${
+                    openDropdown === id ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {/* DROPDOWN MENU */}
+              {openDropdown === id && (
+                <ul
+                  id={`${id}-dropdown`}
+                  className="absolute left-0 mt-2 w-56 rounded-xl shadow-lg bg-gray-900/95 dark:bg-gray-800/95 z-40 py-2"
+                >
+                  {dropdown.map((item, i) => (
+                    <li key={i}>
+                      <a
+                        href={item.target}
+                        className="block px-4 py-2 text-light hover:text-primary-400"
+                        onClick={() => setOpenDropdown(null)}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
+          ) : (
+            <a
+              href={href}
+              className="px-2 py-1 font-medium text-light hover:text-primary-400 transition"
+              onClick={() => setNavOpen(false)}
+            >
+              {label}
+            </a>
+          )}
         </li>
       ))}
-      <li>
-        <button
-          onClick={() => setLang("ro")}
-          className={`px-2 ${lang === "ro" ? "font-bold underline" : ""}`}
-        >
-          RO
-        </button>
-        |
-        <button
-          onClick={() => setLang("en")}
-          className={`px-2 ${lang === "en" ? "font-bold underline" : ""}`}
-        >
-          EN
-        </button>
-      </li>
-      {reloaded && (
-        <li>
-          <LinkButton
-            button
-            onClick={toggleDarkMode}
-            title="Toggle dark mode"
-            aria-label="Toggle dark mode"
-          >
-            {isDarkMode ? <Moon /> : <Sun />}
-          </LinkButton>
-        </li>
-      )}
     </ul>
+  );
+
+  // "LUCREAZĂ CU NOI" Button
+  const WorkWithUsButton = () => (
+    <a
+      href="#"
+      className="ml-6 px-4 py-2 bg-[#b3aaff] text-hero5 font-semibold rounded-full shadow text-base font-poppins hover:bg-hero2 transition"
+    >
+      {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
+    </a>
+  );
+
+  // Language Switcher and Theme
+  const ExtraActions = () => (
+    <div className="flex items-center gap-2 ml-6">
+      <button
+        onClick={() => setLang("ro")}
+        className={`px-2 ${lang === "ro" ? "font-bold underline" : ""}`}
+      >
+        RO
+      </button>
+      <span className="text-white/70">|</span>
+      <button
+        onClick={() => setLang("en")}
+        className={`px-2 ${lang === "en" ? "font-bold underline" : ""}`}
+      >
+        EN
+      </button>
+      {reloaded && (
+        <LinkButton
+          button
+          onClick={toggleDarkMode}
+          title="Toggle dark mode"
+          aria-label="Toggle dark mode"
+        >
+          {isDarkMode ? <Moon /> : <Sun />}
+        </LinkButton>
+      )}
+    </div>
   );
 
   return (
     <header
-      className={`fixed w-full z-30 transition duration-300 ${
-        !top && "bg-gray-50/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-lg"
-      }`}
+      className={`fixed w-full z-30 bg-hero5 shadow-none px-0`}
+      style={{ top: 0, left: 0 }}
     >
-      <div className="flex items-center justify-between h-16 px-4 mx-auto max-w-7xl sm:px-6">
+      <div className="flex items-center justify-between h-[90px] px-8 max-w-[1350px] mx-auto">
+        {/* LOGO */}
         <Logo />
+
+        {/* NAVIGATION LINKS */}
+        <nav className="flex-1 hidden md:flex justify-center">
+          <NavLinks />
+        </nav>
+
+        {/* RIGHT ACTIONS: Button + Language/Theme */}
+        <div className="flex items-center">
+          <WorkWithUsButton />
+          <ExtraActions />
+        </div>
 
         {/* Hamburger Button for Mobile */}
         <button
-          className="md:hidden p-2 rounded focus:outline-none"
+          className="md:hidden p-2 rounded focus:outline-none ml-2"
           aria-label="Toggle navigation"
           onClick={() => setNavOpen((o) => !o)}
         >
           {navOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:block">
-          <NavLinks />
-        </nav>
       </div>
 
       {/* Mobile Navigation Drawer */}
@@ -153,6 +237,8 @@ export const Header = ({
         <nav className="md:hidden bg-gray-900/95 dark:bg-gray-800/95 w-full absolute top-16 left-0 shadow-lg transition-all z-50">
           <div className="flex flex-col gap-4 px-6 py-6">
             <NavLinks />
+            <WorkWithUsButton />
+            <ExtraActions />
           </div>
         </nav>
       )}
