@@ -49,16 +49,16 @@ export const Hero = () => {
       id="home"
       className="relative flex justify-center items-center min-h-screen bg-hero5 py-10 px-2 overflow-hidden"
     >
-      {/* Bubble background: positioned lower and more to the left */}
+      {/* Top-right big bubble, only a part visible */}
       <div
         className="absolute z-0 pointer-events-none"
         style={{
-          top: "800px", // adjust as needed for your layout
-          left: "60px", // adjust as needed for your layout
+          top: "-180px",
+          right: "-130px",
           width: "900px",
           height: "900px",
           maxWidth: "none",
-          opacity: 0.93,
+          opacity: 1,
         }}
       >
         <Image
@@ -72,7 +72,7 @@ export const Hero = () => {
         />
       </div>
 
-      {/* Main hero content */}
+      {/* Main hero content - your card (unchanged) */}
       <div className="relative z-10 w-full flex justify-center">
         <div
           className="
@@ -81,11 +81,16 @@ export const Hero = () => {
             rounded-[40px]
             overflow-hidden
             shadow-2xl
-            bg-[#2b2e3a]/95
+            bg-[#22223b]/30
+            backdrop-blur-md
           "
+          style={{
+            backgroundColor: "rgba(64, 65, 84, 0.2)", // grey + 50% opacity
+            border: "1px solid rgba(255,255,255,0.08)",
+          }}
         >
           {/* Left: Text content */}
-          <div className="flex-1 p-8 md:p-14 flex flex-col justify-center z-10">
+          <div className="flex-1 p-8 md:p-14 flex flex-col justify-center z-10 max-w-lg items-start">
             {/* Hashtag */}
             <span
               className="
@@ -105,29 +110,31 @@ export const Hero = () => {
             </span>
             {/* Title */}
             <h1
-              className="font-poppins font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-6"
+              className="font-poppins font-bold text-lg md:text-xl lg:text-2xl text-white leading-tight mb-6"
               style={{ fontWeight: 700 }}
             >
               {t.title}
             </h1>
+
             {/* Subtitle */}
             <p
-              className="font-poppins font-normal text-hero6 text-lg md:text-xl mb-10"
+              className="font-poppins font-normal text-hero6 text-xs md:text-base mb-10 text-justify"
               style={{ fontWeight: 400 }}
             >
               {t.subtitle}
             </p>
+
             {/* CTA */}
             <a
               href="#"
               className="
                 group flex items-center w-[220px] h-[54px]
-                bg-white border border-[#ebe5da] rounded-full
+                bg-white border border-white rounded-full
                 pl-7 pr-2 py-0
                 shadow-sm
                 transition
                 font-poppins text-xl font-normal text-black
-                hover:bg-hero2 hover:text-hero5
+                hover:bg-white hover:text-black
               "
               style={{ fontWeight: 400 }}
             >
@@ -135,8 +142,8 @@ export const Hero = () => {
               <span
                 className="
                   ml-auto flex items-center justify-center
-                  w-11 h-11 rounded-full bg-hero5
-                  transition group-hover:bg-hero2
+                  w-11 h-11 rounded-full bg-[#181836]
+                  transition
                 "
               >
                 <svg

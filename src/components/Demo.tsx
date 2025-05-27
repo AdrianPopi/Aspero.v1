@@ -3,8 +3,6 @@ import { twMerge } from "tailwind-merge";
 
 import { MacBar } from "./MacBar";
 
-// Built with Vivid (https://vivid.lol) ⚡️
-
 type DemoProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement

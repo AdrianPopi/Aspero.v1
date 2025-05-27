@@ -82,32 +82,85 @@ const filterLabels = {
 export const Categories = () => {
   const { lang } = useLanguage();
   const t = courseContent[lang];
+  const bubbleImage = "/images/categories-bubble.png"; // Make sure this is the correct path
 
   return (
-    <section className="py-16 px-4 bg-hero5 min-h-screen" id="categories">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="font-poppins font-semibold text-white text-3xl md:text-4xl mb-8">
-          {t.title}
+    <section
+      className="relative py-16 px-4 bg-hero5 min-h-screen overflow-hidden"
+      id="categories"
+    >
+      {/* Bubble - absolute, left & up */}
+      <div
+        className="absolute z-0 pointer-events-none"
+        style={{
+          top: "80px", // adjust as needed
+          left: "-140px", // negative for overlap outside card
+          width: "670px", // make big for soft fade
+          height: "670px",
+          opacity: 0.9,
+        }}
+      >
+        <Image
+          src={bubbleImage}
+          alt=""
+          width={670}
+          height={670}
+          draggable={false}
+          style={{ width: "100%", height: "auto" }}
+          priority
+        />
+      </div>
+
+      {/* Main content */}
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Title */}
+        <h2
+          className="font-poppins font-bold text-white text-2xl md:text-3xl mb-5"
+          style={{ letterSpacing: "0.03em" }}
+        >
+          {lang === "ro" ? "Categorii" : "Categories"}
         </h2>
+
+        <p className="font-poppins font-normal text-white/80 text-lg mb-4">
+          {lang === "ro" ? (
+            <>
+              Descoperă <span style={{ color: "#e8aff6" }}>Categoriile</span>{" "}
+              pentru cursurile de învățare
+            </>
+          ) : (
+            <>
+              Discover <span style={{ color: "#e8aff6" }}>Categories</span> for
+              learning courses
+            </>
+          )}
+        </p>
+
         {/* Separator line */}
         <div className="w-full h-[2px] bg-hero2 opacity-40 my-6" />
 
         {/* Filter chips row */}
-        <div className="flex flex-wrap gap-4 mb-10">
+        <div className="flex flex-wrap gap-2 mb-10 justify-center">
           {filterLabels[lang].map((label, idx) => (
             <button
               key={label}
-              className={`font-poppins font-medium px-6 py-2 rounded-full text-base border-2 border-white transition shadow-sm
-                whitespace-nowrap
-                ${
-                  idx === 0 || idx === filterLabels[lang].length - 1
-                    ? "bg-white text-hero5"
-                    : "bg-transparent text-white hover:bg-hero2 hover:text-hero5"
-                }
-              `}
+              className={`
+        font-poppins font-normal     
+        px-3 py-1
+        rounded-full
+        text-[11px]
+        border border-white
+        transition shadow-sm
+        whitespace-nowrap
+        ${
+          idx === 0 || idx === filterLabels[lang].length - 1
+            ? "bg-white text-black" // <-- text is black for first and last
+            : "bg-transparent text-white hover:bg-hero2 hover:text-hero5"
+        }
+      `}
               style={{
                 minWidth:
-                  idx === 0 || idx === filterLabels[lang].length - 1 ? 90 : 170,
+                  idx === 0 || idx === filterLabels[lang].length - 1 ? 58 : 110,
+                fontWeight: 400, // not bold for all
               }}
             >
               {label}
@@ -124,13 +177,11 @@ export const Categories = () => {
             >
               {/* Responsive image container */}
               <div className="relative w-full h-56 md:h-80">
-                {" "}
-                {/* control the height */}
                 <Image
                   src={course.image}
                   alt={course.title}
                   fill
-                  sizes="(min-width: 1024px) 33vw, 100vw" // Responsive image sizes
+                  sizes="(min-width: 1024px) 33vw, 100vw"
                   className="object-cover rounded-t-2xl"
                   priority={idx === 0}
                 />

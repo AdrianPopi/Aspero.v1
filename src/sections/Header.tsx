@@ -6,22 +6,25 @@ import { LinkButton } from "../components/LinkButton";
 import { Moon, Sun } from "../svg/DarkModeIcons";
 import { useLanguage } from "../context/LanguageContext";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { useRouter } from "next/router";
 
-export const Header = ({ isDarkMode, toggleDarkMode }) => {
+export const Header = ({
+  isDarkMode,
+  toggleDarkMode,
+}: {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+}) => {
   const { lang, setLang } = useLanguage();
-  const [top, setTop] = useState(true);
-  const [reloaded, setReloaded] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [reloaded, setReloaded] = useState(false);
+  const router = useRouter();
 
+  useEffectOnce(() => setReloaded(true));
   useEventListener("resize", () => {
     if (window.innerWidth >= 768) setNavOpen(false);
   });
-
-  useEventListener("scroll", () => setTop(window.pageYOffset <= 10));
-  useEffectOnce(() => setReloaded(true));
-  const handleDropdown = (id) =>
-    setOpenDropdown(openDropdown === id ? null : id);
 
   const sectionLinks = [
     { id: "home", label: lang === "ro" ? "Acasă" : "Home", href: "#home" },
@@ -61,31 +64,25 @@ export const Header = ({ isDarkMode, toggleDarkMode }) => {
     },
   ];
 
-  // LOGO
+  const handleDropdown = (id: string) =>
+    setOpenDropdown(openDropdown === id ? null : id);
+
   const Logo = () => (
-    <Link
-      href="/"
-      className="flex items-center group"
-      style={{ lineHeight: 1 }}
-    >
+    <Link href="/" className="flex items-center mr-8">
       <Image
         src="/images/logo-header.png"
         alt="Aspero logo"
         width={40}
         height={40}
-        className="w-10 h-10 md:w-12 md:h-12 object-contain"
+        className="w-10 h-10 md:w-12 md:h-12"
         priority
       />
-      <span
-        className="ml-2 font-bold text-2xl md:text-3xl text-white font-poppins"
-        style={{ letterSpacing: "-0.02em" }}
-      >
+      <span className="ml-2 font-bold text-2xl md:text-3xl text-white font-poppins">
         Aspero<sup className="text-xs font-normal align-super">®</sup>
       </span>
     </Link>
   );
 
-  // NAVIGATION LINKS
   const NavLinks = () => (
     <ul className="flex flex-col md:flex-row gap-3 md:gap-6 items-start md:items-center text-base font-medium">
       {sectionLinks.map(({ id, label, href, hasDropdown, dropdown }) => (
@@ -98,31 +95,31 @@ export const Header = ({ isDarkMode, toggleDarkMode }) => {
           {hasDropdown ? (
             <>
               <button
-                className="flex items-center gap-1 px-2 py-1 font-semibold text-light hover:text-primary-400 transition rounded"
+                type="button"
                 onClick={() => handleDropdown(id)}
+                className="flex items-center gap-1 px-2 py-1 font-semibold text-white hover:text-[#5566b8] transition rounded"
                 aria-expanded={openDropdown === id}
                 aria-controls={`${id}-dropdown`}
-                type="button"
               >
                 {label}
                 <ChevronDown
                   size={16}
-                  className={`ml-1 transition-transform ${
+                  className={`${
                     openDropdown === id ? "rotate-180" : ""
-                  }`}
+                  } transition-transform`}
                 />
               </button>
               {openDropdown === id && (
                 <ul
                   id={`${id}-dropdown`}
-                  className="absolute left-0 mt-2 w-56 rounded-xl shadow-lg bg-gray-900/95 dark:bg-gray-800/95 z-40 py-2"
+                  className="absolute left-0 mt-2 w-56 rounded-xl shadow-lg bg-gray-900/95 z-40 py-2"
                 >
-                  {dropdown.map((item, i) => (
+                  {dropdown!.map((item, i) => (
                     <li key={i}>
                       <a
                         href={item.target}
-                        className="block px-4 py-2 text-light hover:text-primary-400"
-                        onClick={() => setOpenDropdown(null)}
+                        onClick={() => setNavOpen(false)}
+                        className="block px-4 py-2 text-white hover:text-[#5566b8]"
                       >
                         {item.label}
                       </a>
@@ -134,8 +131,16 @@ export const Header = ({ isDarkMode, toggleDarkMode }) => {
           ) : (
             <a
               href={href}
-              className="px-2 py-1 font-medium text-light hover:text-primary-400 transition"
               onClick={() => setNavOpen(false)}
+              className={`
+                px-2 py-1 transition
+                ${
+                  router.asPath === href
+                    ? "text-[#5566b8] font-semibold"
+                    : "text-white font-normal"
+                }
+                hover:text-[#5566b8]
+              `}
             >
               {label}
             </a>
@@ -145,19 +150,8 @@ export const Header = ({ isDarkMode, toggleDarkMode }) => {
     </ul>
   );
 
-  // "WORK WITH US" Button
-  const WorkWithUsButton = () => (
-    <a
-      href="#"
-      className="px-4 py-2 bg-[#b3aaff] text-hero5 font-semibold rounded-full shadow text-base font-poppins hover:bg-hero2 transition whitespace-nowrap"
-    >
-      {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
-    </a>
-  );
-
-  // Language Switcher and Theme
   const ExtraActions = () => (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 ml-4">
       <button
         onClick={() => setLang("ro")}
         className={`px-2 ${lang === "ro" ? "font-bold underline" : ""}`}
@@ -172,12 +166,7 @@ export const Header = ({ isDarkMode, toggleDarkMode }) => {
         EN
       </button>
       {reloaded && (
-        <LinkButton
-          button
-          onClick={toggleDarkMode}
-          title="Toggle dark mode"
-          aria-label="Toggle dark mode"
-        >
+        <LinkButton button onClick={toggleDarkMode} title="Toggle dark mode">
           {isDarkMode ? <Moon /> : <Sun />}
         </LinkButton>
       )}
@@ -185,52 +174,63 @@ export const Header = ({ isDarkMode, toggleDarkMode }) => {
   );
 
   return (
-    <header
-      className="fixed w-full z-30 bg-hero5 shadow-none px-0"
-      style={{ top: 0, left: 0 }}
-    >
-      {/* Desktop Layout */}
-      <div className="hidden md:flex items-center justify-between h-[90px] px-8 max-w-[1350px] mx-auto">
+    <header className="fixed w-full z-30 bg-hero5 px-0">
+      <div className="flex items-center justify-between h-[80px] px-4 md:px-8 max-w-[1350px] mx-auto">
         <Logo />
-        <nav className="flex-1 flex justify-center">
+
+        <nav className="flex-1 hidden md:flex justify-center">
           <NavLinks />
         </nav>
-        <div className="flex items-center gap-4">
-          <WorkWithUsButton />
+
+        <div className="flex items-center space-x-4">
+          {/* Desktop-only Work With Us */}
+          <a
+            href="#"
+            className="
+              hidden md:inline-flex
+              px-3 py-1.5
+              bg-[#5566b8] text-white text-xs font-normal
+              rounded-full shadow-sm font-poppins
+              hover:bg-[#4455a0] transition
+            "
+          >
+            {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
+          </a>
           <ExtraActions />
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden p-2 rounded focus:outline-none ml-2"
+          aria-label="Toggle navigation"
+          onClick={() => setNavOpen((o) => !o)}
+        >
+          {navOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
 
-      {/* Mobile Layout */}
-      <div className="flex flex-col md:hidden px-4 pt-4 pb-2 bg-hero5">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Logo />
-            {/* Place WorkWithUsButton next to logo on mobile */}
-            <WorkWithUsButton />
-          </div>
-          <div className="flex items-center gap-2">
-            <ExtraActions />
-            {/* Hamburger for mobile */}
-            <button
-              className="p-2 rounded focus:outline-none ml-2"
-              aria-label="Toggle navigation"
-              onClick={() => setNavOpen((o) => !o)}
-            >
-              {navOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile Drawer */}
       {navOpen && (
-        <nav className="md:hidden bg-gray-900/95 dark:bg-gray-800/95 w-full absolute top-[70px] left-0 shadow-lg transition-all z-50">
-          <div className="flex flex-col gap-4 px-6 py-6">
+        <nav className="md:hidden fixed inset-x-0 top-0 pt-[80px] pb-6 bg-gray-900/95 w-full z-50 overflow-auto">
+          <div className="flex flex-col gap-4 px-6">
             <NavLinks />
-            {/* Only show on drawer if you want double button */}
-            {/* <WorkWithUsButton /> */}
-            {/* <ExtraActions /> */}
+
+            {/* Mobile-only Work With Us */}
+            <a
+              href="#"
+              className="
+                inline-flex md:hidden
+                px-3 py-1.5
+                bg-[#5566b8] text-white text-xs font-normal
+                rounded-full shadow-sm font-poppins
+                hover:bg-[#4455a0] transition
+              "
+              onClick={() => setNavOpen(false)}
+            >
+              {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
+            </a>
+
+            <ExtraActions />
           </div>
         </nav>
       )}
