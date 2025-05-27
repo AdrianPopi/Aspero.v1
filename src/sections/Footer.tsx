@@ -105,7 +105,7 @@ export const Footer = () => {
               {t.newsletterTitle}
             </p>
 
-            <form className="w-full max-w-md flex items-center bg-white rounded-full p-2 pr-0 border border-[#ffffff]">
+            <form className="relative w-full max-w-md bg-white rounded-full p-2 pr-0 border border-[#ffffff]">
               <input
                 className="flex-1 px-4 py-2 rounded-full bg-transparent text-base font-poppins font-normal outline-none text-gray-700 placeholder-[#b8bed6]"
                 type="email"
@@ -113,7 +113,13 @@ export const Footer = () => {
               />
               <button
                 type="submit"
-                className="flex items-center justify-center w-10 h-10 bg-black rounded-full ml-2 border-2 border-white"
+                className="
+                  absolute right-2 top-1/2
+                  -translate-y-1/2
+                  flex items-center justify-center
+                  w-10 h-10 bg-black rounded-full
+                  border-2 border-white
+               "
               >
                 <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                   <path
