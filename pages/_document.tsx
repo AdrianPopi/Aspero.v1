@@ -4,7 +4,7 @@ import Script from "next/script";
 
 const Document = () => {
   return (
-    <Html className="dark">
+    <Html>
       <Head />
       <body>
         <Script strategy="beforeInteractive" src="/scripts/darkModeScript.js" />
