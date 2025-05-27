@@ -150,6 +150,29 @@ export const Header = ({
     </ul>
   );
 
+  // const ExtraActions = () => (
+  //   <div className="flex items-center gap-2 ml-4">
+  //     <button
+  //       onClick={() => setLang("ro")}
+  //       className={`px-2 ${lang === "ro" ? "font-bold underline" : ""}`}
+  //     >
+  //       RO
+  //     </button>
+  //     <span className="text-white/70">|</span>
+  //     <button
+  //       onClick={() => setLang("en")}
+  //       className={`px-2 ${lang === "en" ? "font-bold underline" : ""}`}
+  //     >
+  //       EN
+  //     </button>
+  //     {reloaded && (
+  //       <LinkButton button onClick={toggleDarkMode} title="Toggle dark mode">
+  //         {isDarkMode ? <Moon /> : <Sun />}
+  //       </LinkButton>
+  //     )}
+  //   </div>
+  // );
+
   const ExtraActions = () => (
     <div className="flex items-center gap-2 ml-4">
       <button
@@ -165,11 +188,13 @@ export const Header = ({
       >
         EN
       </button>
-      {reloaded && (
-        <LinkButton button onClick={toggleDarkMode} title="Toggle dark mode">
-          {isDarkMode ? <Moon /> : <Sun />}
-        </LinkButton>
-      )}
+      {/*
+    {reloaded && (
+      <LinkButton button onClick={toggleDarkMode} title="Toggle dark mode">
+        {isDarkMode ? <Moon /> : <Sun />}
+      </LinkButton>
+    )}
+    */}
     </div>
   );
 
