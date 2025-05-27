@@ -209,7 +209,7 @@ export const Header = ({
 
         {!navOpen && (
           <button
-            className="md:hidden p-2 rounded focus:outline-none ml-2"
+            className="md:hidden p-2 rounded focus:outline-none ml-2 text-white"
             aria-label="Toggle navigation"
             onClick={() => setNavOpen(true)}
           >
