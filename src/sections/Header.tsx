@@ -183,12 +183,10 @@ export const Header = ({
         </nav>
 
         <div className="flex items-center space-x-4">
-          {/* Desktop-only Work With Us */}
           <a
             href="#"
             className="
               hidden md:inline-flex
-                
               px-3 py-1.5
               bg-[#5566b8] text-white text-xs font-normal
               rounded-full shadow-sm font-poppins
@@ -200,38 +198,36 @@ export const Header = ({
           <ExtraActions />
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden p-2 rounded focus:outline-none ml-2"
-          aria-label="Toggle navigation"
-          onClick={() => setNavOpen((o) => !o)}
-        >
-          {navOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {!navOpen && (
+          <button
+            className="md:hidden p-2 rounded focus:outline-none ml-2"
+            aria-label="Toggle navigation"
+            onClick={() => setNavOpen(true)}
+          >
+            <Menu size={28} />
+          </button>
+        )}
       </div>
 
-      {/* Mobile Drawer */}
       {navOpen && (
-        <nav className="md:hidden fixed inset-x-0 top-0 pt-[80px] pb-6 bg-gray-900/95 w-full z-50 overflow-auto">
-          <div className="flex flex-col gap-4 px-6">
-            <NavLinks />
+        <nav className="md:hidden fixed inset-x-0 top-[80px] pb-6 bg-gray-900/95 w-full z-50 overflow-auto">
+          <button
+            onClick={() => setNavOpen(false)}
+            className="absolute top-4 right-4 p-2"
+            aria-label="Close menu"
+          >
+            <X size={24} className="text-white" />
+          </button>
 
-            {/* Mobile-only Work With Us */}
+          <div className="flex flex-col gap-4 px-6 pt-12">
+            <NavLinks />
             <a
               href="#"
-              className="
-                inline-flex md:hidden
-                self-start max-w-max
-                px-3 py-1.5
-                bg-[#5566b8] text-white text-xs font-normal
-                rounded-full shadow-sm font-poppins
-                hover:bg-[#4455a0] transition
-              "
+              className="inline-flex md:hidden self-start max-w-max px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
               onClick={() => setNavOpen(false)}
             >
               {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
             </a>
-
             <ExtraActions />
           </div>
         </nav>
