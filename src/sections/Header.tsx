@@ -7,6 +7,7 @@ import { Moon, Sun } from "../svg/DarkModeIcons";
 import { useLanguage } from "../context/LanguageContext";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useRouter } from "next/router";
+import { useRef, useEffect } from "react";
 
 export const Header = ({
   isDarkMode,
@@ -20,6 +21,26 @@ export const Header = ({
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [reloaded, setReloaded] = useState(false);
   const router = useRouter();
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        drawerRef.current &&
+        !drawerRef.current.contains(event.target as Node)
+      ) {
+        setNavOpen(false);
+      }
+    };
+
+    if (navOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [navOpen]);
 
   useEffectOnce(() => setReloaded(true));
   useEventListener("resize", () => {
@@ -219,7 +240,10 @@ export const Header = ({
       </div>
 
       {navOpen && (
-        <nav className="md:hidden fixed inset-x-0 top-[80px] pb-6 bg-gray-900/95 w-full z-50 overflow-auto">
+        <nav
+          ref={drawerRef}
+          className="md:hidden fixed inset-x-0 top-[80px] pb-6 bg-gray-900/95 w-full z-50 overflow-auto"
+        >
           <button
             onClick={() => setNavOpen(false)}
             className="absolute top-4 right-4 p-2"
