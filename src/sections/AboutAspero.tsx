@@ -66,7 +66,7 @@ export const AboutAspero = () => {
           alt="Devices"
           width={520}
           height={380}
-          className="object-contain rounded-2xl shadow-2xl bg-white w-full md:w-[520px] h-auto"
+          className="object-contain rounded-2xl shadow-2xl w-full md:w-[520px] h-auto"
           style={{ height: "auto" }}
           priority
         />
