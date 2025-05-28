@@ -10,19 +10,24 @@ export const AboutAspero = () => {
       subtitle: "Profesorii inspiră. Aspero optimizează.",
       text: (
         <>
-          La <strong>Aspero</strong>, credem că profesorii sunt esența educației
-          de calitate. Nu ne dorim să îi înlocuim, ci să le oferim mai mult timp
-          pentru ceea ce contează: predare, ghidare și formarea gândirii
-          critice. Aspero preia sarcinile repetitive și le transformă în procese
-          automatizate, exerciții generate procedural, feedback instant și
-          statistici clare despre progres.
+          Platforma noastră caută să combine lucrurile la care în mod
+          tradițional educația universitară din România excelează - printre
+          altele, aptitudinile înalte pentru aspectele teoretice ale materiilor
+          STEM (Science, Technology, Engineering and Mathematics - Știință,
+          Tehnologie, Inginerie și Matematică) - și noua revoluție digitală din
+          educație adusă de accesul cvasi-universal la internet și generalizarea
+          aplicațiilor inteligenței artificiale.
           <br />
           <br />
-          Astfel, platforma oferă studenților{" "}
-          <strong>autonomie și acces la un mediu educațional flexibil</strong>,
-          iar profesorilor un sprijin real în predare. Pentru educația din
-          România, Aspero este un pas concret către un sistem mai modern, mai
-          eficient și mai echilibrat.
+          Printre funcțiile fundamentale ale platformei se pot număra generarea
+          procedurală de exerciții bazate pe un input al profesorului, prin care
+          platforma poate genera un număr virtual infinit de exerciții corecte
+          pentru studenți care să le permită să-și consolideze exercițiile fără
+          a face exact același exercițiu de mai multe ori și feedback-ul
+          instantaneu scris în prealabil sau generat automat pentru exerciții
+          care permite atât studentului să-și corecteze exercițiile autonom
+          oricând și de oriunde s-ar afla, dar și profesorului să se concentreze
+          pe aspecte mai puțin repetitive ale educației.
         </>
       ),
       button: "Înregistrează-te",
@@ -32,21 +37,24 @@ export const AboutAspero = () => {
       subtitle: "Teachers inspire. Aspero optimizes.",
       text: (
         <>
-          At <strong>Aspero</strong>, we believe that teachers are the essence
-          of quality education. We do not wish to replace them, but to give them
-          more time for what matters: teaching, mentoring, and cultivating
-          critical thinking. Aspero takes over repetitive tasks and transforms
-          them into automated processes, procedurally generated exercises,
-          instant feedback, and clear progress statistics.
+          Our platform seeks to combine the abilities and qualities the Romanian
+          university education traditionally excels at - which are, among
+          others, the high aptitude for STEM theory (Science, Technology,
+          Engineering and Mathematics) subjects - along with the new digital
+          revolution in education brought by the quasi-universal access to the
+          internet and the simplification of access to artificial intelligence
+          applications.
           <br />
           <br />
-          Thus, the platform offers students{" "}
-          <strong>
-            autonomy and access to a flexible educational environment
-          </strong>
-          , while giving teachers real support in teaching. For education in
-          Romania, Aspero is a concrete step towards a more modern, efficient,
-          and balanced system.
+          Among the platform&apos;s core functions there are procedurally
+          generated exercises based on teacher input, whereby the platform can
+          generate a virtually infinite number of correct exercises for students
+          to use to consolidate their studies without having to repeat exactly
+          the same exercise multiple times, as well as instant pre-written or
+          automatically generated feedback for exercises. This allows both the
+          student to correct their exercises autonomously anytime and from
+          anywhere, and for the teacher to be able to focus on the less
+          repetitive aspects of education.
         </>
       ),
       button: "Register now",
