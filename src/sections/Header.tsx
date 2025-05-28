@@ -110,8 +110,14 @@ export const Header = ({
     </Link>
   );
 
-  // Pass onLinkClick prop so we can close the drawer on mobile
-  const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
+  // Now passing setOpenDropdown!
+  const NavLinks = ({
+    onLinkClick,
+    setOpenDropdown,
+  }: {
+    onLinkClick?: () => void;
+    setOpenDropdown: (val: string | null) => void;
+  }) => (
     <ul className="flex flex-col md:flex-row gap-3 md:gap-6 items-start md:items-center text-base font-medium">
       {sectionLinks.map(({ id, label, href, hasDropdown, dropdown }) => (
         <li
@@ -147,7 +153,10 @@ export const Header = ({
                       <Link href={item.target} scroll={false}>
                         <span
                           className="block px-4 py-2 text-white hover:text-[#5566b8]"
-                          onClick={onLinkClick}
+                          onClick={() => {
+                            if (onLinkClick) onLinkClick();
+                            setOpenDropdown(null); // This closes dropdown!
+                          }}
                         >
                           {item.label}
                         </span>
@@ -213,7 +222,7 @@ export const Header = ({
       <div className="flex items-center justify-between h-[80px] px-4 md:px-8 max-w-[1350px] mx-auto">
         <Logo />
         <nav className="flex-1 hidden md:flex justify-center">
-          <NavLinks />
+          <NavLinks setOpenDropdown={setOpenDropdown} />
         </nav>
         <div className="flex items-center space-x-4">
           <a
@@ -248,7 +257,10 @@ export const Header = ({
             <X size={24} className="text-white" />
           </button>
           <div className="flex flex-col gap-4 px-6 pt-12">
-            <NavLinks onLinkClick={() => setNavOpen(false)} />
+            <NavLinks
+              onLinkClick={() => setNavOpen(false)}
+              setOpenDropdown={setOpenDropdown}
+            />
             <a
               href="#"
               className="inline-flex md:hidden self-start max-w-max px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
