@@ -87,7 +87,7 @@ export const FeaturesForStudents = () => {
               }
             }
           `}</style>
-          <Link href="/features-for-students">
+          <Link href="/features-for-students" legacyBehavior>
             <button
               className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
               style={{ fontWeight: 500 }}

@@ -93,7 +93,7 @@ export const FeaturesForTeachers = () => {
           <Link
             href="/features-for-teachers"
             className="mt-2 px-6 py-2 rounded-full bg-white text-[#22223b] border border-[#fff] hover:bg-gray-100 font-poppins text-[15px] shadow transition inline-block"
-          >
+            legacyBehavior>
             {t.cta}
           </Link>
         </div>

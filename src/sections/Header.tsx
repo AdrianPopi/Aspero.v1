@@ -95,7 +95,7 @@ export const Header = ({
     setOpenDropdown(openDropdown === id ? null : id);
 
   const Logo = () => (
-    <Link href="/" className="flex items-center mr-8">
+    <Link href="/" className="flex items-center mr-8" legacyBehavior>
       <Image
         src="/images/logo-header.png"
         alt="Aspero logo"
@@ -150,7 +150,7 @@ export const Header = ({
                 >
                   {dropdown!.map((item, i) => (
                     <li key={i}>
-                      <Link href={item.target} scroll={false}>
+                      <Link href={item.target} scroll={false} legacyBehavior>
                         <span
                           className="block px-4 py-2 text-white hover:text-[#5566b8]"
                           onClick={() => {
@@ -167,7 +167,7 @@ export const Header = ({
               )}
             </>
           ) : (
-            <Link href={href ?? "/"} scroll={false}>
+            <Link href={href ?? "/"} scroll={false} legacyBehavior>
               <span
                 className={`px-2 py-1 transition ${
                   router.asPath === href

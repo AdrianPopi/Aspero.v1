@@ -112,7 +112,7 @@ export const FeaturesForInstitutions = () => {
             }
           `}</style>
 
-          <Link href="/features-for-institutions">
+          <Link href="/features-for-institutions" legacyBehavior>
             <button
               className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
               style={{ fontWeight: 500 }}
@@ -133,7 +133,6 @@ export const FeaturesForInstitutions = () => {
           />
         </div>
       </div>
-
       {/* Animated Marquee Bar */}
       <div className="w-full bg-gradient-to-r from-[#5f67b2] via-[#ba71cf] to-[#ac6dff] overflow-hidden h-10 flex items-center">
         <div className="marquee whitespace-nowrap text-white text-base md:text-lg font-poppins font-medium px-8">

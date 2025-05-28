@@ -69,7 +69,7 @@ export const TeamSection = () => {
         <Link
           href="/team"
           className="bg-[#b3aaff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#a393fa] transition"
-        >
+          legacyBehavior>
           {t.button}
         </Link>
       </div>
