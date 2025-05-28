@@ -90,11 +90,13 @@ export const FeaturesForTeachers = () => {
           <div className="text-[15px] md:text-base text-[#22223b] mb-5 text-justify">
             {t.description}
           </div>
-          <Link
-            href="/features-for-teachers"
-            className="mt-2 px-6 py-2 rounded-full bg-white text-[#22223b] border border-[#fff] hover:bg-gray-100 font-poppins text-[15px] shadow transition inline-block"
-            legacyBehavior>
-            {t.cta}
+          <Link href="/features-for-teachers">
+            <button
+              className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
+              style={{ fontWeight: 500 }}
+            >
+              {t.cta}
+            </button>
           </Link>
         </div>
       </div>

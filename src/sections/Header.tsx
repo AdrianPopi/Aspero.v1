@@ -95,17 +95,19 @@ export const Header = ({
     setOpenDropdown(openDropdown === id ? null : id);
 
   const Logo = () => (
-    <Link href="/" className="flex items-center mr-8" legacyBehavior>
-      <Image
-        src="/images/logo-header.png"
-        alt="Aspero logo"
-        width={40}
-        height={40}
-        className="w-10 h-10 md:w-12 md:h-12"
-        priority
-      />
-      <span className="ml-2 font-bold text-2xl md:text-3xl text-white font-poppins">
-        Aspero<sup className="text-xs font-normal align-super">®</sup>
+    <Link href="/" className="flex items-center mr-8">
+      <span className="flex items-center">
+        <Image
+          src="/images/logo-header.png"
+          alt="Aspero logo"
+          width={40}
+          height={40}
+          className="w-10 h-10 md:w-12 md:h-12"
+          priority
+        />
+        <span className="ml-2 font-bold text-2xl md:text-3xl text-white font-poppins">
+          Aspero<sup className="text-xs font-normal align-super">®</sup>
+        </span>
       </span>
     </Link>
   );
