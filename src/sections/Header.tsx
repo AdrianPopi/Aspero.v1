@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useEffectOnce, useEventListener } from "usehooks-ts";
 import { LinkButton } from "../components/LinkButton";
 import { Moon, Sun } from "../svg/DarkModeIcons";
 import { useLanguage } from "../context/LanguageContext";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useRouter } from "next/router";
-import { useRef, useEffect } from "react";
 
 export const Header = ({
   isDarkMode,
@@ -32,11 +31,9 @@ export const Header = ({
         setNavOpen(false);
       }
     };
-
     if (navOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -48,22 +45,20 @@ export const Header = ({
   });
 
   useEffect(() => {
-    if (!navOpen) {
-      setOpenDropdown(null);
-    }
+    if (!navOpen) setOpenDropdown(null);
   }, [navOpen]);
 
   const sectionLinks = [
-    { id: "home", label: lang === "ro" ? "Acasă" : "Home", href: "#home" },
+    { id: "home", label: lang === "ro" ? "Acasă" : "Home", href: "/#home" },
     {
       id: "aboutaspero",
       label: lang === "ro" ? "Despre Noi" : "About Us",
-      href: "#aboutaspero",
+      href: "/#aboutaspero",
     },
     {
       id: "categories",
       label: lang === "ro" ? "Categorii" : "Categories",
-      href: "#categories",
+      href: "/#categories",
     },
     {
       id: "features",
@@ -72,22 +67,22 @@ export const Header = ({
       dropdown: [
         {
           label: lang === "ro" ? "Pentru instituții" : "For Institutions",
-          target: "#featuresforinstitutions",
+          target: "/#featuresforinstitutions",
         },
         {
           label: lang === "ro" ? "Pentru profesori" : "For Teachers",
-          target: "#featuresforteachers",
+          target: "/#featuresforteachers",
         },
         {
           label: lang === "ro" ? "Pentru studenți" : "For Students",
-          target: "#featuresforstudents",
+          target: "/#featuresforstudents",
         },
       ],
     },
     {
       id: "contact",
       label: lang === "ro" ? "Contact" : "Contact",
-      href: "#contact",
+      href: "/#contact",
     },
   ];
 
@@ -143,34 +138,28 @@ export const Header = ({
                 >
                   {dropdown!.map((item, i) => (
                     <li key={i}>
-                      <a
-                        href={item.target}
-                        onClick={() => setNavOpen(false)}
-                        className="block px-4 py-2 text-white hover:text-[#5566b8]"
-                      >
-                        {item.label}
-                      </a>
+                      <Link href={item.target} scroll={false}>
+                        <span className="block px-4 py-2 text-white hover:text-[#5566b8]">
+                          {item.label}
+                        </span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               )}
             </>
           ) : (
-            <a
-              href={href}
-              onClick={() => setNavOpen(false)}
-              className={`
-                px-2 py-1 transition
-                ${
+            <Link href={href ?? "/"} scroll={false}>
+              <span
+                className={`px-2 py-1 transition ${
                   router.asPath === href
                     ? "text-[#5566b8] font-semibold"
                     : "text-white font-normal"
-                }
-                hover:text-[#5566b8]
-              `}
-            >
-              {label}
-            </a>
+                } hover:text-[#5566b8]`}
+              >
+                {label}
+              </span>
+            </Link>
           )}
         </li>
       ))}
@@ -213,27 +202,18 @@ export const Header = ({
     <header className="fixed w-full z-30 bg-hero5 px-0">
       <div className="flex items-center justify-between h-[80px] px-4 md:px-8 max-w-[1350px] mx-auto">
         <Logo />
-
         <nav className="flex-1 hidden md:flex justify-center">
           <NavLinks />
         </nav>
-
         <div className="flex items-center space-x-4">
           <a
             href="#"
-            className="
-              hidden md:inline-flex
-              px-3 py-1.5
-              bg-[#5566b8] text-white text-xs font-normal
-              rounded-full shadow-sm font-poppins
-              hover:bg-[#4455a0] transition
-            "
+            className="hidden md:inline-flex px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
           >
             {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
           </a>
           <ExtraActions />
         </div>
-
         {!navOpen && (
           <button
             className="md:hidden p-2 rounded focus:outline-none ml-2 text-white"
@@ -257,7 +237,6 @@ export const Header = ({
           >
             <X size={24} className="text-white" />
           </button>
-
           <div className="flex flex-col gap-4 px-6 pt-12">
             <NavLinks />
             <a
