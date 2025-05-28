@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -18,7 +19,7 @@ const content = {
         experiență mai clară, mai motivantă și mai profundă.
       </>
     ),
-    cta: "Vezi cum funcționează",
+    cta: "Citește mai mult",
   },
   en: {
     cardTitle: "For Students",
@@ -34,7 +35,7 @@ const content = {
         clearer, more motivating, and deeper experience.
       </>
     ),
-    cta: "See how it works",
+    cta: "Read more",
   },
 };
 
@@ -86,12 +87,14 @@ export const FeaturesForStudents = () => {
               }
             }
           `}</style>
-          <button
-            className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
-            style={{ fontWeight: 500 }}
-          >
-            {t.cta}
-          </button>
+          <Link href="/features-for-students">
+            <button
+              className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
+              style={{ fontWeight: 500 }}
+            >
+              {t.cta}
+            </button>
+          </Link>
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex items-center justify-center w-full md:h-[420px]">

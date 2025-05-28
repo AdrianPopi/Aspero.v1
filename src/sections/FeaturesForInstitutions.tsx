@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -21,7 +22,7 @@ const content = {
       </>,
     ],
 
-    cta: "Register",
+    cta: "Read more",
     marquee:
       "Education should not be repetitive. It should be relevant, adaptable and human.",
   },
@@ -45,7 +46,7 @@ const content = {
       </>,
     ],
 
-    cta: "Înregistrează-te",
+    cta: "Citește mai mult",
     marquee:
       "Educația nu trebuie să fie repetitivă. Trebuie să fie relevantă, adaptabilă și umană.",
   },
@@ -111,12 +112,14 @@ export const FeaturesForInstitutions = () => {
             }
           `}</style>
 
-          <button
-            className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
-            style={{ fontWeight: 500 }}
-          >
-            {t.cta}
-          </button>
+          <Link href="/features-for-institutions">
+            <button
+              className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
+              style={{ fontWeight: 500 }}
+            >
+              {t.cta}
+            </button>
+          </Link>
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex items-start justify-center w-full md:h-[420px] mt-6 md:mt-12">

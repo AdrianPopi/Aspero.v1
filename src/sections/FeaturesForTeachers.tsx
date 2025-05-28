@@ -6,15 +6,47 @@ const content = {
   ro: {
     cardTitle: "Pentru Profesori",
     subtitle: "Date clare. Decizii mai bune.",
-    description:
-      "Aspero simplifică procesul educațional cu instrumente moderne pentru profesori.",
+    description: (
+      <>
+        Aspero este gândit pentru a simplifica procesul educațional fără a-i
+        diminua valoarea umană.
+        <br />
+        Profesorii pot crea cu ușurință exerciții în formate diverse: de la
+        grile și răspunsuri text, la matematică, programare sau selecții
+        interactive și pot genera automat serii întregi de variante pentru
+        fiecare temă.
+        <br />
+        Platforma oferă <strong>feedback automatizat</strong>, analize detaliate
+        despre progresul studenților și o interfață centralizată de gestionare a
+        cursurilor.
+        <br />
+        Astfel, profesorii pot investi mai mult timp în predare autentică,
+        mentorat și inovație pedagogică.
+      </>
+    ),
     cta: "Citește mai mult",
   },
   en: {
     cardTitle: "For Teachers",
     subtitle: "Clear data. Better decisions.",
-    description:
-      "Aspero streamlines the educational process with modern tools for teachers.",
+    description: (
+      <>
+        Aspero is designed to simplify the educational process without
+        diminishing its human value.
+        <br />
+        Teachers can easily create exercises in diverse formats: from multiple
+        choice and text answers, to math, programming, or interactive
+        selections—and can automatically generate entire series of variants for
+        each assignment.
+        <br />
+        The platform provides <strong>automated feedback</strong>, detailed
+        analytics on student progress, and a centralized course management
+        interface.
+        <br />
+        This way, teachers can invest more time in authentic teaching,
+        mentoring, and pedagogical innovation.
+      </>
+    ),
     cta: "Read more",
   },
 };
@@ -24,7 +56,10 @@ export const FeaturesForTeachers = () => {
   const t = content[lang];
 
   return (
-    <section className="w-full bg-[#ced6ff] px-0 py-0 relative overflow-hidden">
+    <section
+      id="featuresforteachers"
+      className="w-full bg-[#ced6ff] px-0 py-0 relative overflow-hidden"
+    >
       <div className="w-full flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-4 py-10 md:py-16 px-4 md:px-24">
         <div className="flex-1 flex items-center justify-center w-full md:h-[420px]">
           <Image
