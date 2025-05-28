@@ -112,19 +112,27 @@ export const Header = ({
     </Link>
   );
 
-  // Now passing setOpenDropdown!
+  // Acum acceptă și close dropdown și pe mobile
   const NavLinks = ({
     onLinkClick,
     setOpenDropdown,
+    isMobile = false,
   }: {
     onLinkClick?: () => void;
     setOpenDropdown: (val: string | null) => void;
+    isMobile?: boolean;
   }) => (
-    <ul className="flex flex-col md:flex-row gap-3 md:gap-6 items-start md:items-center text-base font-medium">
+    <ul
+      className={
+        isMobile
+          ? "flex flex-col gap-1 items-start text-base font-semibold w-full"
+          : "flex flex-col md:flex-row gap-3 md:gap-6 items-start md:items-center text-base font-medium"
+      }
+    >
       {sectionLinks.map(({ id, label, href, hasDropdown, dropdown }) => (
         <li
           key={id}
-          className="relative group"
+          className="relative group w-full"
           tabIndex={0}
           onBlur={() => setOpenDropdown(null)}
         >
@@ -132,8 +140,12 @@ export const Header = ({
             <>
               <button
                 type="button"
-                onClick={() => handleDropdown(id)}
-                className="flex items-center gap-1 px-2 py-1 font-semibold text-white hover:text-[#5566b8] transition rounded"
+                onClick={() => setOpenDropdown(openDropdown === id ? null : id)}
+                className={
+                  isMobile
+                    ? "flex items-center gap-1 px-2 py-2 font-bold text-[#fdfdfd] hover:text-[#5566b8] transition rounded w-full"
+                    : "flex items-center gap-1 px-2 py-1 font-semibold text-white hover:text-[#5566b8] transition rounded"
+                }
                 aria-expanded={openDropdown === id}
                 aria-controls={`${id}-dropdown`}
               >
@@ -145,19 +157,39 @@ export const Header = ({
                   } transition-transform`}
                 />
               </button>
-              {openDropdown === id && (
+              {/* Mobile: Render sublinks ca o coloană, nu dropdown absolut */}
+              {isMobile && openDropdown === id && (
+                <>
+                  {dropdown!.map((item, i) => (
+                    <Link href={item.target} scroll={false} key={i}>
+                      <span
+                        className="block px-6 py-3 text-[#ffffff] font-semibold hover:text-[#5566b8] transition w-full"
+                        onClick={() => {
+                          if (onLinkClick) onLinkClick();
+                          setOpenDropdown(null);
+                        }}
+                      >
+                        {item.label}
+                      </span>
+                    </Link>
+                  ))}
+                </>
+              )}
+
+              {/* Desktop: dropdown absolut */}
+              {!isMobile && openDropdown === id && (
                 <ul
                   id={`${id}-dropdown`}
-                  className="absolute left-0 mt-2 w-56 rounded-xl shadow-lg bg-gray-900/95 z-40 py-2"
+                  className="absolute left-0 mt-2 w-56 rounded-xl shadow-lg bg-[#191931]/80 z-40 py-2"
                 >
                   {dropdown!.map((item, i) => (
                     <li key={i}>
-                      <Link href={item.target} scroll={false} legacyBehavior>
+                      <Link href={item.target} scroll={false}>
                         <span
                           className="block px-4 py-2 text-white hover:text-[#5566b8]"
                           onClick={() => {
                             if (onLinkClick) onLinkClick();
-                            setOpenDropdown(null); // This closes dropdown!
+                            setOpenDropdown(null);
                           }}
                         >
                           {item.label}
@@ -169,10 +201,12 @@ export const Header = ({
               )}
             </>
           ) : (
-            <Link href={href ?? "/"} scroll={false} legacyBehavior>
+            <Link href={href ?? "/"} scroll={false}>
               <span
-                className={`px-2 py-1 transition ${
-                  router.asPath === href
+                className={`px-2 py-2 transition block w-full ${
+                  isMobile
+                    ? "text-[#ffffff] font-semibold"
+                    : router.asPath === href
                     ? "text-[#5566b8] font-semibold"
                     : "text-white font-normal"
                 } hover:text-[#5566b8]`}
@@ -223,6 +257,7 @@ export const Header = ({
     <header className="fixed w-full z-30 bg-hero5 px-0">
       <div className="flex items-center justify-between h-[80px] px-4 md:px-8 max-w-[1350px] mx-auto">
         <Logo />
+        {/* NAV DESKTOP */}
         <nav className="flex-1 hidden md:flex justify-center">
           <NavLinks setOpenDropdown={setOpenDropdown} />
         </nav>
@@ -235,6 +270,7 @@ export const Header = ({
           </a>
           <ExtraActions />
         </div>
+        {/* HAMBURGER ICON ON MOBILE */}
         {!navOpen && (
           <button
             className="md:hidden p-2 rounded focus:outline-none ml-2 text-white"
@@ -245,34 +281,92 @@ export const Header = ({
           </button>
         )}
       </div>
-
+      {/* MOBILE DRAWER + OVERLAY */}
       {navOpen && (
-        <nav
-          ref={drawerRef}
-          className="md:hidden fixed inset-x-0 top-[80px] pb-6 bg-gray-900/95 w-full z-50 overflow-auto"
-        >
-          <button
+        <>
+          {/* Overlay blur */}
+          <div
             onClick={() => setNavOpen(false)}
-            className="absolute top-4 right-4 p-2"
-            aria-label="Close menu"
+            className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-[2.5px] z-40 transition-all duration-200"
+            aria-hidden="true"
+          />
+          {/* Drawer */}
+          <nav
+            ref={drawerRef}
+            className="
+              md:hidden
+              fixed
+              top-[80px] right-0 bottom-0
+              w-[90vw] max-w-[380px]
+              h-[calc(100vh-80px)]
+           bg-[#191931]/80 backdrop-blur-lg
+              shadow-2xl
+              rounded-l-2xl
+              z-50
+              overflow-y-auto
+              transition-all
+              duration-300
+            "
+            style={{
+              boxShadow: "0 6px 40px 0 rgba(26,32,64,0.22)",
+              fontFamily: "Poppins, sans-serif",
+            }}
           >
-            <X size={24} className="text-white" />
-          </button>
-          <div className="flex flex-col gap-4 px-6 pt-12">
-            <NavLinks
-              onLinkClick={() => setNavOpen(false)}
-              setOpenDropdown={setOpenDropdown}
-            />
-            <a
-              href="#"
-              className="inline-flex md:hidden self-start max-w-max px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
+            <button
               onClick={() => setNavOpen(false)}
+              className="absolute top-4 right-4 p-2"
+              aria-label="Close menu"
             >
-              {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
-            </a>
-            <ExtraActions />
-          </div>
-        </nav>
+              <X size={28} className="text-[#ffffff]" />
+            </button>
+            <div className="flex flex-col gap-3 px-6 pt-14">
+              <NavLinks
+                onLinkClick={() => setNavOpen(false)}
+                setOpenDropdown={setOpenDropdown}
+                isMobile={true}
+              />
+              <a
+                href="#"
+                className="inline-flex md:hidden self-start max-w-max px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
+                onClick={() => setNavOpen(false)}
+              >
+                {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
+              </a>
+              <div className="pt-2">
+                {/* ExtraActions mobile */}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setLang("ro")}
+                    className={`px-2 text-[#ffffff] ${
+                      lang === "ro" ? "font-bold underline" : ""
+                    }`}
+                  >
+                    RO
+                  </button>
+                  <span className="text-[#ffffff]">|</span>
+                  <button
+                    onClick={() => setLang("en")}
+                    className={`px-2 text-[#ffffff] ${
+                      lang === "en" ? "font-bold underline" : ""
+                    }`}
+                  >
+                    EN
+                  </button>
+                  {reloaded && (
+                    <LinkButton
+                      button
+                      onClick={toggleDarkMode}
+                      title="Toggle dark mode"
+                      className="text-[#ffffff]"
+                    >
+                      {isDarkMode ? <Moon /> : <Sun />}
+                    </LinkButton>
+                  )}
+                </div>
+              </div>
+            </div>
+          </nav>
+        </>
       )}
     </header>
   );
