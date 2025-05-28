@@ -20,7 +20,7 @@ export const Hero = () => {
           educaționale în învățământul superior din România.
         </>
       ),
-      cta: "Începe acum.",
+      cta: "Viziunea noastră",
     },
     en: {
       hashtag: "#joinus",
@@ -38,7 +38,7 @@ export const Hero = () => {
           practices to higher education in Romania.
         </>
       ),
-      cta: "Start now.",
+      cta: "Our vision",
     },
   };
 
@@ -126,30 +126,34 @@ export const Hero = () => {
 
             {/* CTA */}
             <a
-              href="#"
+              href="/our-vision"
               className="
-                group flex items-center w-[220px] h-[54px]
-                bg-white border border-white rounded-full
-                pl-7 pr-2 py-0
-                shadow-sm
-                transition
-                font-poppins text-xl font-normal text-black
-                hover:bg-white hover:text-black
-              "
+    group flex items-center 
+    w-[300px] md:w-[250px] h-[54px]
+    bg-white border border-white rounded-full
+    pl-8 pr-3 py-0
+    shadow-sm
+    transition
+    font-poppins
+    text-[19px] md:text-xl font-normal text-black
+    hover:bg-white hover:text-black
+    whitespace-nowrap
+    text-left
+  "
               style={{ fontWeight: 400 }}
             >
               {t.cta}
               <span
                 className="
-                  ml-auto flex items-center justify-center
-                  w-11 h-11 rounded-full bg-[#181836]
-                  transition
-                "
+      ml-auto flex items-center justify-center
+      w-10 h-10 rounded-full bg-[#181836]
+      transition
+    "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="22"
+                  height="22"
                   fill="none"
                   viewBox="0 0 24 24"
                 >

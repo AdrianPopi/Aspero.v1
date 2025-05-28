@@ -7,6 +7,7 @@ import { FeaturesForTeachers } from "../src/sections/FeaturesForTeachers";
 import { Categories } from "../src/sections/Categories";
 import { Hero } from "../src/sections/Hero";
 import { ContactSection } from "../src/sections/ContactSection";
+import { TeamSection } from "../src/sections/TeamSection";
 
 const Home = ({
   isDarkMode,
@@ -25,6 +26,7 @@ const Home = ({
         <FeaturesForInstitutions />
         <FeaturesForTeachers />
         <FeaturesForStudents />
+        <TeamSection />
         <ContactSection />
       </main>
       <Footer />

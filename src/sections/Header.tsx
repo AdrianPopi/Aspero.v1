@@ -80,6 +80,11 @@ export const Header = ({
       ],
     },
     {
+      id: "team",
+      label: lang === "ro" ? "Echipa" : "Team",
+      href: "/#team",
+    },
+    {
       id: "contact",
       label: lang === "ro" ? "Contact" : "Contact",
       href: "/#contact",
@@ -105,7 +110,8 @@ export const Header = ({
     </Link>
   );
 
-  const NavLinks = () => (
+  // Pass onLinkClick prop so we can close the drawer on mobile
+  const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
     <ul className="flex flex-col md:flex-row gap-3 md:gap-6 items-start md:items-center text-base font-medium">
       {sectionLinks.map(({ id, label, href, hasDropdown, dropdown }) => (
         <li
@@ -139,7 +145,10 @@ export const Header = ({
                   {dropdown!.map((item, i) => (
                     <li key={i}>
                       <Link href={item.target} scroll={false}>
-                        <span className="block px-4 py-2 text-white hover:text-[#5566b8]">
+                        <span
+                          className="block px-4 py-2 text-white hover:text-[#5566b8]"
+                          onClick={onLinkClick}
+                        >
                           {item.label}
                         </span>
                       </Link>
@@ -156,6 +165,7 @@ export const Header = ({
                     ? "text-[#5566b8] font-semibold"
                     : "text-white font-normal"
                 } hover:text-[#5566b8]`}
+                onClick={onLinkClick}
               >
                 {label}
               </span>
@@ -238,7 +248,7 @@ export const Header = ({
             <X size={24} className="text-white" />
           </button>
           <div className="flex flex-col gap-4 px-6 pt-12">
-            <NavLinks />
+            <NavLinks onLinkClick={() => setNavOpen(false)} />
             <a
               href="#"
               className="inline-flex md:hidden self-start max-w-max px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
