@@ -47,6 +47,12 @@ export const Header = ({
     if (window.innerWidth >= 768) setNavOpen(false);
   });
 
+  useEffect(() => {
+    if (!navOpen) {
+      setOpenDropdown(null);
+    }
+  }, [navOpen]);
+
   const sectionLinks = [
     { id: "home", label: lang === "ro" ? "Acasă" : "Home", href: "#home" },
     {
