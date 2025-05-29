@@ -264,7 +264,7 @@ export const Header = ({
       <div className="flex items-center justify-between h-[80px] px-4 md:px-8 max-w-[1350px] mx-auto">
         <Logo />
         {/* NAV DESKTOP */}
-        <nav className="flex-1 hidden md:flex justify-center">
+        <nav className="flex-1 hidden lg:flex justify-center">
           <NavLinks setOpenDropdown={setOpenDropdown} />
         </nav>
         <div className="flex items-center space-x-4">
@@ -279,7 +279,7 @@ export const Header = ({
         {/* HAMBURGER ICON ON MOBILE */}
         {!navOpen && (
           <button
-            className="md:hidden p-2 rounded focus:outline-none ml-2 text-white"
+            className="lg:hidden p-2 rounded focus:outline-none ml-2 text-white"
             aria-label="Toggle navigation"
             onClick={() => setNavOpen(true)}
           >
