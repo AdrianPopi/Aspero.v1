@@ -46,7 +46,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex justify-center items-center min-h-screen bg-hero5 py-10 px-2 overflow-hidden"
+      className="relative flex justify-center items-center min-h-screen bg-hero5 pt-20 md:pt-24 px-2 pb-10 overflow-hidden"
     >
       {/* Top-right big bubble, only a part visible */}
       <div
