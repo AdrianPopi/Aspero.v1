@@ -8,6 +8,8 @@ import { Categories } from "../src/sections/Categories";
 import { Hero } from "../src/sections/Hero";
 import { ContactSection } from "../src/sections/ContactSection";
 import { TeamSection } from "../src/sections/TeamSection";
+import BackToTop from "../src/components/BackToTop";
+import Vision from "@/sections/Vision";
 
 const Home = ({
   isDarkMode,
@@ -22,12 +24,14 @@ const Home = ({
       <main>
         <Hero />
         <AboutAspero />
-        <Categories />
+        <Vision />
         <FeaturesForInstitutions />
         <FeaturesForTeachers />
         <FeaturesForStudents />
+        <Categories />
         <TeamSection />
         <ContactSection />
+        <BackToTop />
       </main>
       <Footer />
     </div>

@@ -56,10 +56,11 @@ export const Header = ({
       href: "/#aboutaspero",
     },
     {
-      id: "categories",
-      label: lang === "ro" ? "Categorii" : "Categories",
-      href: "/#categories",
+      id: "vision",
+      label: lang === "ro" ? "Viziune" : "Vision",
+      href: "/#vision",
     },
+
     {
       id: "features",
       label: lang === "ro" ? "Funcționalități" : "Features",
@@ -78,6 +79,11 @@ export const Header = ({
           target: "/#featuresforstudents",
         },
       ],
+    },
+    {
+      id: "categories",
+      label: lang === "ro" ? "Categorii" : "Categories",
+      href: "/#categories",
     },
     {
       id: "team",
@@ -203,7 +209,7 @@ export const Header = ({
           ) : (
             <Link href={href ?? "/"} scroll={false}>
               <span
-                className={`px-2 py-2 transition block w-full ${
+                className={`px-2 py-2 transition block w-full whitespace-nowrap ${
                   isMobile
                     ? "text-[#ffffff] font-semibold"
                     : router.asPath === href

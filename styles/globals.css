@@ -152,4 +152,7 @@
     font-style: normal;
     font-display: swap;
   }
+  html {
+    scroll-behavior: smooth; /* buton scroll hero section */
+  }
 }

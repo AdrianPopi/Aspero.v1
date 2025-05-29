@@ -1,34 +1,56 @@
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
+import { useRef, useState } from "react";
 
 export const Footer = () => {
   const { lang } = useLanguage();
+  const emailRef = useRef<HTMLInputElement>(null);
+
+  const [successVisible, setSuccessVisible] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    await fetch("https://formsubmit.co/adresa@ta.com", {
+      method: "POST",
+      body: formData,
+    });
+
+    setSuccessMessage(t.successMessage);
+    setSuccessVisible(true);
+    form.reset();
+
+    // Dispar automat după 3 secunde
+    setTimeout(() => {
+      setSuccessVisible(false);
+    }, 3000);
+  };
 
   const content = {
     ro: {
       newsletterTitle:
         "Rămâi la curent și abonează-te la newsletter-ul Aspero:",
       newsletterPlaceholder: "Introdu adresa ta de e-mail",
-      company: "Companie",
-      docs: "Documentare",
+      company: "Aspero",
       social: "Social",
+      successMessage: "Te-ai abonat cu succes!",
       nav: [
         { label: "Acasă", to: "#home" },
         { label: "Despre", to: "#aboutaspero" },
+        { label: "Viziune", to: "#vision" },
         { label: "Categorii", to: "#categories" },
         { label: "Funcționalități", to: "#featuresforinstitutions" },
       ],
-      docsLinks: [
-        { label: "Contact", to: "#contact" },
-        { label: "FAQ", to: "#faq" },
-        { label: "Politica de confidențialitate", to: "#privacy" },
-      ],
+
       socials: [
         { label: "Facebook", href: "https://facebook.com/" },
         { label: "Instagram", href: "https://instagram.com/" },
         { label: "Youtube", href: "https://youtube.com/" },
       ],
-      register: "ÎNREGISTRARE",
+
       subscribeBtn: (
         <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="12" fill="#181836" />
@@ -46,20 +68,17 @@ export const Footer = () => {
       newsletterTitle:
         "Stay up to date and subscribe to the Aspero newsletter:",
       newsletterPlaceholder: "Enter your email address",
-      company: "Company",
-      docs: "Documentation",
+      company: "Aspero",
       social: "Social",
+      successMessage: "You have successfully subscribed!",
       nav: [
         { label: "Home", to: "#home" },
         { label: "About", to: "#aboutaspero" },
+        { label: "Vision", to: "#vision" },
         { label: "Categories", to: "#categories" },
         { label: "Features", to: "#featuresforinstitutions" },
       ],
-      docsLinks: [
-        { label: "Contact", to: "#contact" },
-        { label: "FAQ", to: "#faq" },
-        { label: "Privacy Policy", to: "#privacy" },
-      ],
+
       socials: [
         { label: "Facebook", href: "https://facebook.com/" },
         { label: "Instagram", href: "https://instagram.com/" },
@@ -101,27 +120,28 @@ export const Footer = () => {
               priority
             />
 
-            <p className="font-poppins font-normal text-white text-sm mb-4 text-center md:text-left">
+            <p className="font-poppins font-normal text-white text-sm mb-4 text-center max-w-full md:max-w-2xl md:text-base">
               {t.newsletterTitle}
             </p>
 
-            <form className="relative w-full max-w-md bg-white rounded-full p-2 pr-0 border border-[#ffffff]">
+            <form
+              onSubmit={handleSubmit}
+              className="w-full max-w-md border border-white bg-white rounded-full flex overflow-hidden"
+            >
+              <input type="hidden" name="_captcha" value="false" />
               <input
-                className="flex-1 px-4 py-2 rounded-full bg-transparent text-base font-poppins font-normal outline-none text-gray-700 placeholder-[#b8bed6]"
+                ref={emailRef}
+                name="email"
                 type="email"
+                required
                 placeholder={t.newsletterPlaceholder}
+                className="flex-grow px-4 py-2 text-sm md:text-base text-black placeholder-[#6b7280] font-poppins font-normal outline-none bg-transparent"
               />
               <button
                 type="submit"
-                className="
-                  absolute right-2 top-1/2
-                  -translate-y-1/2
-                  flex items-center justify-center
-                  w-10 h-10 bg-black rounded-full
-                  border-2 border-white
-               "
+                className="flex-shrink-0 w-10 h-10 m-2 rounded-full bg-black border-2 border-white flex items-center justify-center"
               >
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
                   <path
                     d="M8 12h8m-3-3 3 3-3 3"
                     stroke="#fff"
@@ -132,15 +152,25 @@ export const Footer = () => {
                 </svg>
               </button>
             </form>
+            {successMessage && (
+              <p
+                className={`
+    text-white text-sm font-poppins mt-2 transition-opacity duration-500
+    ${successVisible ? "opacity-100" : "opacity-0"}
+  `}
+              >
+                {successMessage}
+              </p>
+            )}
           </div>
           {/* Right: Navigation Columns */}
           <div className="flex-[2] flex flex-col md:flex-row justify-evenly items-center md:items-start w-full gap-10 md:gap-0">
-            {/* Company */}
-            <div className="mb-6 md:mb-0 text-center md:text-left">
-              <h4 className="font-poppins font-bold text-white text-sm md:text-base mb-3">
+            {/* Aspero */}
+            <div className="mb-6 md:mb-0 w-full flex flex-col items-center text-center">
+              <h4 className="font-poppins font-bold text-white text-lg md:text-xl mb-3">
                 {t.company}
               </h4>
-              <ul className="space-y-2">
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-left">
                 {t.nav.map((item) => (
                   <li key={item.to}>
                     <a
@@ -153,24 +183,7 @@ export const Footer = () => {
                 ))}
               </ul>
             </div>
-            {/* Docs */}
-            <div className="mb-6 md:mb-0 text-center md:text-left">
-              <h4 className="font-poppins font-bold text-white text-lg md:text-xl mb-3">
-                {t.docs}
-              </h4>
-              <ul className="space-y-2">
-                {t.docsLinks.map((item) => (
-                  <li key={item.to}>
-                    <a
-                      href={item.to}
-                      className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-lg"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+
             {/* Social */}
             <div className="text-center md:text-left">
               <h4 className="font-poppins font-bold text-white text-lg md:text-xl mb-3">
@@ -190,14 +203,6 @@ export const Footer = () => {
                   </li>
                 ))}
               </ul>
-              <div className="mt-4">
-                <a
-                  href="#register"
-                  className="uppercase text-white/80 text-xs md:text-sm font-bold tracking-widest hover:underline font-poppins"
-                >
-                  {t.register}
-                </a>
-              </div>
             </div>
           </div>
         </div>

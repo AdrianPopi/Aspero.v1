@@ -12,8 +12,7 @@ const content = {
       send: "Trimite",
     },
     rightTitle: "Contactează-ne",
-    description:
-      "Indiferent dacă aveți întrebări despre serviciile noastre, aveți nevoie de asistență sau doriți să ne împărtășiți feedback-ul dvs., echipa noastră dedicată este aici pentru a vă ajuta la fiecare pas.",
+    description: "",
     info: [
       {
         icon: "/images/email.png",

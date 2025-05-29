@@ -21,7 +21,6 @@ export const Hero = () => {
           educaționale în învățământul superior din România.
         </>
       ),
-      cta: "Viziunea noastră",
     },
     en: {
       hashtag: "#joinus",
@@ -39,7 +38,6 @@ export const Hero = () => {
           practices to higher education in Romania.
         </>
       ),
-      cta: "Our vision",
     },
   };
 
@@ -92,26 +90,9 @@ export const Hero = () => {
         >
           {/* Left: Text content */}
           <div className="flex-1 p-8 md:p-14 flex flex-col justify-center z-10 max-w-lg items-start">
-            {/* Hashtag */}
-            <span
-              className="
-                inline-block
-                bg-hero2 text-hero5
-                font-poppins font-normal
-                text-base
-                rounded-full
-                px-4 py-1
-                mb-6
-                shadow-sm
-                min-w-[120px] max-w-[180px]
-                text-center
-              "
-            >
-              {t.hashtag}
-            </span>
             {/* Title */}
             <h1
-              className="font-poppins font-bold text-lg md:text-xl lg:text-2xl text-white leading-tight mb-6"
+              className="font-poppins font-bold text-lg md:text-xl lg:text-2xl text-white leading-tight mb-10"
               style={{ fontWeight: 700 }}
             >
               {t.title}
@@ -126,31 +107,27 @@ export const Hero = () => {
             </p>
 
             {/* CTA */}
-            <Link href="/our-vision" passHref legacyBehavior>
-              <a
-                className="group flex items-center w-[300px] md:w-[250px] h-[54px] bg-white border border-white rounded-full pl-8 pr-3 py-0 shadow-sm transition font-poppins text-[19px] md:text-xl font-normal text-black hover:bg-white hover:text-black whitespace-nowrap text-left"
-                style={{ fontWeight: 400 }}
+            <a
+              href="#aboutaspero"
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-white/80 hover:bg-white transition-all shadow-md mt-4"
+              aria-label="Scroll to next section"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
               >
-                {t.cta}
-                <span className="ml-auto flex items-center justify-center w-10 h-10 rounded-full bg-[#181836] transition">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="#fff"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 12h14m-7 7 7-7-7-7"
-                    />
-                  </svg>
-                </span>
-              </a>
-            </Link>
+                <path
+                  stroke="#181836"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 9l6 6 6-6"
+                />
+              </svg>
+            </a>
           </div>
           {/* Right: Hero Image */}
           <div className="flex-1 flex items-center justify-center p-6 md:p-10 relative">

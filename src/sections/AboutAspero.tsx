@@ -7,7 +7,6 @@ export const AboutAspero = () => {
   const content = {
     ro: {
       title: "Despre Aspero",
-      subtitle: "Profesorii inspiră. Aspero optimizează.",
       text: (
         <>
           Platforma noastră caută să combine lucrurile la care în mod
@@ -34,7 +33,6 @@ export const AboutAspero = () => {
     },
     en: {
       title: "About Aspero",
-      subtitle: "Teachers inspire. Aspero optimizes.",
       text: (
         <>
           Our platform seeks to combine the abilities and qualities the Romanian
@@ -83,17 +81,12 @@ export const AboutAspero = () => {
       {/* Right: CONTENT */}
       <div className="flex-1 max-w-xl flex flex-col items-start justify-center">
         <h2
-          className="text-white text-2xl md:text-3xl font-bold mb-2"
+          className="text-white text-2xl md:text-3xl font-bold mb-4"
           style={{ fontFamily: "Poppins-Bold, Poppins, sans-serif" }}
         >
           {content[lang].title}
         </h2>
-        <div
-          className="text-[#b3aaff] text-base md:text-lg font-normal mb-3"
-          style={{ fontFamily: "Poppins-Regular, Poppins, sans-serif" }}
-        >
-          {content[lang].subtitle}
-        </div>
+
         <div
           className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed mb-6"
           style={{ fontFamily: "Poppins-Regular, Poppins, sans-serif" }}

@@ -66,11 +66,10 @@ export const TeamSection = () => {
         <div className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed mb-6 font-poppins">
           {t.text}
         </div>
-        <Link
-          href="/team"
-          className="bg-[#b3aaff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#a393fa] transition"
-          legacyBehavior>
-          {t.button}
+        <Link href="/team" legacyBehavior>
+          <a className="bg-white text-black font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-gray-200 transition">
+            {t.button}
+          </a>
         </Link>
       </div>
     </section>

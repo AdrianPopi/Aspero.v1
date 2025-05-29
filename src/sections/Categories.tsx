@@ -10,21 +10,15 @@ const courseContent = {
       {
         title: "Programare – Python (informatică/programare)",
         image: "/images/python.png",
-        teacher: "PROF: MARIA ANA",
-        duration: "2 ORE",
       },
-      {
-        title: "Macroeconomie (economie)",
-        image: "/images/macroeconomie.png",
-        teacher: "PROF: MARIA ANA",
-        duration: "2 ORE",
-      },
+      { title: "Macroeconomie (economie)", image: "/images/macroeconomie.png" },
       {
         title: "Neurobiologie (biologie/medicină)",
         image: "/images/neuro.png",
-        teacher: "PROF: MARIA ANA",
-        duration: "2 ORE",
       },
+      { title: "Istoria limbii române", image: "/images/default.png" },
+      { title: "Ecuații diferențiale", image: "/images/default.png" },
+      { title: "Franceză - A1-A2", image: "/images/default.png" },
     ],
   },
   en: {
@@ -34,21 +28,15 @@ const courseContent = {
       {
         title: "Programming – Python (informatics/programming)",
         image: "/images/python.png",
-        teacher: "PROF: MARIA ANA",
-        duration: "2 HOURS",
       },
       {
         title: "Macroeconomics (economics)",
         image: "/images/macroeconomie.png",
-        teacher: "PROF: MARIA ANA",
-        duration: "2 HOURS",
       },
-      {
-        title: "Neurobiology (biology/medicine)",
-        image: "/images/neuro.png",
-        teacher: "PROF: MARIA ANA",
-        duration: "2 HOURS",
-      },
+      { title: "Neurobiology (biology/medicine)", image: "/images/neuro.png" },
+      { title: "History of Romanian Language", image: "/images/default.png" },
+      { title: "Differential equations", image: "/images/default.png" },
+      { title: "French - A1-A2", image: "/images/default.png" },
     ],
   },
 };
@@ -56,26 +44,28 @@ const courseContent = {
 // Filter chips in both languages
 const filterLabels = {
   ro: [
-    "TOATE",
-    "INFORMATICĂ/PROGRAMARE",
-    "FIZICĂ APLICATĂ/INGINERIE",
-    "DESCOPERIREA MEDIULUI",
-    "DREPT",
-    "BIOLOGIE/MEDICINĂ",
-    "LIMBI STRĂINE",
-    "MATEMATICĂ",
-    "MAI MULT",
+    "Istoria mișcării politice țărăniste din România interbelică",
+    "Ecuații diferențiale",
+    "Termodinamică",
+    "Franceză - A1-A2",
+    "Macroeconomie",
+    "Drept constituțional",
+    "Neurobiologie",
+    "Elemente de fizică cuantică",
+    "Programare - Python",
+    "Istoria limbii române",
   ],
   en: [
-    "ALL",
-    "COMPUTING/PROGRAMMING",
-    "APPLIED PHYSICS/ENGINEERING",
-    "ENVIRONMENTAL DISCOVERY",
-    "LAW",
-    "BIOLOGY/MEDICINE",
-    "FOREIGN LANGUAGES",
-    "MATHEMATICS",
-    "MORE",
+    "The history of the interbellum peasant political movement in Romania",
+    "Differential equations",
+    "Thermodynamics",
+    "French - A1-A2",
+    "Macroeconomics",
+    "Constitutional law",
+    "Neurobiology",
+    "Quantum Physics",
+    "Programming - Python",
+    "History of Romanian Language",
   ],
 };
 
@@ -118,29 +108,15 @@ export const Categories = () => {
           className="font-poppins font-bold text-white text-2xl md:text-3xl mb-5"
           style={{ letterSpacing: "0.03em" }}
         >
-          {lang === "ro" ? "Categorii" : "Categories"}
+          {lang === "ro" ? "Exemple de cursuri" : "Course Examples"}
         </h2>
-
-        <p className="font-poppins font-normal text-white/80 text-lg mb-4">
-          {lang === "ro" ? (
-            <>
-              Descoperă <span style={{ color: "#e8aff6" }}>Categoriile</span>{" "}
-              pentru cursurile de învățare
-            </>
-          ) : (
-            <>
-              Discover <span style={{ color: "#e8aff6" }}>Categories</span> for
-              learning courses
-            </>
-          )}
-        </p>
 
         {/* Separator line */}
         <div className="w-full h-[2px] bg-hero2 opacity-40 my-6" />
 
         {/* Filter chips row */}
         <div className="flex flex-wrap gap-2 mb-10 justify-center">
-          {filterLabels[lang].map((label, idx) => (
+          {filterLabels[lang].map((label) => (
             <button
               key={label}
               className={`
@@ -151,16 +127,11 @@ export const Categories = () => {
         border border-white
         transition shadow-sm
         whitespace-nowrap
-        ${
-          idx === 0 || idx === filterLabels[lang].length - 1
-            ? "bg-white text-black" // <-- text is black for first and last
-            : "bg-transparent text-white hover:bg-hero2 hover:text-hero5"
-        }
+        bg-transparent text-white hover:bg-hero2 hover:text-hero5
       `}
               style={{
-                minWidth:
-                  idx === 0 || idx === filterLabels[lang].length - 1 ? 58 : 110,
-                fontWeight: 400, // not bold for all
+                minWidth: 110,
+                fontWeight: 400,
               }}
             >
               {label}
@@ -176,7 +147,7 @@ export const Categories = () => {
               className="bg-[#181836] rounded-2xl border-2 border-hero2 flex flex-col overflow-hidden shadow-xl hover:scale-105 transition-all duration-300"
             >
               {/* Responsive image container */}
-              <div className="relative w-full h-56 md:h-80">
+              <div className="relative w-full h-40 md:h-56">
                 <Image
                   src={course.image}
                   alt={course.title}
@@ -188,37 +159,9 @@ export const Categories = () => {
               </div>
               {/* Content */}
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-poppins font-medium text-white text-2xl mb-6 leading-snug">
+                <h3 className="font-poppins font-medium text-white text-lg mb-4 leading-snug">
                   {course.title}
                 </h3>
-                <div className="flex items-center text-hero2 gap-6 mt-auto text-base font-poppins">
-                  <span className="flex items-center gap-1">
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      className="inline-block"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="9" cy="7" r="4"></circle>
-                    </svg>
-                    {course.teacher}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      className="inline-block"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M21 12.79A9 9 0 1 1 11.21 3"></path>
-                      <path d="M22 2 12 12.01"></path>
-                    </svg>
-                    {course.duration}
-                  </span>
-                </div>
               </div>
             </div>
           ))}
