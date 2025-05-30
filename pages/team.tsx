@@ -80,7 +80,7 @@ const TeamPage = ({
                 alt="Aspero Team"
                 width={520}
                 height={380}
-                className="rounded-2xl object-contain"
+                className="image-section"
                 priority
               />
             </div>

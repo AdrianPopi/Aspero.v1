@@ -94,6 +94,7 @@ const OurVisionPage = ({
                 alt="Vision illustration"
                 width={520}
                 height={380}
+                className="image-section"
                 priority
               />
             </div>
@@ -114,7 +115,7 @@ const OurVisionPage = ({
                 alt="Group discussion"
                 width={600}
                 height={400}
-                className="rounded-2xl shadow-lg"
+                className="image-section"
               />
             </div>
             <div className="md:w-1/2 space-y-4">
