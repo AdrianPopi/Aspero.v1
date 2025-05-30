@@ -69,7 +69,7 @@ export const FeaturesForTeachers = () => {
             alt="Profesor"
             width={600}
             height={420}
-            className="rounded-[22px] object-cover w-full h-64 md:h-[400px] md:w-[520px] shadow-xl"
+            className="image-section"
             priority
           />
         </div>
@@ -83,7 +83,7 @@ export const FeaturesForTeachers = () => {
               alt="professor icon"
               width={32}
               height={32}
-              className="image-section"
+              className="w-7 h-7 md:w-8 md:h-8"
             />
           </div>
           <div className="text-base md:text-lg text-[#5566b8] mb-2">
