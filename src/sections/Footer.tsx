@@ -45,6 +45,12 @@ export const Footer = () => {
         { label: "Categorii", to: "#categories" },
         { label: "Funcționalități", to: "#featuresforinstitutions" },
       ],
+      info: [
+        { label: "Contact", href: "/#contact" },
+        { label: "Politica de Cookies", href: "/legal/cookies" },
+        { label: "Politica de confidențialitate", href: "/legal/privacy" },
+        { label: "Termenii și Condițiile", href: "/legal/terms" },
+      ],
 
       socials: [
         { label: "Facebook", href: "https://facebook.com/" },
@@ -78,6 +84,12 @@ export const Footer = () => {
         { label: "Vision", to: "#vision" },
         { label: "Categories", to: "#categories" },
         { label: "Features", to: "#featuresforinstitutions" },
+      ],
+      info: [
+        { label: "Contact", href: "/#contact" },
+        { label: "Cookies Policy", href: "/legal/cookies" },
+        { label: "Privacy Policy", href: "/legal/privacy" },
+        { label: "Terms and Conditions", href: "/legal/terms" },
       ],
 
       socials: [
@@ -191,31 +203,25 @@ export const Footer = () => {
                 {lang === "ro" ? "Informații" : "Information"}
               </h4>
               <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:flex-col md:gap-x-0 md:gap-y-2">
-                <li>
-                  <Link
-                    href="/#contact"
-                    scroll={false}
-                    className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
-                  >
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    href="/faq"
-                    className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
-                  >
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/politica-de-confidentialitate"
-                    className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
-                  >
-                    Politica de confidențialitate
-                  </a>
-                </li>
+                {t.info.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      scroll={false}
+                      onClick={() => {
+                        if (item.href.startsWith("/")) {
+                          sessionStorage.setItem(
+                            "scroll-position",
+                            window.scrollY.toString()
+                          );
+                        }
+                      }}
+                      className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
