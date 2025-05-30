@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
 import { useRef, useState } from "react";
+import Link from "next/link";
 
 export const Footer = () => {
   const { lang } = useLanguage();
@@ -39,7 +40,7 @@ export const Footer = () => {
       successMessage: "Te-ai abonat cu succes!",
       nav: [
         { label: "Acasă", to: "#home" },
-        { label: "Despre", to: "#aboutaspero" },
+        { label: "Despre noi", to: "#aboutaspero" },
         { label: "Viziune", to: "#vision" },
         { label: "Categorii", to: "#categories" },
         { label: "Funcționalități", to: "#featuresforinstitutions" },
@@ -73,7 +74,7 @@ export const Footer = () => {
       successMessage: "You have successfully subscribed!",
       nav: [
         { label: "Home", to: "#home" },
-        { label: "About", to: "#aboutaspero" },
+        { label: "About us", to: "#aboutaspero" },
         { label: "Vision", to: "#vision" },
         { label: "Categories", to: "#categories" },
         { label: "Features", to: "#featuresforinstitutions" },
@@ -109,7 +110,7 @@ export const Footer = () => {
       <footer className="max-w-7xl mx-auto bg-[#5566b8] rounded-t-[40px] pt-10 pb-6 px-4 md:px-16 mt-0">
         <div className="flex flex-col md:flex-row gap-12 md:gap-0">
           {/* Left: Logo and Newsletter */}
-          <div className="flex-1 flex flex-col items-center mb-8 md:mb-0">
+          <div className="flex-1 flex flex-col items-center mb-1 md:mb-0">
             <Image
               src="/images/logo-footer.png"
               alt="Aspero Logo"
@@ -164,18 +165,18 @@ export const Footer = () => {
             )}
           </div>
           {/* Right: Navigation Columns */}
-          <div className="flex-[2] flex flex-col md:flex-row justify-evenly items-center md:items-start w-full gap-10 md:gap-0">
-            {/* Aspero */}
-            <div className="mb-6 md:mb-0 w-full flex flex-col items-center text-center">
+          <div className="flex-[2] w-full flex flex-col md:flex-row md:justify-evenly md:items-start gap-2 md:gap-0 mt-0.5 md:mt-0">
+            {/* Company */}
+            <div className="w-full md:w-auto flex flex-col items-center md:items-start text-center md:text-left">
               <h4 className="font-poppins font-bold text-white text-lg md:text-xl mb-3">
-                {t.company}
+                {lang === "ro" ? "Aspero" : "Aspero"}
               </h4>
-              <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-left">
+              <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:flex-col md:gap-x-0 md:gap-y-2">
                 {t.nav.map((item) => (
                   <li key={item.to}>
                     <a
                       href={item.to}
-                      className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-lg"
+                      className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
                     >
                       {item.label}
                     </a>
@@ -184,19 +185,53 @@ export const Footer = () => {
               </ul>
             </div>
 
+            {/* Information */}
+            <div className="w-full md:w-auto flex flex-col items-center md:items-start text-center md:text-left">
+              <h4 className="font-poppins font-bold text-white text-lg md:text-xl mb-3">
+                {lang === "ro" ? "Informații" : "Information"}
+              </h4>
+              <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:flex-col md:gap-x-0 md:gap-y-2">
+                <li>
+                  <Link
+                    href="/#contact"
+                    scroll={false}
+                    className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
+                  >
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="/faq"
+                    className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
+                  >
+                    FAQ
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/politica-de-confidentialitate"
+                    className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
+                  >
+                    Politica de confidențialitate
+                  </a>
+                </li>
+              </ul>
+            </div>
+
             {/* Social */}
-            <div className="text-center md:text-left">
+            <div className="w-full md:w-auto flex flex-col items-center md:items-start text-center md:text-left">
               <h4 className="font-poppins font-bold text-white text-lg md:text-xl mb-3">
                 {t.social}
               </h4>
-              <ul className="space-y-2">
+              <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:flex-col md:gap-x-0 md:gap-y-2">
                 {t.socials.map((item) => (
                   <li key={item.label}>
                     <a
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-lg"
+                      className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
                     >
                       {item.label}
                     </a>
