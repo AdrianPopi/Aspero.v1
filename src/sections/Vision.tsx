@@ -75,7 +75,7 @@ export const Vision = () => {
           alt="Vision"
           width={520}
           height={380}
-          className="object-contain rounded-2xl shadow-2xl w-full md:w-[420px] h-auto"
+          className="image-section"
           priority
         />
       </div>

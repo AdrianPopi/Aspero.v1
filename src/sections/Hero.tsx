@@ -136,7 +136,7 @@ export const Hero = () => {
               alt="Student at laptop"
               width={600}
               height={400}
-              className="rounded-[70px_0_70px_0/120px_0_120px_0] object-cover w-full h-72 md:h-[420px] shadow-lg"
+              className="image-section"
               priority
             />
             <div

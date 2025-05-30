@@ -89,7 +89,7 @@ export const TeamSection = () => {
           alt="Aspero Team"
           width={520}
           height={380}
-          className="object-contain rounded-2xl shadow-2xl w-full md:w-[480px] h-auto"
+          className="image-section"
           style={{ height: "auto" }}
           priority
         />

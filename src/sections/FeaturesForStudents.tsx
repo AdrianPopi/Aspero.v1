@@ -112,7 +112,7 @@ export const FeaturesForStudents = () => {
             alt="Student"
             width={600}
             height={420}
-            className="rounded-[22px] object-cover w-full h-64 md:h-[400px] md:w-[520px] shadow-xl"
+            className="image-section"
             priority
           />
         </div>
