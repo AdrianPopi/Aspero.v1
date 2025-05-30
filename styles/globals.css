@@ -155,4 +155,8 @@
   html {
     scroll-behavior: smooth; /* buton scroll hero section */
   }
+  /* styles/globals.css */
+  html {
+    scroll-padding-top: 6rem;
+  }
 }

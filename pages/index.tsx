@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { AboutAspero } from "../src/sections/AboutAspero";
 import { FeaturesForStudents } from "../src/sections/FeaturesForStudents";
 import { Footer } from "../src/sections/Footer";
@@ -18,6 +19,14 @@ const Home = ({
   isDarkMode: boolean;
   toggleDarkMode: () => void;
 }) => {
+  useEffect(() => {
+    const savedPosition = sessionStorage.getItem("scroll-position");
+    if (savedPosition) {
+      window.scrollTo(0, parseInt(savedPosition, 10));
+      sessionStorage.removeItem("scroll-position");
+    }
+  }, []);
+
   return (
     <div className="overflow-hidden col text-strong">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />

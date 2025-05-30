@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
+import { useRouter } from "next/router";
 
 // Content for both languages
 const content = {
@@ -55,11 +56,12 @@ const content = {
 export const FeaturesForInstitutions = () => {
   const { lang } = useLanguage();
   const t = content[lang];
+  const router = useRouter();
 
   return (
     <section
       id="featuresforinstitutions"
-      className="w-full bg-[#ced6ff] px-0 py-0 relative overflow-hidden"
+      className="scroll-mt-24 w-full bg-[#ced6ff] px-0 py-0 relative overflow-hidden"
     >
       {/* Main flex row - no card, full width, no shadow, no rounded */}
       <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-4 py-10 md:py-16 px-4 md:px-24">
@@ -114,6 +116,13 @@ export const FeaturesForInstitutions = () => {
 
           <Link href="/features-for-institutions" legacyBehavior>
             <button
+              onClick={() => {
+                sessionStorage.setItem(
+                  "scroll-position",
+                  String(window.scrollY)
+                );
+                router.push("/features-for-institutions");
+              }}
               className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
               style={{ fontWeight: 500 }}
             >

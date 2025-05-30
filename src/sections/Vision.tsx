@@ -1,8 +1,10 @@
 import { useLanguage } from "../context/LanguageContext";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export const Vision = () => {
   const { lang } = useLanguage();
+  const router = useRouter();
 
   const content = {
     ro: {
@@ -41,7 +43,7 @@ export const Vision = () => {
   return (
     <section
       id="vision"
-      className="w-full bg-hero5 flex flex-col items-center justify-center py-16 px-4 md:px-24"
+      className="scroll-mt-24 w-full bg-hero5 flex flex-col items-center justify-center py-16 px-4 md:px-24"
       style={{ minHeight: "65vh" }}
     >
       <div className="max-w-4xl text-center">
@@ -51,11 +53,18 @@ export const Vision = () => {
         <div className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed mb-6 font-poppins">
           {content[lang].text}
         </div>
-        <Link href="/our-vision" legacyBehavior>
-          <a className="bg-[#ffffff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#ffffff] transition">
-            {content[lang].button}
-          </a>
-        </Link>
+        <button
+          onClick={() => {
+            sessionStorage.setItem(
+              "scroll-position",
+              window.scrollY.toString()
+            );
+            router.push("/our-vision");
+          }}
+          className="bg-[#ffffff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#ffffff] transition"
+        >
+          {content[lang].button}
+        </button>
       </div>
     </section>
   );

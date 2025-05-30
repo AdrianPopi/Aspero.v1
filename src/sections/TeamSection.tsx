@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
+import { useRouter } from "next/router";
 
 export const TeamSection = () => {
   const { lang } = useLanguage();
+  const router = useRouter();
 
   // Short summary for the main page
   const teamSummary = {
@@ -67,7 +69,13 @@ export const TeamSection = () => {
           {t.text}
         </div>
         <Link href="/team" legacyBehavior>
-          <a className="bg-white text-black font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-gray-200 transition">
+          <a
+            className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
+            style={{
+              fontWeight: 500,
+              fontFamily: "Poppins-Regular, Poppins, sans-serif",
+            }}
+          >
             {t.button}
           </a>
         </Link>
