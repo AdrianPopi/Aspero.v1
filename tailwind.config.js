@@ -46,6 +46,14 @@ module.exports = {
         sans: ["Poppins", "Avenir Next", "Helvetica Neue", "sans-serif"],
       },
     },
+    screens: {
+      nav: "1250px", // Custom nav breakpoint
+      sm: "640px",
+      md: "1250px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
   },
   plugins: [],
 };

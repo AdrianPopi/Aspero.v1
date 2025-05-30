@@ -51,7 +51,7 @@ export const TeamSection = () => {
   return (
     <section
       id="team"
-      className="w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-16 px-4 md:px-24 gap-10 md:gap-20"
+      className="w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-8 px-4 md:px-24 gap-10 md:gap-20"
       style={{ minHeight: "75vh" }}
     >
       {/* Right: CONTENT (moved first) */}

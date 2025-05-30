@@ -62,7 +62,7 @@ export const FeaturesForTeachers = () => {
       id="featuresforteachers"
       className="scroll-mt-24 w-full bg-[#ced6ff] px-0 py-0 relative overflow-hidden"
     >
-      <div className="w-full flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-4 py-10 md:py-16 px-4 md:px-24">
+      <div className="w-full flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-4 py-8 md:py-12 px-4 md:px-24">
         <div className="flex-1 flex items-center justify-center w-full md:h-[420px]">
           <Image
             src="/images/profesor.png"

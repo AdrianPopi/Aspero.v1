@@ -161,7 +161,7 @@ const OurVisionPage = ({
             </section>
 
             {/* Bubble tucked under the card’s corner */}
-            <div className="absolute -bottom-8 -right-8 w-56 h-56 pointer-events-none z-0">
+            {/* <div className="absolute -bottom-8 -right-8 w-56 h-56 pointer-events-none z-0">
               <Image
                 src="/images/bubble-contact-footer.png"
                 alt="Bubble graphic"
@@ -169,7 +169,7 @@ const OurVisionPage = ({
                 className="object-contain"
                 priority
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </main>

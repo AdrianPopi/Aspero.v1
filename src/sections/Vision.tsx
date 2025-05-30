@@ -43,7 +43,7 @@ export const Vision = () => {
   return (
     <section
       id="vision"
-      className="scroll-mt-24 w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-16 px-4 md:px-24 gap-10"
+      className="scroll-mt-24 w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-8 px-4 md:px-24 gap-10"
       style={{ minHeight: "65vh" }}
     >
       {/* Left: TEXT */}

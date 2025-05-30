@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { useEffectOnce, useEventListener } from "usehooks-ts";
+import { useEventListener } from "usehooks-ts";
 import { LinkButton } from "../components/LinkButton";
 import { Moon, Sun } from "../svg/DarkModeIcons";
 import { useLanguage } from "../context/LanguageContext";
@@ -39,9 +39,16 @@ export const Header = ({
     };
   }, [navOpen]);
 
-  useEffectOnce(() => setReloaded(true));
+  useEffect(() => {
+    setReloaded(true);
+  }, []);
+
   useEventListener("resize", () => {
-    if (window.innerWidth >= 768) setNavOpen(false);
+    if (window.innerWidth >= 1024) {
+      // 1024px is Tailwind's 'lg'
+      setNavOpen(false);
+      setOpenDropdown(null);
+    }
   });
 
   useEffect(() => {
@@ -259,30 +266,23 @@ export const Header = ({
       <div className="flex items-center justify-between h-[80px] px-4 md:px-8 max-w-[1350px] mx-auto">
         <Logo />
         {/* NAV DESKTOP */}
-        <nav className="flex-1 hidden lg:flex justify-center">
+        <nav className="flex-1 hidden nav:flex justify-center">
           <NavLinks setOpenDropdown={setOpenDropdown} />
         </nav>
         <div className="flex items-center space-x-4">
-          {/* <a
-            href="#"
-            className="hidden md:inline-flex px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
-          >
-            {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
-          </a> */}
           <Link
             href="/#contact"
             scroll={false}
-            className="hidden md:inline-flex px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
+            className="hidden nav:inline-flex px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
           >
             {lang === "ro" ? "Contactează-ne" : "Contact Us"}
           </Link>
-
           <ExtraActions />
         </div>
         {/* HAMBURGER ICON ON MOBILE */}
         {!navOpen && (
           <button
-            className="lg:hidden p-2 rounded focus:outline-none ml-2 text-white"
+            className="nav:hidden p-2 rounded focus:outline-none ml-2 text-white"
             aria-label="Toggle navigation"
             onClick={() => setNavOpen(true)}
           >
@@ -337,7 +337,7 @@ export const Header = ({
               <Link
                 href="/#contact"
                 scroll={false}
-                className="inline-flex md:hidden self-start max-w-max px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
+                className="hidden md:inline-flex px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
                 onClick={() => setNavOpen(false)}
               >
                 {lang === "ro" ? "Contactează-ne" : "Contact Us"}

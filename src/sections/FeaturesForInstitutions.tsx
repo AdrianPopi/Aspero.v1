@@ -64,7 +64,7 @@ export const FeaturesForInstitutions = () => {
       className="scroll-mt-24 w-full bg-[#ced6ff] px-0 py-0 relative overflow-hidden"
     >
       {/* Main flex row - no card, full width, no shadow, no rounded */}
-      <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-4 py-10 md:py-16 px-4 md:px-24">
+      <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-4 py-8 md:py-12 px-4 md:px-24">
         {/* Left: Text & Icon */}
         <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
           <h2
