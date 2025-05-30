@@ -1,6 +1,6 @@
 import { useLanguage } from "../context/LanguageContext";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export const Vision = () => {
   const { lang } = useLanguage();
@@ -43,10 +43,11 @@ export const Vision = () => {
   return (
     <section
       id="vision"
-      className="scroll-mt-24 w-full bg-hero5 flex flex-col items-center justify-center py-16 px-4 md:px-24"
+      className="scroll-mt-24 w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-16 px-4 md:px-24 gap-10"
       style={{ minHeight: "65vh" }}
     >
-      <div className="max-w-4xl text-center">
+      {/* Left: TEXT */}
+      <div className="flex-1 max-w-xl text-center md:text-left">
         <h2 className="text-white text-2xl md:text-3xl font-bold mb-6 font-poppins">
           {content[lang].title}
         </h2>
@@ -65,6 +66,18 @@ export const Vision = () => {
         >
           {content[lang].button}
         </button>
+      </div>
+
+      {/* Right: IMAGE */}
+      <div className="flex-1 flex items-center justify-center min-w-[260px]">
+        <Image
+          src="/images/vision.png"
+          alt="Vision"
+          width={520}
+          height={380}
+          className="object-contain rounded-2xl shadow-2xl w-full md:w-[420px] h-auto"
+          priority
+        />
       </div>
     </section>
   );
