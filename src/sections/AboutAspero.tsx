@@ -29,7 +29,7 @@ export const AboutAspero = () => {
           pe aspecte mai puțin repetitive ale educației.
         </>
       ),
-      button: "Înregistrează-te",
+      button: "Contactează-ne",
     },
     en: {
       title: "About Aspero",
@@ -55,7 +55,7 @@ export const AboutAspero = () => {
           repetitive aspects of education.
         </>
       ),
-      button: "Register now",
+      button: "Contact Us",
     },
   };
 
@@ -94,7 +94,7 @@ export const AboutAspero = () => {
           {content[lang].text}
         </div>
         <a
-          href="#"
+          href="#contact"
           onClick={() =>
             sessionStorage.setItem("scroll-position", window.scrollY.toString())
           }

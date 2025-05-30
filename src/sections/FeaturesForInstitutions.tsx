@@ -142,7 +142,7 @@ export const FeaturesForInstitutions = () => {
           />
         </div>
       </div>
-      {/* Animated Marquee Bar */}
+      {/* Animated Marquee Bar
       <div className="w-full bg-gradient-to-r from-[#5f67b2] via-[#ba71cf] to-[#ac6dff] overflow-hidden h-10 flex items-center">
         <div className="marquee whitespace-nowrap text-white text-base md:text-lg font-poppins font-medium px-8">
           <span>
@@ -164,7 +164,7 @@ export const FeaturesForInstitutions = () => {
             }
           }
         `}</style>
-      </div>
+      </div> */}
     </section>
   );
 };

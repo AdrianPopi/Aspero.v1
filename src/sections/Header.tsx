@@ -90,11 +90,6 @@ export const Header = ({
       label: lang === "ro" ? "Echipa" : "Team",
       href: "/#team",
     },
-    {
-      id: "contact",
-      label: lang === "ro" ? "Contact" : "Contact",
-      href: "/#contact",
-    },
   ];
 
   const handleDropdown = (id: string) =>
@@ -268,12 +263,20 @@ export const Header = ({
           <NavLinks setOpenDropdown={setOpenDropdown} />
         </nav>
         <div className="flex items-center space-x-4">
-          <a
+          {/* <a
             href="#"
             className="hidden md:inline-flex px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
           >
             {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
-          </a>
+          </a> */}
+          <Link
+            href="/#contact"
+            scroll={false}
+            className="hidden md:inline-flex px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
+          >
+            {lang === "ro" ? "Contactează-ne" : "Contact Us"}
+          </Link>
+
           <ExtraActions />
         </div>
         {/* HAMBURGER ICON ON MOBILE */}
@@ -331,13 +334,22 @@ export const Header = ({
                 setOpenDropdown={setOpenDropdown}
                 isMobile={true}
               />
-              <a
+              <Link
+                href="/#contact"
+                scroll={false}
+                className="inline-flex md:hidden self-start max-w-max px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
+                onClick={() => setNavOpen(false)}
+              >
+                {lang === "ro" ? "Contactează-ne" : "Contact Us"}
+              </Link>
+
+              {/* <a
                 href="#"
                 className="inline-flex md:hidden self-start max-w-max px-3 py-1.5 bg-[#5566b8] text-white text-xs font-normal rounded-full shadow-sm font-poppins hover:bg-[#4455a0] transition"
                 onClick={() => setNavOpen(false)}
               >
                 {lang === "ro" ? "LUCREAZĂ CU NOI" : "WORK WITH US"}
-              </a>
+              </a> */}
               <div className="pt-2">
                 {/* ExtraActions mobile */}
                 <div className="flex items-center gap-2">
