@@ -63,7 +63,7 @@ export const AboutAspero = () => {
     <section
       id="aboutaspero"
       className="scroll-mt-24 w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-16 px-4 md:px-24 gap-10 md:gap-20"
-      style={{ minHeight: "75vh" }}
+      style={{ minHeight: "75vh", scrollMarginTop: "6rem" }}
     >
       {/* Left: IMAGE */}
       <div className="flex-1 flex items-center justify-center min-w-[260px]">
@@ -95,6 +95,9 @@ export const AboutAspero = () => {
         </div>
         <a
           href="#"
+          onClick={() =>
+            sessionStorage.setItem("scroll-position", window.scrollY.toString())
+          }
           className="bg-[#b3aaff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#a393fa] transition"
         >
           {content[lang].button}
