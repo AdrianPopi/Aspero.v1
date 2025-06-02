@@ -51,48 +51,51 @@ export const TeamSection = () => {
   return (
     <section
       id="team"
-      className="w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-8 px-4 md:px-24 gap-10 md:gap-20"
+      className="w-full bg-hero5 flex justify-center py-8 px-4 md:px-0" // Eliminăm px-24 de pe section
       style={{ minHeight: "75vh" }}
     >
-      {/* Right: CONTENT (moved first) */}
-      <div className="flex-1 max-w-xl flex flex-col items-start justify-center">
-        <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-poppins">
-          {t.title}
-        </h2>
-        <div className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed mb-6 font-poppins">
-          {t.text}
+      {/* Container centrat cu max-width */}
+      <div className="max-w-7xl mx-auto px-4 md:px-24 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20 w-full">
+        {/* Right: CONTENT */}
+        <div className="flex-1 max-w-xl flex flex-col items-start justify-center">
+          <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-poppins">
+            {t.title}
+          </h2>
+          <div className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed mb-6 font-poppins">
+            {t.text}
+          </div>
+          <Link href="/team" legacyBehavior>
+            <button
+              onClick={() => {
+                sessionStorage.setItem(
+                  "scroll-position",
+                  window.scrollY.toString()
+                );
+                router.push("/team");
+              }}
+              className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
+              style={{
+                fontWeight: 500,
+                fontFamily: "Poppins-Regular, Poppins, sans-serif",
+              }}
+            >
+              {t.button}
+            </button>
+          </Link>
         </div>
-        <Link href="/team" legacyBehavior>
-          <button
-            onClick={() => {
-              sessionStorage.setItem(
-                "scroll-position",
-                window.scrollY.toString()
-              );
-              router.push("/team");
-            }}
-            className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
-            style={{
-              fontWeight: 500,
-              fontFamily: "Poppins-Regular, Poppins, sans-serif",
-            }}
-          >
-            {t.button}
-          </button>
-        </Link>
-      </div>
 
-      {/* Left: IMAGE (moved second) */}
-      <div className="flex-1 flex items-center justify-center min-w-[260px]">
-        <Image
-          src="/images/aspero-team.png"
-          alt="Aspero Team"
-          width={520}
-          height={380}
-          className="image-section"
-          style={{ height: "auto" }}
-          priority
-        />
+        {/* Left: IMAGE */}
+        <div className="flex-1 flex items-center justify-center min-w-[260px]">
+          <Image
+            src="/images/aspero-team.png"
+            alt="Aspero Team"
+            width={520}
+            height={380}
+            className="image-section"
+            style={{ height: "auto" }}
+            priority
+          />
+        </div>
       </div>
     </section>
   );

@@ -1,9 +1,9 @@
-// pages/team.tsx
-
 import { Header } from "@/sections/Header";
 import { useLanguage } from "../src/context/LanguageContext";
 import { useEffect } from "react";
 import Image from "next/image";
+import Footer from "@/sections/Footer";
+import BackToTop from "../src/components/BackToTop";
 
 const teamContent = {
   ro: {
@@ -61,7 +61,7 @@ const TeamPage = ({
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 
       <main className="bg-hero5 bg-cover bg-center text-white pt-32 md:pt-40 pb-16">
-        <div className="max-w-8xl mx-auto px-4 md:px-24 space-y-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20">
           {/* 1) HERO: title + intro + collage */}
           <section className="flex flex-col lg:flex-row items-center gap-10">
             {/* Text */}
@@ -130,6 +130,8 @@ const TeamPage = ({
           </div>
         </div>
       </main>
+      <BackToTop />
+      <Footer />
     </>
   );
 };

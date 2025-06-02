@@ -1,9 +1,9 @@
-// pages/features-students.tsx
-
 import { Header } from "@/sections/Header";
 import { useLanguage } from "../src/context/LanguageContext";
 import { useEffect } from "react";
 import Image from "next/image";
+import Footer from "@/sections/Footer";
+import BackToTop from "../src/components/BackToTop";
 
 const FeaturesForStudentsPage = ({
   isDarkMode,
@@ -40,79 +40,81 @@ const FeaturesForStudentsPage = ({
           gap-10 md:gap-20
         "
       >
-        {/* --- Textul din stânga (titlu + subtitlu + paragraf) --- */}
-        <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
-          <div className="flex items-center mb-3 gap-2">
-            <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight font-poppins">
-              {sectionTitle}
-            </h2>
+        <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20">
+          {/* --- Textul din stânga (titlu + subtitlu + paragraf) --- */}
+          <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
+            <div className="flex items-center mb-3 gap-2">
+              <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight font-poppins">
+                {sectionTitle}
+              </h2>
+              <Image
+                src="/images/student-icon-white.png"
+                alt="student icon"
+                width={32}
+                height={32}
+                className="w-7 h-7 md:w-8 md:h-8"
+              />
+            </div>
+
+            <div className="flex items-center mb-1 gap-2">
+              <span className="text-xl md:text-xl font-bold text-[#5566b8] font-poppins">
+                {cardTitle}
+              </span>
+            </div>
+
+            {/* spațiu între subtitlu și paragraful hero */}
+            <div style={{ height: 10 }} />
+
+            <p className="text-[15px] md:text-base text-white mb-5 text-justify font-poppins">
+              {lang === "ro" ? (
+                <>
+                  Aspero le oferă studenților un mediu educațional flexibil,
+                  modern și captivant. Cu ajutorul exercițiilor generate
+                  procedural și a feedback-ului instantaneu, poți exersa
+                  nelimitat până când stăpânești fiecare concept.
+                  <br />
+                  În plus, colaborarea pe grupuri te ajută să înveţi împreună cu
+                  colegii, iar inteligența artificială îți oferă sfaturi
+                  personalizate pe soluțiile tale.
+                  <br />
+                  Monitorizează-ți progresul cu statistici detaliate și
+                  crește-ți rezultatele în ritmul tău!
+                </>
+              ) : (
+                <>
+                  Aspero offers students a flexible, modern and engaging
+                  educational environment. With procedurally generated exercises
+                  and instant feedback, you can practice endlessly until you
+                  master every concept.
+                  <br />
+                  Additionally, collaborative group solving helps you learn with
+                  peers, and AI-driven hints give personalized advice on your
+                  solutions.
+                  <br />
+                  Track your progress through detailed statistics and improve at
+                  your own pace!
+                </>
+              )}
+            </p>
+          </div>
+
+          {/* --- Imaginea din dreapta (student la laptop) --- */}
+          <div className="flex-1 flex items-center justify-center w-full md:h-[380px] mt-6 md:mt-12">
             <Image
-              src="/images/student-icon-white.png"
-              alt="student icon"
-              width={32}
-              height={32}
-              className="w-7 h-7 md:w-8 md:h-8"
+              src="/images/student.png"
+              alt="student at laptop"
+              width={600}
+              height={380}
+              className="image-section"
+              priority
             />
           </div>
-
-          <div className="flex items-center mb-1 gap-2">
-            <span className="text-xl md:text-xl font-bold text-[#5566b8] font-poppins">
-              {cardTitle}
-            </span>
-          </div>
-
-          {/* spațiu între subtitlu și paragraful hero */}
-          <div style={{ height: 10 }} />
-
-          <p className="text-[15px] md:text-base text-white mb-5 text-justify font-poppins">
-            {lang === "ro" ? (
-              <>
-                Aspero le oferă studenților un mediu educațional flexibil,
-                modern și captivant. Cu ajutorul exercițiilor generate
-                procedural și a feedback-ului instantaneu, poți exersa nelimitat
-                până când stăpânești fiecare concept.
-                <br />
-                În plus, colaborarea pe grupuri te ajută să înveţi împreună cu
-                colegii, iar inteligența artificială îți oferă sfaturi
-                personalizate pe soluțiile tale.
-                <br />
-                Monitorizează-ți progresul cu statistici detaliate și crește-ți
-                rezultatele în ritmul tău!
-              </>
-            ) : (
-              <>
-                Aspero offers students a flexible, modern and engaging
-                educational environment. With procedurally generated exercises
-                and instant feedback, you can practice endlessly until you
-                master every concept.
-                <br />
-                Additionally, collaborative group solving helps you learn with
-                peers, and AI-driven hints give personalized advice on your
-                solutions.
-                <br />
-                Track your progress through detailed statistics and improve at
-                your own pace!
-              </>
-            )}
-          </p>
-        </div>
-
-        {/* --- Imaginea din dreapta (student la laptop) --- */}
-        <div className="flex-1 flex items-center justify-center w-full md:h-[380px] mt-6 md:mt-12">
-          <Image
-            src="/images/student.png"
-            alt="student at laptop"
-            width={600}
-            height={380}
-            className="image-section"
-            priority
-          />
         </div>
       </section>
 
       {/* -------------- SECȚIUNI DETALIATE -------------- */}
       <main className="bg-hero5 bg-cover bg-center text-white pt-8 md:pt-16 pb-16">
-        <div className="max-w-8xl mx-auto px-4 md:px-24 space-y-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20">
           {/* ---------------- 1) Exerciții generate procedural ---------------- */}
           <section className="space-y-6">
             <h3 className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center">
@@ -304,6 +306,8 @@ const FeaturesForStudentsPage = ({
           </section>
         </div>
       </main>
+      <BackToTop />
+      <Footer />
     </>
   );
 };

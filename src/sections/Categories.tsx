@@ -16,7 +16,7 @@ const courseContent = {
         title: "Neurobiologie (biologie/medicină)",
         image: "/images/neuro.png",
       },
-      { title: "Istoria limbii române", image: "/images/istorie.png" },
+      { title: "Istoria limbii române", image: "/images/calinescu.png" },
       { title: "Ecuații diferențiale", image: "/images/ecuatii.png" },
       { title: "Franceză - A1-A2", image: "/images/franceza.png" },
     ],
@@ -34,7 +34,7 @@ const courseContent = {
         image: "/images/macroeconomie.png",
       },
       { title: "Neurobiology (biology/medicine)", image: "/images/neuro.png" },
-      { title: "History of Romanian Language", image: "/images/istorie.png" },
+      { title: "History of Romanian Language", image: "/images/calinescu.png" },
       { title: "Differential equations", image: "/images/ecuatii.png" },
       { title: "French - A1-A2", image: "/images/franceza.png" },
     ],
@@ -77,7 +77,7 @@ export const Categories = () => {
   return (
     <section
       className="scroll-mt-24 relative py-8 px-4 bg-hero5 min-h-screen overflow-hidden"
-      id="categories"
+      id="courses"
     >
       {/* Bubble - absolute, left & up */}
       <div
@@ -147,16 +147,18 @@ export const Categories = () => {
               className="bg-[#181836] rounded-2xl border-2 border-hero2 flex flex-col overflow-hidden shadow-xl hover:scale-105 transition-all duration-300"
             >
               {/* Responsive image container */}
-              <div className="relative w-full h-40 md:h-56">
+              <div className="w-full">
                 <Image
                   src={course.image}
                   alt={course.title}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                  className="object-cover rounded-t-2xl"
+                  layout="responsive"
+                  width={400}
+                  height={250}
+                  className="rounded-t-2xl object-contain"
                   priority={idx === 0}
                 />
               </div>
+
               {/* Content */}
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="font-poppins font-medium text-white text-lg mb-4 leading-snug">

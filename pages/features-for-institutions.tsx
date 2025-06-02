@@ -1,11 +1,11 @@
-// pages/features-institutions.tsx
-
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Header } from "@/sections/Header";
 import { useLanguage } from "../src/context/LanguageContext";
 import { useEffect } from "react";
 import Image from "next/image";
+import Footer from "@/sections/Footer";
+import BackToTop from "../src/components/BackToTop";
 
 const features = {
   ro: [
@@ -78,52 +78,54 @@ const FeaturesForInstitutionsPage = ({
         id="featuresforinstitutions"
         className="scroll-mt-24 pt-32 md:pt-24 w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-8 px-4 md:px-24 gap-8 md:gap-16"
       >
-        {/* Left: Text & Icon */}
-        <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
-          <div className="flex items-center mb-3 gap-2">
-            {/* Section title with icon */}
-            <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight font-poppins">
-              {sectionTitle}
-            </h3>
+        <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
+          {/* Left: Text & Icon */}
+          <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
+            <div className="flex items-center mb-3 gap-2">
+              {/* Section title with icon */}
+              <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight font-poppins">
+                {sectionTitle}
+              </h3>
+              <Image
+                src="/images/institution-icon-white.png"
+                alt="institution icon"
+                width={32}
+                height={32}
+                className="w-7 h-7 md:w-8 md:h-8"
+              />
+            </div>
+
+            {/* Sub-card title */}
+            <div className="flex items-center mb-1 gap-2">
+              <span className="text-xl md:text-xl font-bold text-[#5566b8] font-poppins">
+                {cardTitle}
+              </span>
+            </div>
+
+            <div style={{ height: "10px" }} />
+
+            <div className="text-[15px] md:text-base text-white mb-5 text-justify font-poppins">
+              {heroText}
+            </div>
+          </div>
+
+          {/* Right: Illustration */}
+          <div className="flex-1 flex items-center justify-center w-full md:h-[420px] mt-6 md:mt-12">
             <Image
-              src="/images/institution-icon-white.png"
-              alt="institution icon"
-              width={32}
-              height={32}
-              className="w-7 h-7 md:w-8 md:h-8"
+              src="/images/institutions.png"
+              alt="Institutions"
+              width={600}
+              height={420}
+              className="image-section"
+              priority
             />
           </div>
-
-          {/* Sub-card title */}
-          <div className="flex items-center mb-1 gap-2">
-            <span className="text-xl md:text-xl font-bold text-[#5566b8] font-poppins">
-              {cardTitle}
-            </span>
-          </div>
-
-          <div style={{ height: "10px" }} />
-
-          <div className="text-[15px] md:text-base text-white mb-5 text-justify font-poppins">
-            {heroText}
-          </div>
-        </div>
-
-        {/* Right: Illustration */}
-        <div className="flex-1 flex items-center justify-center w-full md:h-[420px] mt-6 md:mt-12">
-          <Image
-            src="/images/institutions.png"
-            alt="Institutions"
-            width={600}
-            height={420}
-            className="image-section"
-            priority
-          />
         </div>
       </section>
 
       {/* Actual feature breakdown */}
       <main className="bg-hero5 bg-cover bg-center text-white pt-8 md:pt-12 pb-8">
-        <div className="max-w-8xl mx-auto px-4 md:px-24 space-y-20 pt-0 md:pt-16">
+        <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20 pt-0 md:pt-16">
           {/* 1) Coordonare: title above, image+text side by side */}
           <section className="space-y-6">
             <h3 className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center">
@@ -191,6 +193,8 @@ const FeaturesForInstitutionsPage = ({
           </section>
         </div>
       </main>
+      <BackToTop />
+      <Footer />
     </>
   );
 };

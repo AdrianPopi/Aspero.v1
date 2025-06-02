@@ -56,6 +56,7 @@ export const Footer = () => {
         { label: "Facebook", href: "https://facebook.com/" },
         { label: "Instagram", href: "https://instagram.com/" },
         { label: "Youtube", href: "https://youtube.com/" },
+        { label: "LinkedIn", href: "https://linkedin.com/" },
       ],
 
       subscribeBtn: (
@@ -96,6 +97,7 @@ export const Footer = () => {
         { label: "Facebook", href: "https://facebook.com/" },
         { label: "Instagram", href: "https://instagram.com/" },
         { label: "Youtube", href: "https://youtube.com/" },
+        { label: "LinkedIn", href: "https://linkedin.com/" },
       ],
       register: "REGISTER",
       subscribeBtn: (

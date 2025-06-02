@@ -75,7 +75,7 @@ export const Hero = () => {
       <div className="relative z-10 w-full flex justify-center">
         <div
           className="
-            w-full max-w-6xl
+            w-full max-w-7xl
             flex flex-col md:flex-row
             rounded-[40px]
             overflow-hidden

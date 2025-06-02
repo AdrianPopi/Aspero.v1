@@ -60,11 +60,12 @@ bash
 Copy
 Edit
 npm install
+
+npm install framer-motion
+
 Start the development server:
 
 bash
 Copy
 Edit
 npm run dev
-
-If you want to edit colors or fonts, simply edit `styles/globals.css` or `tailwind.config.js`.

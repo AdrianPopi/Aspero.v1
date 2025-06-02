@@ -88,9 +88,9 @@ export const Header = ({
       ],
     },
     {
-      id: "categories",
-      label: lang === "ro" ? "Categorii" : "Categories",
-      href: "/#categories",
+      id: "courses",
+      label: lang === "ro" ? "Categorii" : "Courses",
+      href: "/#courses",
     },
     {
       id: "team",
@@ -111,6 +111,7 @@ export const Header = ({
           width={40}
           height={40}
           className="w-10 h-10 md:w-12 md:h-12"
+          style={{ width: "auto", height: "auto" }}
           priority
         />
         <span className="ml-2 font-bold text-2xl md:text-3xl text-white font-poppins">

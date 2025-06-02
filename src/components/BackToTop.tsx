@@ -21,9 +21,37 @@ const BackToTop = () => {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-50 bg-white text-black rounded-full shadow-md px-4 py-2 text-sm hover:#5566b8 transition"
+      className="
+        fixed 
+        right-6 
+        bottom-16        /* 4rem from bottom on small screens */
+        md:bottom-6      /* 1.5rem from bottom on md+ screens */
+        z-50 
+        bg-white 
+        text-black 
+        rounded-full 
+        shadow-md 
+        p-3 
+        flex 
+        items-center 
+        justify-center 
+        hover:bg-[#5566b8] 
+        hover:text-white 
+        transition
+      "
+      aria-label="Back to top"
     >
-      Back to Top
+      {/* Simple “chevron up” SVG */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+      </svg>
     </button>
   );
 };

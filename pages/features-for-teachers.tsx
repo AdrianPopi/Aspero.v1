@@ -1,13 +1,10 @@
-// pages/features-teachers.tsx
-
 import { Header } from "@/sections/Header";
 import { useLanguage } from "../src/context/LanguageContext";
 import { useEffect } from "react";
 import Image from "next/image";
+import Footer from "@/sections/Footer";
+import BackToTop from "../src/components/BackToTop";
 
-// Definim feature-urile pentru profesori în română și engleză.
-// La ultima secțiune, folosim cheie specială "__CUSTOM__" pentru a afișa conținutul manual,
-// inclusiv iconița "teachers-icon-last.png".
 const teacherFeatures = {
   ro: [
     {
@@ -131,85 +128,87 @@ const FeaturesForTeachersPage = ({
           gap-10 md:gap-20
         "
       >
-        {/* --- Textul din stânga (titlu + subtitlu + paragraf) --- */}
-        <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
-          <div className="flex items-center mb-3 gap-2">
-            <h2 className="text-2xl md:text-4xl font-bold text-white font-poppins">
-              {sectionTitle}
-            </h2>
+        <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20">
+          {/* --- Textul din stânga (titlu + subtitlu + paragraf) --- */}
+          <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
+            <div className="flex items-center mb-3 gap-2">
+              <h2 className="text-2xl md:text-4xl font-bold text-white font-poppins">
+                {sectionTitle}
+              </h2>
+              <Image
+                src="/images/profesor-icon-white.png"
+                alt="teacher icon"
+                width={32}
+                height={32}
+                className="w-7 h-7 md:w-8 md:h-8"
+              />
+            </div>
+
+            <div className="flex items-center mb-1 gap-2">
+              <span className="text-xl md:text-xl font-bold text-[#5566b8] font-poppins">
+                {cardTitle}
+              </span>
+            </div>
+
+            {/* spațiu între subtitlu și paragraful hero */}
+            <div style={{ height: 10 }} />
+
+            <p className="text-[15px] md:text-base text-white mb-5 text-justify font-poppins">
+              {lang === "ro" ? (
+                <>
+                  Aspero este gândit pentru a simplifica procesul educațional
+                  fără a-i diminua valoarea umană.
+                  <br />
+                  Profesorii pot crea cu ușurință exerciții în formate diverse:
+                  de la grile și răspunsuri text, la matematică, programare sau
+                  selecții interactive și pot genera automat serii întregi de
+                  variante pentru fiecare temă.
+                  <br />
+                  Platforma oferă <strong>feedback automatizat</strong>, analize
+                  detaliate despre progresul studenților și o interfață
+                  centralizată de gestionare a cursurilor.
+                  <br />
+                  Astfel, profesorii pot investi mai mult timp în predare
+                  autentică, mentorat și inovație pedagogică.
+                </>
+              ) : (
+                <>
+                  Aspero is designed to simplify the educational process without
+                  diminishing its human value.
+                  <br />
+                  Teachers can easily create exercises in diverse formats: from
+                  multiple choice and text answers, to math, programming, or
+                  interactive selections—and can automatically generate entire
+                  series of variants for each assignment.
+                  <br />
+                  The platform provides <strong>automated feedback</strong>,
+                  detailed analytics on student progress, and a centralized
+                  course management interface.
+                  <br />
+                  This way, teachers can invest more time in authentic teaching,
+                  mentoring, and pedagogical innovation.
+                </>
+              )}
+            </p>
+          </div>
+
+          {/* --- Imaginea din dreapta (profesor la laptop) --- */}
+          <div className="flex-1 flex items-center justify-center w-full md:h-[380px] mt-6 md:mt-12">
             <Image
-              src="/images/profesor-icon-white.png"
-              alt="teacher icon"
-              width={32}
-              height={32}
-              className="w-7 h-7 md:w-8 md:h-8"
+              src="/images/profesor.png"
+              alt="teacher at laptop"
+              width={600}
+              height={380}
+              className="image-section"
+              priority
             />
           </div>
-
-          <div className="flex items-center mb-1 gap-2">
-            <span className="text-xl md:text-xl font-bold text-[#5566b8] font-poppins">
-              {cardTitle}
-            </span>
-          </div>
-
-          {/* spațiu între subtitlu și paragraful hero */}
-          <div style={{ height: 10 }} />
-
-          <p className="text-[15px] md:text-base text-white mb-5 text-justify font-poppins">
-            {lang === "ro" ? (
-              <>
-                Aspero este gândit pentru a simplifica procesul educațional fără
-                a-i diminua valoarea umană.
-                <br />
-                Profesorii pot crea cu ușurință exerciții în formate diverse: de
-                la grile și răspunsuri text, la matematică, programare sau
-                selecții interactive și pot genera automat serii întregi de
-                variante pentru fiecare temă.
-                <br />
-                Platforma oferă <strong>feedback automatizat</strong>, analize
-                detaliate despre progresul studenților și o interfață
-                centralizată de gestionare a cursurilor.
-                <br />
-                Astfel, profesorii pot investi mai mult timp în predare
-                autentică, mentorat și inovație pedagogică.
-              </>
-            ) : (
-              <>
-                Aspero is designed to simplify the educational process without
-                diminishing its human value.
-                <br />
-                Teachers can easily create exercises in diverse formats: from
-                multiple choice and text answers, to math, programming, or
-                interactive selections—and can automatically generate entire
-                series of variants for each assignment.
-                <br />
-                The platform provides <strong>automated feedback</strong>,
-                detailed analytics on student progress, and a centralized course
-                management interface.
-                <br />
-                This way, teachers can invest more time in authentic teaching,
-                mentoring, and pedagogical innovation.
-              </>
-            )}
-          </p>
-        </div>
-
-        {/* --- Imaginea din dreapta (profesor la laptop) --- */}
-        <div className="flex-1 flex items-center justify-center w-full md:h-[380px] mt-6 md:mt-12">
-          <Image
-            src="/images/profesor.png"
-            alt="teacher at laptop"
-            width={600}
-            height={380}
-            className="image-section"
-            priority
-          />
         </div>
       </section>
 
       {/* -------------- SECȚIUNI DETALIATE -------------- */}
       <main className="bg-hero5 bg-cover bg-center text-white pt-8 md:pt-16 pb-16">
-        <div className="max-w-8xl mx-auto px-4 md:px-24 space-y-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20">
           {items.map((f, i) => (
             <section key={i} className="space-y-6">
               {/* ... Pentru secțiunile normale (Exerciții, Gestionare), lăsăm <h3> ca înainte ... */}
@@ -473,6 +472,8 @@ const FeaturesForTeachersPage = ({
           ))}
         </div>
       </main>
+      <BackToTop />
+      <Footer />
     </>
   );
 };
