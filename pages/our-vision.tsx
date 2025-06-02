@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Footer from "@/sections/Footer";
 import BackToTop from "../src/components/BackToTop";
-import { motion } from "framer-motion";
-import { useInViewAnimation } from "../src/components/useInViewAnimation";
 
 type Description = string | string[];
 
@@ -73,25 +71,15 @@ const OurVisionPage = ({
     window.scrollTo(0, 0);
   }, []);
 
-  const { ref: ref1, isVisible: show1 } = useInViewAnimation();
-  const { ref: ref2, isVisible: show2 } = useInViewAnimation();
-  const { ref: ref3, isVisible: show3 } = useInViewAnimation();
-  const { ref: ref4, isVisible: show4 } = useInViewAnimation();
-
   return (
     <>
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 
       <main className="bg-hero5 bg-cover bg-center text-white pt-32 md:pt-40 pb-16">
+        {/* unified container */}
         <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20">
           {/* 1) HERO */}
-          <motion.section
-            ref={ref1}
-            initial={{ opacity: 0, y: 30 }}
-            animate={show1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col lg:flex-row items-center gap-10"
-          >
+          <section className="flex flex-col lg:flex-row items-center gap-10">
             <div className="flex-1 text-center lg:text-left">
               <h1 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6">
                 {lang === "ro" ? "Viziunea noastră" : "Our Vision"}
@@ -110,29 +98,17 @@ const OurVisionPage = ({
                 priority
               />
             </div>
-          </motion.section>
+          </section>
 
           {/* 2) Second card */}
-          <motion.section
-            ref={ref2}
-            initial={{ opacity: 0, y: 30 }}
-            animate={show2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6 }}
-            className="p-8 border border-blue-500 rounded-2xl"
-          >
+          <section className="p-8 border border-blue-500 rounded-2xl">
             <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed whitespace-pre-line text-justify">
               {text[1].description}
             </p>
-          </motion.section>
+          </section>
 
           {/* 3) Three-paragraph */}
-          <motion.section
-            ref={ref3}
-            initial={{ opacity: 0, y: 30 }}
-            animate={show3 ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row items-center gap-10"
-          >
+          <section className="flex flex-col md:flex-row items-center gap-10">
             <div className="md:w-1/2">
               <Image
                 src="/images/vision2.png"
@@ -158,16 +134,11 @@ const OurVisionPage = ({
                 </p>
               )}
             </div>
-          </motion.section>
+          </section>
 
-          {/* 4) Bottom card */}
-          <motion.div
-            ref={ref4}
-            initial={{ opacity: 0, y: 30 }}
-            animate={show4 ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6 }}
-            className="relative mt-16 overflow-hidden"
-          >
+          {/* 4) Bottom card + clipped bubble */}
+          <div className="relative mt-16 overflow-hidden">
+            {/* Card with translucent background, blur, and border */}
             <section
               className="relative z-10 rounded-2xl p-12 text-center"
               style={{
@@ -189,7 +160,18 @@ const OurVisionPage = ({
                 {text[2].description}
               </p>
             </section>
-          </motion.div>
+
+            {/* Bubble tucked under the card’s corner */}
+            {/* <div className="absolute -bottom-8 -right-8 w-56 h-56 pointer-events-none z-0">
+              <Image
+                src="/images/bubble-contact-footer.png"
+                alt="Bubble graphic"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div> */}
+          </div>
         </div>
       </main>
       <BackToTop />

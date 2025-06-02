@@ -4,6 +4,16 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Footer from "@/sections/Footer";
 import BackToTop from "../src/components/BackToTop";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.6 },
+  }),
+};
 
 const teacherFeatures = {
   ro: [
@@ -423,48 +433,30 @@ const FeaturesForTeachersPage = ({
                     )
                   ) : (
                     // --- Pentru celelalte secțiuni (Exerciții etc.) afișăm doar descrierea normală ---
-                    <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify whitespace-pre-line">
-                      {f.description}
-                    </p>
+                    <div className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify whitespace-pre-line">
+                      {f.description.split("\n").map((line, i) => {
+                        if (line.trim().startsWith("●")) {
+                          return (
+                            <motion.div
+                              key={i}
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ delay: i * 0.15, duration: 0.6 }}
+                              viewport={{ once: false, amount: 0.5 }}
+                              className="pl-4 mb-1"
+                            >
+                              {line}
+                            </motion.div>
+                          );
+                        }
 
-                    // // …în interiorul map-ului, pentru secțiunile care NU sunt "__CUSTOM__" și NU sunt „EVALUAREA CURSURILOR”:
-                    // <div className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">
-                    //   {/*
-                    //     Despărțim textul pe linii și le procesăm una câte una. Dacă linia conține exact
-                    //     unul dintre cele trei subtitluri, o afișăm cu <strong>, altfel afișăm conținutul normal
-                    //     (cu păstrarea spațiilor).
-                    //   */}
-                    //   {f.description
-                    //     .split("\n")
-                    //     .map((line, idx) => {
-                    //       const trimmed = line.trim();
-
-                    //       // Verificăm dacă linia corespunde unuia dintre subtitluri:
-                    //       if (
-                    //         trimmed === "Formate variate de exerciții" ||
-                    //         trimmed === "Generare procedurală de exerciții" ||
-                    //         trimmed === "Lecturi și exerciții cu materiale multimedia"
-                    //       ) {
-                    //         return (
-                    //           <p key={idx} className="mb-2">
-                    //             <strong>{trimmed}</strong>
-                    //           </p>
-                    //         );
-                    //       }
-
-                    //       // Dacă linia este goală, inserăm un break
-                    //       if (trimmed === "") {
-                    //         return <br key={idx} />;
-                    //       }
-
-                    //       // Orice alt text („paragraf” sau bullet) îl afișăm normal
-                    //       return (
-                    //         <p key={idx} className="mb-2">
-                    //           {line.trimStart()}
-                    //         </p>
-                    //       );
-                    //     })}
-                    // </div>
+                        return (
+                          <p key={i} className="mb-2">
+                            {line}
+                          </p>
+                        );
+                      })}
+                    </div>
                   )}
                 </div>
               </div>
