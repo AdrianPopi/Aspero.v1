@@ -178,7 +178,7 @@ const OurVisionPage = ({
                   alt="Vision icon"
                   width={48}
                   height={48}
-                  style={{ width: "100%", height: "auto" }}
+                  className="w-12 h-12 md:w-14 md:h-14"
                   priority
                 />
               </div>

@@ -42,7 +42,11 @@ const FeaturesForStudentsPage = ({
       >
         <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20">
           {/* --- Textul din stânga (titlu + subtitlu + paragraf) --- */}
-          <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
+          <div
+            className="flex-1 flex flex-col items-start z-10 w-full max-w-xl"
+            data-aos="fade-up"
+            data-aos-duration="700"
+          >
             <div className="flex items-center mb-3 gap-2">
               <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight font-poppins">
                 {sectionTitle}
@@ -99,7 +103,12 @@ const FeaturesForStudentsPage = ({
           </div>
 
           {/* --- Imaginea din dreapta (student la laptop) --- */}
-          <div className="flex-1 flex items-center justify-center w-full md:h-[380px] mt-6 md:mt-12">
+          <div
+            className="flex-1 flex items-center justify-center w-full md:h-[380px] mt-6 md:mt-12"
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-delay="200"
+          >
             <Image
               src="/images/student.png"
               alt="student at laptop"
@@ -124,7 +133,11 @@ const FeaturesForStudentsPage = ({
             </h3>
             <div className="flex flex-col md:flex-row items-center gap-10">
               {/* Imaginea secțiunii */}
-              <div className="md:w-1/2">
+              <div
+                className="md:w-1/2"
+                data-aos="fade-up"
+                data-aos-duration="700"
+              >
                 <Image
                   src="/images/student-exercises.png"
                   alt={
@@ -140,7 +153,12 @@ const FeaturesForStudentsPage = ({
               </div>
 
               {/* Textul descrierii */}
-              <div className="md:w-1/2">
+              <div
+                className="md:w-1/2"
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay="150"
+              >
                 <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">
                   {lang === "ro" ? (
                     <>
@@ -168,7 +186,11 @@ const FeaturesForStudentsPage = ({
           </section>
 
           {/* ---------------- 2) Feedback instantaneu (card) ---------------- */}
-          <section className="p-8 border border-blue-500 rounded-2xl">
+          <section
+            className="p-8 border border-blue-500 rounded-2xl"
+            data-aos="fade-up"
+            data-aos-duration="700"
+          >
             <h3 className="font-poppins font-bold text-xl md:text-3xl mb-4 text-center">
               {lang === "ro"
                 ? "FEEDBACK INSTANTANEU".toUpperCase()
@@ -190,7 +212,11 @@ const FeaturesForStudentsPage = ({
             </h3>
             <div className="flex flex-col md:flex-row items-center gap-10">
               {/* Imaginea secțiunii */}
-              <div className="md:w-1/2">
+              <div
+                className="md:w-1/2"
+                data-aos="fade-up"
+                data-aos-duration="700"
+              >
                 <Image
                   src="/images/student-collaboration.png"
                   alt={
@@ -206,7 +232,12 @@ const FeaturesForStudentsPage = ({
               </div>
 
               {/* Textul descrierii */}
-              <div className="md:w-1/2 flex flex-col items-center">
+              <div
+                className="md:w-1/2 flex flex-col items-center"
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay="150"
+              >
                 {/* Iconiță de colaborare */}
                 <Image
                   src="/images/collaborative-icon.png"
@@ -234,7 +265,11 @@ const FeaturesForStudentsPage = ({
             </h3>
             <div className="flex flex-col-reverse md:flex-row items-center gap-10">
               {/* Textul descrierii + iconiță AI */}
-              <div className="md:w-1/2 flex flex-col items-center">
+              <div
+                className="md:w-1/2 flex flex-col items-center"
+                data-aos="fade-up"
+                data-aos-duration="700"
+              >
                 <Image
                   src="/images/ai-icon.png"
                   alt="AI icon"
@@ -251,7 +286,12 @@ const FeaturesForStudentsPage = ({
               </div>
 
               {/* Imaginea secțiunii */}
-              <div className="md:w-1/2">
+              <div
+                className="md:w-1/2"
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay="150"
+              >
                 <Image
                   src="/images/student-ai.png"
                   alt={lang === "ro" ? "Analiză AI" : "AI analysis"}
@@ -273,7 +313,11 @@ const FeaturesForStudentsPage = ({
             </h3>
             <div className="flex flex-col md:flex-row items-center gap-10">
               {/* Imaginea secțiunii */}
-              <div className="md:w-1/2">
+              <div
+                className="md:w-1/2"
+                data-aos="fade-up"
+                data-aos-duration="700"
+              >
                 <Image
                   src="/images/student-stats.png"
                   alt={
@@ -287,7 +331,12 @@ const FeaturesForStudentsPage = ({
               </div>
 
               {/* Textul descrierii + iconiță stats */}
-              <div className="md:w-1/2 flex flex-col items-center">
+              <div
+                className="md:w-1/2 flex flex-col items-center"
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay="150"
+              >
                 <Image
                   src="/images/stats-icon.png"
                   alt="Statistics icon"
