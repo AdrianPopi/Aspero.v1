@@ -26,10 +26,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   }, [isDarkMode]);
 
   // Initialize animations
-  useEffectOnce(() => {
+  useEffect(() => {
     AOS.init({
       once: true,
-      disable: process.env.NODE_ENV === "development" ? true : "phone",
       duration: 700,
       easing: "ease-out-cubic",
     });

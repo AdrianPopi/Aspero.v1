@@ -62,6 +62,7 @@ Edit
 npm install
 
 npm install framer-motion
+npm install aos
 
 Start the development server:
 

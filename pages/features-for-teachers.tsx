@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Footer from "@/sections/Footer";
 import BackToTop from "../src/components/BackToTop";
-import { motion } from "framer-motion";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -140,7 +139,11 @@ const FeaturesForTeachersPage = ({
       >
         <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20">
           {/* --- Textul din stânga (titlu + subtitlu + paragraf) --- */}
-          <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
+          <div
+            className="flex-1 flex flex-col items-start z-10 w-full max-w-xl"
+            data-aos="fade-right"
+            data-aos-duration="800"
+          >
             <div className="flex items-center mb-3 gap-2">
               <h2 className="text-2xl md:text-4xl font-bold text-white font-poppins">
                 {sectionTitle}
@@ -203,7 +206,11 @@ const FeaturesForTeachersPage = ({
           </div>
 
           {/* --- Imaginea din dreapta (profesor la laptop) --- */}
-          <div className="flex-1 flex items-center justify-center w-full md:h-[380px] mt-6 md:mt-12">
+          <div
+            className="flex-1 flex items-center justify-center w-full md:h-[380px] mt-6 md:mt-12"
+            data-aos="fade-left"
+            data-aos-duration="800"
+          >
             <Image
               src="/images/profesor.png"
               alt="teacher at laptop"
@@ -226,7 +233,11 @@ const FeaturesForTeachersPage = ({
                 f.title === "EVALUAREA CURSURILOR" ||
                 f.title === "COURSE EVALUATION"
               ) && (
-                <h3 className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center">
+                <h3
+                  className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center"
+                  data-aos="fade-up"
+                  data-aos-duration="700"
+                >
                   {f.title !== "__CUSTOM__"
                     ? f.title
                     : lang === "ro"
@@ -241,7 +252,11 @@ const FeaturesForTeachersPage = ({
                   f.title === "EVALUAREA CURSURILOR" ||
                   f.title === "COURSE EVALUATION"
                 ) && (
-                  <div className="md:w-1/2">
+                  <div
+                    className="md:w-1/2"
+                    data-aos="zoom-in"
+                    data-aos-duration="800"
+                  >
                     <Image
                       src={f.img}
                       alt={
@@ -272,7 +287,11 @@ const FeaturesForTeachersPage = ({
                   {f.title === "EVALUAREA CURSURILOR" ||
                   f.title === "COURSE EVALUATION" ? (
                     // --- Card special pentru „Evaluarea cursurilor” ---
-                    <section className="p-8 border border-blue-500 rounded-2xl">
+                    <section
+                      className="p-8 border border-blue-500 rounded-2xl"
+                      data-aos="fade-up"
+                      data-aos-duration="700"
+                    >
                       <div className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">
                         {lang === "ro" ? (
                           <>
@@ -352,7 +371,11 @@ const FeaturesForTeachersPage = ({
                   ) : f.description === "__CUSTOM__" ? (
                     // --- Secțiunea personalizată „Gestionarea cursurilor” (rămasă neschimbată) ---
                     lang === "ro" ? (
-                      <div className="text-xs md:text-sm leading-relaxed text-justify font-poppins">
+                      <div
+                        className="text-xs md:text-sm leading-relaxed text-justify font-poppins"
+                        data-aos="fade-up"
+                        data-aos-duration="700"
+                      >
                         <div className="flex justify-center mb-4">
                           <Image
                             src="/images/teachers-icon-last.png"
@@ -391,7 +414,11 @@ const FeaturesForTeachersPage = ({
                         </p>
                       </div>
                     ) : (
-                      <div className="text-xs md:text-sm leading-relaxed text-justify font-poppins">
+                      <div
+                        className="text-xs md:text-sm leading-relaxed text-justify font-poppins"
+                        data-aos="fade-up"
+                        data-aos-duration="700"
+                      >
                         <div className="flex justify-center mb-4">
                           <Image
                             src="/images/teachers-icon-last.png"
@@ -433,20 +460,23 @@ const FeaturesForTeachersPage = ({
                     )
                   ) : (
                     // --- Pentru celelalte secțiuni (Exerciții etc.) afișăm doar descrierea normală ---
-                    <div className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify whitespace-pre-line">
+                    <div
+                      className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify whitespace-pre-line"
+                      data-aos="fade-up"
+                      data-aos-duration="800"
+                    >
                       {f.description.split("\n").map((line, i) => {
                         if (line.trim().startsWith("●")) {
                           return (
-                            <motion.div
+                            <div
                               key={i}
-                              initial={{ opacity: 0, y: 20 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ delay: i * 0.15, duration: 0.6 }}
-                              viewport={{ once: false, amount: 0.5 }}
                               className="pl-4 mb-1"
+                              data-aos="fade-up"
+                              data-aos-duration="700"
+                              data-aos-delay={i * 100}
                             >
                               {line}
-                            </motion.div>
+                            </div>
                           );
                         }
 

@@ -57,7 +57,11 @@ export const TeamSection = () => {
       {/* Container centrat cu max-width */}
       <div className="max-w-7xl mx-auto px-4 md:px-24 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20 w-full">
         {/* Right: CONTENT */}
-        <div className="flex-1 max-w-xl flex flex-col items-start justify-center">
+        <div
+          className="flex-1 max-w-xl flex flex-col items-start justify-center"
+          data-aos="fade-left"
+          data-aos-duration="800"
+        >
           <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-poppins">
             {t.title}
           </h2>
@@ -76,6 +80,9 @@ export const TeamSection = () => {
                 );
                 router.push("/team");
               }}
+              data-aos="zoom-in"
+              data-aos-delay="300"
+              data-aos-duration="700"
               className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
               style={{
                 fontWeight: 500,
@@ -88,7 +95,11 @@ export const TeamSection = () => {
         </div>
 
         {/* Left: IMAGE */}
-        <div className="flex-1 flex items-center justify-center min-w-[260px]">
+        <div
+          className="flex-1 flex items-center justify-center min-w-[260px]"
+          data-aos="fade-right"
+          data-aos-duration="800"
+        >
           <Image
             src="/images/aspero-team.png"
             alt="Aspero Team"

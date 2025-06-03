@@ -80,7 +80,11 @@ const OurVisionPage = ({
         <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20">
           {/* 1) HERO */}
           <section className="flex flex-col lg:flex-row items-center gap-10">
-            <div className="flex-1 text-center lg:text-left">
+            <div
+              className="flex-1 text-center lg:text-left"
+              data-aos="fade-left"
+              data-aos-duration="800"
+            >
               <h1 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6">
                 {lang === "ro" ? "Viziunea noastră" : "Our Vision"}
               </h1>
@@ -88,7 +92,11 @@ const OurVisionPage = ({
                 {text[0].description}
               </p>
             </div>
-            <div className="flex-1 flex justify-center">
+            <div
+              className="flex-1 flex justify-center"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            >
               <Image
                 src="/images/vision.png"
                 alt="Vision illustration"
@@ -101,7 +109,12 @@ const OurVisionPage = ({
           </section>
 
           {/* 2) Second card */}
-          <section className="p-8 border border-blue-500 rounded-2xl">
+          <section
+            className="p-8 border border-blue-500 rounded-2xl"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-aos-duration="800"
+          >
             <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed whitespace-pre-line text-justify">
               {text[1].description}
             </p>
@@ -109,7 +122,11 @@ const OurVisionPage = ({
 
           {/* 3) Three-paragraph */}
           <section className="flex flex-col md:flex-row items-center gap-10">
-            <div className="md:w-1/2">
+            <div
+              className="md:w-1/2"
+              data-aos="fade-up-right"
+              data-aos-duration="800"
+            >
               <Image
                 src="/images/vision2.png"
                 alt="Group discussion"
@@ -118,7 +135,12 @@ const OurVisionPage = ({
                 className="image-section"
               />
             </div>
-            <div className="md:w-1/2 space-y-4">
+            <div
+              className="md:w-1/2 space-y-4"
+              data-aos="fade-up-left"
+              data-aos-delay="150"
+              data-aos-duration="800"
+            >
               {Array.isArray(text[3].description) ? (
                 text[3].description.map((para, i) => (
                   <p
@@ -141,6 +163,9 @@ const OurVisionPage = ({
             {/* Card with translucent background, blur, and border */}
             <section
               className="relative z-10 rounded-2xl p-12 text-center"
+              data-aos="fade-left"
+              data-aos-duration="800"
+              data-aos-delay="100"
               style={{
                 backgroundColor: "rgba(64,65,84,0.2)",
                 backdropFilter: "blur(12px)",

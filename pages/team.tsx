@@ -65,7 +65,11 @@ const TeamPage = ({
           {/* 1) HERO: title + intro + collage */}
           <section className="flex flex-col lg:flex-row items-center gap-10">
             {/* Text */}
-            <div className="flex-1">
+            <div
+              className="flex-1"
+              data-aos="fade-left"
+              data-aos-duration="800"
+            >
               <h1 className="font-poppins font-bold text-3xl md:text-4xl mb-6">
                 {t.title}
               </h1>
@@ -74,7 +78,11 @@ const TeamPage = ({
               </p>
             </div>
             {/* Collage image */}
-            <div className="flex-1 flex items-center justify-center min-w-[260px]">
+            <div
+              className="flex-1 flex items-center justify-center min-w-[260px]"
+              data-aos="fade-right"
+              data-aos-duration="800"
+            >
               <Image
                 src="/images/aspero-team.png"
                 alt="Aspero Team"
@@ -87,7 +95,12 @@ const TeamPage = ({
           </section>
 
           {/* 2) DETAILS card */}
-          <section className="p-8 border border-blue-500 rounded-2xl">
+          <section
+            className="p-8 border border-blue-500 rounded-2xl"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-aos-duration="700"
+          >
             <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify whitespace-pre-line">
               {lang === "ro" ? (
                 <>
@@ -113,8 +126,14 @@ const TeamPage = ({
 
           {/* 3) Members grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {t.members.map((member) => (
-              <div key={member.name} className="flex flex-col items-center">
+            {t.members.map((member, idx) => (
+              <div
+                key={member.name}
+                className="flex flex-col items-center"
+                data-aos="fade-up"
+                data-aos-delay={idx * 100}
+                data-aos-duration="600"
+              >
                 <Image
                   src={member.img}
                   alt={member.name}
@@ -123,7 +142,6 @@ const TeamPage = ({
                   style={{ width: "auto", height: "auto" }}
                   className="rounded-full object-cover mb-4"
                 />
-
                 <div className="font-poppins font-semibold text-lg">
                   {member.name}
                 </div>

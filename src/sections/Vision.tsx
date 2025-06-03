@@ -47,7 +47,11 @@ export const Vision = () => {
       style={{ minHeight: "65vh" }}
     >
       {/* Left: TEXT */}
-      <div className="flex-1 max-w-xl text-center md:text-left">
+      <div
+        className="flex-1 max-w-xl text-center md:text-left"
+        data-aos="fade-right"
+        data-aos-duration="800"
+      >
         <h2 className="text-white text-2xl md:text-3xl font-bold mb-6 font-poppins">
           {content[lang].title}
         </h2>
@@ -62,6 +66,9 @@ export const Vision = () => {
               backgroundColor: "rgba(180, 200, 255, 0.15)",
               border: "1px solid rgba(180, 200, 255, 0.25)",
             }}
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-duration="800"
           >
             <div className="p-6">
               <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
@@ -80,13 +87,20 @@ export const Vision = () => {
             router.push("/our-vision");
           }}
           className="bg-[#ffffff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#ffffff] transition"
+          data-aos="zoom-in"
+          data-aos-delay="400"
+          data-aos-duration="800"
         >
           {content[lang].button}
         </button>
       </div>
 
       {/* Right: IMAGE */}
-      <div className="flex-1 flex items-center justify-center min-w-[260px]">
+      <div
+        className="flex-1 flex items-center justify-center min-w-[260px]"
+        data-aos="fade-left"
+        data-aos-duration="800"
+      >
         <Image
           src="/images/vision.png"
           alt="Vision"

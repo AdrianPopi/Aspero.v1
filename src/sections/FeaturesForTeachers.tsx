@@ -63,7 +63,11 @@ export const FeaturesForTeachers = () => {
       className="scroll-mt-24 w-full bg-[#ced6ff] px-0 py-0 relative overflow-hidden"
     >
       <div className="w-full flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-4 py-8 md:py-12 px-4 md:px-24">
-        <div className="flex-1 flex items-center justify-center w-full md:h-[420px]">
+        <div
+          className="flex-1 flex items-center justify-center w-full md:h-[420px]"
+          data-aos="fade-right"
+          data-aos-duration="800"
+        >
           <Image
             src="/images/profesor.png"
             alt="Profesor"
@@ -73,7 +77,11 @@ export const FeaturesForTeachers = () => {
             priority
           />
         </div>
-        <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
+        <div
+          className="flex-1 flex flex-col items-start z-10 w-full max-w-xl"
+          data-aos="fade-left"
+          data-aos-duration="800"
+        >
           <div className="flex items-center mb-1 gap-2">
             <span className="text-xl md:text-3xl font-bold text-[#131336]">
               {t.cardTitle}
@@ -104,6 +112,9 @@ export const FeaturesForTeachers = () => {
                 );
                 router.push("/features-for-teachers");
               }}
+              data-aos="zoom-in"
+              data-aos-delay="300"
+              data-aos-duration="700"
               className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
               style={{ fontWeight: 500 }}
             >

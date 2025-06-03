@@ -106,6 +106,8 @@ export const Categories = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Title */}
         <h2
+          data-aos="fade-right"
+          data-aos-duration="700"
           className="font-poppins font-bold text-white text-2xl md:text-3xl mb-5"
           style={{ letterSpacing: "0.03em" }}
         >
@@ -117,9 +119,11 @@ export const Categories = () => {
 
         {/* Filter chips row */}
         <div className="flex flex-wrap gap-2 mb-10 justify-center">
-          {filterLabels[lang].map((label) => (
+          {filterLabels[lang].map((label, index) => (
             <button
               key={label}
+              data-aos="zoom-in"
+              data-aos-delay={index * 50}
               className={`
         font-poppins font-normal     
         px-3 py-1
@@ -145,6 +149,9 @@ export const Categories = () => {
           {t.courses.map((course, idx) => (
             <div
               key={idx}
+              data-aos="fade-up"
+              data-aos-delay={idx * 100}
+              data-aos-duration="800"
               className="bg-[#181836] rounded-2xl border-2 border-hero2 flex flex-col overflow-hidden shadow-xl hover:scale-105 transition-all duration-300"
             >
               {/* Responsive image container */}

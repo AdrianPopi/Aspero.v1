@@ -66,7 +66,11 @@ export const AboutAspero = () => {
       style={{ minHeight: "75vh", scrollMarginTop: "6rem" }}
     >
       {/* Left: IMAGE */}
-      <div className="flex-1 flex items-center justify-center min-w-[260px]">
+      <div
+        className="flex-1 flex items-center justify-center min-w-[260px]"
+        data-aos="fade-right"
+        data-aos-duration="800"
+      >
         <Image
           src="/images/about-aspero.png"
           alt="Devices"
@@ -79,7 +83,12 @@ export const AboutAspero = () => {
       </div>
 
       {/* Right: CONTENT */}
-      <div className="flex-1 max-w-xl flex flex-col items-start justify-center">
+      <div
+        className="flex-1 max-w-xl flex flex-col items-start justify-center"
+        data-aos="fade-left"
+        data-aos-delay="200"
+        data-aos-duration="800"
+      >
         <h2
           className="text-white text-2xl md:text-3xl font-bold mb-4"
           style={{ fontFamily: "Poppins-Bold, Poppins, sans-serif" }}
@@ -99,6 +108,9 @@ export const AboutAspero = () => {
             sessionStorage.setItem("scroll-position", window.scrollY.toString())
           }
           className="bg-[#b3aaff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#a393fa] transition"
+          data-aos="zoom-in"
+          data-aos-delay="400"
+          data-aos-duration="800"
         >
           {content[lang].button}
         </a>

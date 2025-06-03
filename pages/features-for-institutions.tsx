@@ -80,7 +80,11 @@ const FeaturesForInstitutionsPage = ({
       >
         <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
           {/* Left: Text & Icon */}
-          <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
+          <div
+            className="flex-1 flex flex-col items-start z-10 w-full max-w-xl"
+            data-aos="fade-right"
+            data-aos-duration="800"
+          >
             <div className="flex items-center mb-3 gap-2">
               {/* Section title with icon */}
               <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight font-poppins">
@@ -110,7 +114,11 @@ const FeaturesForInstitutionsPage = ({
           </div>
 
           {/* Right: Illustration */}
-          <div className="flex-1 flex items-center justify-center w-full md:h-[420px] mt-6 md:mt-12">
+          <div
+            className="flex-1 flex items-center justify-center w-full md:h-[420px] mt-6 md:mt-12"
+            data-aos="fade-left"
+            data-aos-duration="800"
+          >
             <Image
               src="/images/institutions.png"
               alt="Institutions"
@@ -128,11 +136,19 @@ const FeaturesForInstitutionsPage = ({
         <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20 pt-0 md:pt-16">
           {/* 1) Coordonare: title above, image+text side by side */}
           <section className="space-y-6">
-            <h3 className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center">
+            <h3
+              className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center"
+              data-aos="fade-up"
+              data-aos-duration="700"
+            >
               {items[0].title}
             </h3>
             <div className="flex flex-col md:flex-row items-center gap-10">
-              <div className="md:w-1/2">
+              <div
+                className="md:w-1/2"
+                data-aos="zoom-in-right"
+                data-aos-duration="800"
+              >
                 <Image
                   src={items[0].img}
                   alt={items[0].title}
@@ -142,7 +158,12 @@ const FeaturesForInstitutionsPage = ({
                   priority
                 />
               </div>
-              <div className="md:w-1/2">
+              <div
+                className="md:w-1/2"
+                data-aos="fade-left"
+                data-aos-duration="800"
+                data-aos-delay="150"
+              >
                 <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">
                   {items[0].description}
                 </p>
@@ -151,7 +172,11 @@ const FeaturesForInstitutionsPage = ({
           </section>
 
           {/* 2) Analiză statistici: bordered card */}
-          <section className="p-8 border border-blue-500 rounded-2xl">
+          <section
+            className="p-8 border border-blue-500 rounded-2xl"
+            data-aos="fade-up"
+            data-aos-duration="900"
+          >
             <h3 className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center">
               {items[1].title}
             </h3>
@@ -162,11 +187,19 @@ const FeaturesForInstitutionsPage = ({
 
           {/* 3) Observator: title, image left + icon+text right */}
           <section className="space-y-6">
-            <h3 className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center">
+            <h3
+              className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center"
+              data-aos="fade-up"
+              data-aos-duration="700"
+            >
               {items[2].title}
             </h3>
             <div className="flex flex-col md:flex-row items-center gap-10">
-              <div className="md:w-1/2">
+              <div
+                className="md:w-1/2"
+                data-aos="fade-right"
+                data-aos-duration="800"
+              >
                 <Image
                   src={items[2].img}
                   alt={items[2].title}
@@ -176,7 +209,12 @@ const FeaturesForInstitutionsPage = ({
                   priority
                 />
               </div>
-              <div className="md:w-1/2 flex flex-col items-center">
+              <div
+                className="md:w-1/2 flex flex-col items-center"
+                data-aos="fade-left"
+                data-aos-duration="800"
+                data-aos-delay="100"
+              >
                 <Image
                   src="/images/observer-icon.png"
                   alt="Observer Icon"
