@@ -43,77 +43,78 @@ export const Vision = () => {
   return (
     <section
       id="vision"
-      className="scroll-mt-24 w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-8 px-4 md:px-24 gap-10"
-      style={{ minHeight: "65vh" }}
+      className="scroll-mt-24 w-full bg-hero5 py-12 md:py-16 px-4"
     >
-      {/* Left: TEXT */}
-      <div
-        className="flex-1 max-w-xl text-center md:text-left"
-        data-aos="fade-right"
-        data-aos-duration="800"
-      >
-        <h2 className="text-white text-2xl md:text-3xl font-bold mb-6 font-poppins">
-          {content[lang].title}
-        </h2>
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+        {/* Left: TEXT */}
+        <div
+          className="flex-1 max-w-xl text-center md:text-left"
+          data-aos="fade-right"
+          data-aos-duration="800"
+        >
+          <h2 className="text-white text-2xl md:text-3xl font-bold mb-6 font-poppins">
+            {content[lang].title}
+          </h2>
 
-        <div className="relative mb-6 w-full">
-          <div
-            className="
+          <div className="relative mb-6 w-full">
+            <div
+              className="
               w-full rounded-[40px] overflow-hidden shadow-2xl
               bg-[#22223b]/30 backdrop-blur-md
             "
-            style={{
-              backgroundColor: "rgba(180, 200, 255, 0.15)",
-              border: "1px solid rgba(180, 200, 255, 0.25)",
-            }}
-            data-aos="fade-up"
-            data-aos-delay="200"
-            data-aos-duration="800"
-          >
-            <div className="p-6">
-              <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
-                {content[lang].text}
-              </p>
+              style={{
+                backgroundColor: "rgba(180, 200, 255, 0.15)",
+                border: "1px solid rgba(180, 200, 255, 0.25)",
+              }}
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-aos-duration="800"
+            >
+              <div className="p-6">
+                <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
+                  {content[lang].text}
+                </p>
+              </div>
             </div>
+          </div>
+
+          {/* Wrap the button in a container that uses flexbox */}
+          <div className="flex justify-start md:justify-start mt-4">
+            {" "}
+            {/* flex + justify-start for mobile */}
+            <button
+              onClick={() => {
+                sessionStorage.setItem(
+                  "scroll-position",
+                  window.scrollY.toString()
+                );
+                router.push("/our-vision");
+              }}
+              className="bg-[#ffffff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#ffffff] transition"
+              data-aos="zoom-in"
+              data-aos-delay="400"
+              data-aos-duration="800"
+            >
+              {content[lang].button}
+            </button>
           </div>
         </div>
 
-        {/* Wrap the button in a container that uses flexbox */}
-        <div className="flex justify-start md:justify-start mt-4">
-          {" "}
-          {/* flex + justify-start for mobile */}
-          <button
-            onClick={() => {
-              sessionStorage.setItem(
-                "scroll-position",
-                window.scrollY.toString()
-              );
-              router.push("/our-vision");
-            }}
-            className="bg-[#ffffff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#ffffff] transition"
-            data-aos="zoom-in"
-            data-aos-delay="400"
-            data-aos-duration="800"
-          >
-            {content[lang].button}
-          </button>
+        {/* Right: IMAGE */}
+        <div
+          className="flex-1 flex items-center justify-center min-w-[260px]"
+          data-aos="fade-left"
+          data-aos-duration="800"
+        >
+          <Image
+            src="/images/vision.png"
+            alt="Vision"
+            width={520}
+            height={380}
+            className="image-section"
+            priority
+          />
         </div>
-      </div>
-
-      {/* Right: IMAGE */}
-      <div
-        className="flex-1 flex items-center justify-center min-w-[260px]"
-        data-aos="fade-left"
-        data-aos-duration="800"
-      >
-        <Image
-          src="/images/vision.png"
-          alt="Vision"
-          width={520}
-          height={380}
-          className="image-section"
-          priority
-        />
       </div>
     </section>
   );

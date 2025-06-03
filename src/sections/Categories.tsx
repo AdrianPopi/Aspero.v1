@@ -76,7 +76,7 @@ export const Categories = () => {
 
   return (
     <section
-      className="scroll-mt-24 relative py-8 px-4 bg-hero5 min-h-screen overflow-hidden"
+      className="scroll-mt-24 relative py-8 px-4 bg-hero5 min-h-[600px] md:min-h-[750px] lg:min-h-[850px] overflow-hidden"
       id="courses"
     >
       {/* Bubble - absolute, left & up */}

@@ -85,7 +85,7 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 flex items-center justify-center min-h-[80vh] bg-[#0c0c29] py-10 px-2"
+      className="scroll-mt-24 flex items-center justify-center min-h-[400px] md:min-h-[500px] lg:min-h-[600px] bg-[#0c0c29] pt-2 pb-8 px-2"
     >
       {/* Start bounded wrapper */}
       <div className="relative w-full max-w-7xl mx-auto bg-[#0c0c29] rounded-[40px]">

@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
+import { useRouter } from "next/router";
 
 export const AboutAspero = () => {
   const { lang } = useLanguage();
+  const router = useRouter();
 
   const content = {
     ro: {
@@ -62,14 +64,13 @@ export const AboutAspero = () => {
   return (
     <section
       id="aboutaspero"
-      className="scroll-mt-24 w-full bg-hero5 py-16"
-      style={{ minHeight: "75vh", scrollMarginTop: "6rem" }}
+      className="scroll-mt-24 w-full bg-hero5 pt-4 md:pt-6 pb-8 px-4"
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20">
-        {/* Left: IMAGE */}
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+        {/* Right: IMAGE */}
         <div
           className="flex-1 flex items-center justify-center min-w-[260px]"
-          data-aos="fade-right"
+          data-aos="fade-left"
           data-aos-duration="800"
         >
           <Image
@@ -78,46 +79,58 @@ export const AboutAspero = () => {
             width={520}
             height={380}
             className="image-section"
-            style={{ height: "auto" }}
             priority
           />
         </div>
-
-        {/* Right: CONTENT */}
+        {/* Left: TEXT */}
         <div
-          className="flex-1 max-w-xl flex flex-col items-start justify-center"
-          data-aos="fade-left"
-          data-aos-delay="200"
+          className="flex-1 max-w-xl text-center md:text-left"
+          data-aos="fade-right"
           data-aos-duration="800"
         >
-          <h2
-            className="text-white text-2xl md:text-3xl font-bold mb-4"
-            style={{ fontFamily: "Poppins-Bold, Poppins, sans-serif" }}
-          >
+          <h2 className="text-white text-2xl md:text-3xl font-bold mb-6 font-poppins">
             {content[lang].title}
           </h2>
 
-          <div className="glass-card p-6 mb-6">
-            <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
-              {content[lang].text}
-            </p>
+          <div className="relative mb-6 w-full">
+            <div
+              className="
+                w-full rounded-[40px] overflow-hidden shadow-2xl
+                bg-[#22223b]/30 backdrop-blur-md
+              "
+              style={{
+                backgroundColor: "rgba(180, 200, 255, 0.15)",
+                border: "1px solid rgba(180, 200, 255, 0.25)",
+              }}
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-aos-duration="800"
+            >
+              <div className="p-6">
+                <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
+                  {content[lang].text}
+                </p>
+              </div>
+            </div>
           </div>
 
-          <a
-            href="#contact"
-            onClick={() =>
-              sessionStorage.setItem(
-                "scroll-position",
-                window.scrollY.toString()
-              )
-            }
-            className="bg-[#b3aaff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#a393fa] transition"
-            data-aos="zoom-in"
-            data-aos-delay="400"
-            data-aos-duration="800"
-          >
-            {content[lang].button}
-          </a>
+          <div className="flex justify-start md:justify-start mt-4">
+            <a
+              href="#contact"
+              onClick={() =>
+                sessionStorage.setItem(
+                  "scroll-position",
+                  window.scrollY.toString()
+                )
+              }
+              className="bg-[#ffffff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#ffffff] transition"
+              data-aos="zoom-in"
+              data-aos-delay="400"
+              data-aos-duration="800"
+            >
+              {content[lang].button}
+            </a>
+          </div>
         </div>
       </div>
     </section>
