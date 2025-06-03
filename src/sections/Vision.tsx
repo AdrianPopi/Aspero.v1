@@ -78,21 +78,26 @@ export const Vision = () => {
           </div>
         </div>
 
-        <button
-          onClick={() => {
-            sessionStorage.setItem(
-              "scroll-position",
-              window.scrollY.toString()
-            );
-            router.push("/our-vision");
-          }}
-          className="bg-[#ffffff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#ffffff] transition"
-          data-aos="zoom-in"
-          data-aos-delay="400"
-          data-aos-duration="800"
-        >
-          {content[lang].button}
-        </button>
+        {/* Wrap the button in a container that uses flexbox */}
+        <div className="flex justify-start md:justify-start mt-4">
+          {" "}
+          {/* flex + justify-start for mobile */}
+          <button
+            onClick={() => {
+              sessionStorage.setItem(
+                "scroll-position",
+                window.scrollY.toString()
+              );
+              router.push("/our-vision");
+            }}
+            className="bg-[#ffffff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#ffffff] transition"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+            data-aos-duration="800"
+          >
+            {content[lang].button}
+          </button>
+        </div>
       </div>
 
       {/* Right: IMAGE */}

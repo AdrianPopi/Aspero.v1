@@ -1,13 +1,28 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
+import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export const Hero = () => {
   const { lang } = useLanguage();
+  const bubbleRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (bubbleRef.current) {
+        const { clientX, clientY } = e;
+        bubbleRef.current.style.transform = `translate(${clientX * 0.02}px, ${
+          clientY * 0.02
+        }px)`;
+      }
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const content = {
     ro: {
-      hashtag: "#haicunoi",
       title: (
         <>
           Educația universitară a<br />
@@ -23,7 +38,6 @@ export const Hero = () => {
       ),
     },
     en: {
-      hashtag: "#joinus",
       title: (
         <>
           The university education
@@ -51,6 +65,7 @@ export const Hero = () => {
       {/* Top-right big bubble, only a part visible */}
       <div
         className="absolute z-0 pointer-events-none"
+        ref={bubbleRef}
         style={{
           top: "-180px",
           right: "-130px",
@@ -101,10 +116,15 @@ export const Hero = () => {
           }}
         >
           {/* Left: Text content */}
-          <div className="flex-1 p-8 md:p-14 flex flex-col justify-center z-10 max-w-lg items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex-1 p-8 md:p-14 flex flex-col justify-center z-10 max-w-lg items-start"
+          >
             {/* Title */}
             <h1
-              className="font-poppins font-bold text-lg md:text-xl lg:text-2xl text-white leading-tight mb-10"
+              className="font-poppins font-bold text-lg md:text-2xl lg:text-2xl text-white leading-tight mb-10"
               style={{ fontWeight: 700 }}
             >
               {t.title}
@@ -121,7 +141,7 @@ export const Hero = () => {
             {/* CTA */}
             <a
               href="#aboutaspero"
-              className="w-12 h-12 flex items-center justify-center rounded-full bg-white/80 hover:bg-white transition-all shadow-md mt-4"
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-white/80 hover:bg-white transition-all shadow-md mt-4 animate-pulse hover:scale-110"
               aria-label="Scroll to next section"
             >
               <svg
@@ -140,7 +160,8 @@ export const Hero = () => {
                 />
               </svg>
             </a>
-          </div>
+          </motion.div>
+
           {/* Right: Hero Image */}
           <div className="flex-1 flex items-center justify-center p-6 md:p-10 relative">
             <Image

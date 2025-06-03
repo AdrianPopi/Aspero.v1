@@ -62,58 +62,63 @@ export const AboutAspero = () => {
   return (
     <section
       id="aboutaspero"
-      className="scroll-mt-24 w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-8 px-4 md:px-24 gap-10 md:gap-20"
+      className="scroll-mt-24 w-full bg-hero5 py-16"
       style={{ minHeight: "75vh", scrollMarginTop: "6rem" }}
     >
-      {/* Left: IMAGE */}
-      <div
-        className="flex-1 flex items-center justify-center min-w-[260px]"
-        data-aos="fade-right"
-        data-aos-duration="800"
-      >
-        <Image
-          src="/images/about-aspero.png"
-          alt="Devices"
-          width={520}
-          height={380}
-          className="image-section"
-          style={{ height: "auto" }}
-          priority
-        />
-      </div>
-
-      {/* Right: CONTENT */}
-      <div
-        className="flex-1 max-w-xl flex flex-col items-start justify-center"
-        data-aos="fade-left"
-        data-aos-delay="200"
-        data-aos-duration="800"
-      >
-        <h2
-          className="text-white text-2xl md:text-3xl font-bold mb-4"
-          style={{ fontFamily: "Poppins-Bold, Poppins, sans-serif" }}
-        >
-          {content[lang].title}
-        </h2>
-
-        <div className="glass-card p-6 mb-6">
-          <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
-            {content[lang].text}
-          </p>
-        </div>
-
-        <a
-          href="#contact"
-          onClick={() =>
-            sessionStorage.setItem("scroll-position", window.scrollY.toString())
-          }
-          className="bg-[#b3aaff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#a393fa] transition"
-          data-aos="zoom-in"
-          data-aos-delay="400"
+      <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20">
+        {/* Left: IMAGE */}
+        <div
+          className="flex-1 flex items-center justify-center min-w-[260px]"
+          data-aos="fade-right"
           data-aos-duration="800"
         >
-          {content[lang].button}
-        </a>
+          <Image
+            src="/images/about-aspero.png"
+            alt="Devices"
+            width={520}
+            height={380}
+            className="image-section"
+            style={{ height: "auto" }}
+            priority
+          />
+        </div>
+
+        {/* Right: CONTENT */}
+        <div
+          className="flex-1 max-w-xl flex flex-col items-start justify-center"
+          data-aos="fade-left"
+          data-aos-delay="200"
+          data-aos-duration="800"
+        >
+          <h2
+            className="text-white text-2xl md:text-3xl font-bold mb-4"
+            style={{ fontFamily: "Poppins-Bold, Poppins, sans-serif" }}
+          >
+            {content[lang].title}
+          </h2>
+
+          <div className="glass-card p-6 mb-6">
+            <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
+              {content[lang].text}
+            </p>
+          </div>
+
+          <a
+            href="#contact"
+            onClick={() =>
+              sessionStorage.setItem(
+                "scroll-position",
+                window.scrollY.toString()
+              )
+            }
+            className="bg-[#b3aaff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#a393fa] transition"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+            data-aos-duration="800"
+          >
+            {content[lang].button}
+          </a>
+        </div>
       </div>
     </section>
   );
