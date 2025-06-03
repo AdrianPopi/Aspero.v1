@@ -98,6 +98,7 @@ export const Categories = () => {
           draggable={false}
           style={{ width: "100%", height: "auto" }}
           priority
+          suppressHydrationWarning
         />
       </div>
 
@@ -151,10 +152,9 @@ export const Categories = () => {
                 <Image
                   src={course.image}
                   alt={course.title}
-                  layout="responsive"
                   width={400}
                   height={250}
-                  className="rounded-t-2xl object-contain"
+                  className="rounded-t-2xl object-cover w-full h-[250px]"
                   priority={idx === 0}
                 />
               </div>

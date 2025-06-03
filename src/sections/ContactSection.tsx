@@ -137,6 +137,7 @@ export const ContactSection = () => {
                   <input
                     id="firstName"
                     name="First Name"
+                    autoComplete="given-name"
                     required
                     className="rounded-[10px] bg-[#f7f7fb] px-4 py-2 text-[#59596c] font-poppins font-normal text-[0.97rem] outline-none border-0"
                     type="text"
@@ -153,6 +154,7 @@ export const ContactSection = () => {
                     id="lastName"
                     name="Last Name"
                     required
+                    autoComplete="family-name"
                     className="rounded-[10px] bg-[#f7f7fb] px-4 py-2 text-[#59596c] font-poppins font-normal text-[0.97rem] outline-none border-0"
                     type="text"
                   />
@@ -169,6 +171,7 @@ export const ContactSection = () => {
                   id="email"
                   name="Email"
                   required
+                  autoComplete="email"
                   className="rounded-[10px] bg-[#f7f7fb] px-4 py-2 text-[#59596c] font-poppins font-normal text-[0.97rem] outline-none border-0"
                   type="email"
                 />
@@ -184,6 +187,7 @@ export const ContactSection = () => {
                   id="message"
                   name="Message"
                   required
+                  autoComplete="off"
                   className="rounded-[10px] bg-[#f7f7fb] px-4 py-2 min-h-[110px] font-poppins font-normal text-xs text-[#59596c] outline-none border-0 resize-none"
                 />
               </div>

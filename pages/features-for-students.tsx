@@ -213,7 +213,7 @@ const FeaturesForStudentsPage = ({
                   alt="Collaborative icon"
                   width={64}
                   height={64}
-                  className="mb-4"
+                  className="w-16 h-16 mb-4"
                   priority
                 />
                 <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">
@@ -240,7 +240,7 @@ const FeaturesForStudentsPage = ({
                   alt="AI icon"
                   width={64}
                   height={64}
-                  className="mb-4"
+                  className="w-16 h-16 mb-4"
                   priority
                 />
                 <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">
@@ -293,7 +293,7 @@ const FeaturesForStudentsPage = ({
                   alt="Statistics icon"
                   width={64}
                   height={64}
-                  className="mb-4"
+                  className="w-16 h-16 mb-4"
                   priority
                 />
                 <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">

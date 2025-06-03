@@ -21,6 +21,15 @@ export const Header = ({
   const [reloaded, setReloaded] = useState(false);
   const router = useRouter();
   const drawerRef = useRef<HTMLDivElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -101,20 +110,28 @@ export const Header = ({
 
   const handleDropdown = (id: string) =>
     setOpenDropdown(openDropdown === id ? null : id);
-
   const Logo = () => (
-    <Link href="/" className="flex items-center mr-8">
-      <span className="flex items-center">
+    <Link
+      href="/"
+      className="flex items-center mr-8 transition-all duration-300 ease-in-out"
+    >
+      <span className="flex items-center gap-2">
         <Image
           src="/images/logo-header.png"
           alt="Aspero logo"
-          width={40}
-          height={40}
-          className="w-10 h-10 md:w-12 md:h-12"
+          width={isScrolled ? 32 : 44}
+          height={isScrolled ? 32 : 44}
+          className={`transition-all duration-300 ease-in-out ${
+            isScrolled ? "w-8 h-8" : "w-11 h-11"
+          }`}
           style={{ width: "auto", height: "auto" }}
           priority
         />
-        <span className="ml-2 font-bold text-2xl md:text-3xl text-white font-poppins">
+        <span
+          className={`ml-2 font-bold font-poppins text-white transition-all duration-300 ease-in-out ${
+            isScrolled ? "text-xl" : "text-2xl md:text-3xl"
+          }`}
+        >
           Aspero<sup className="text-xs font-normal align-super">®</sup>
         </span>
       </span>
@@ -263,7 +280,11 @@ export const Header = ({
   );
 
   return (
-    <header className="fixed w-full z-30 bg-hero5 px-0">
+    <header
+      className={`fixed w-full z-30 px-0 transition-all duration-300 ${
+        isScrolled ? "bg-hero5/80 backdrop-blur-md shadow-md" : "bg-hero5"
+      }`}
+    >
       <div className="flex items-center justify-between h-[80px] px-4 md:px-8 max-w-[1350px] mx-auto">
         <Logo />
         {/* NAV DESKTOP */}
@@ -304,21 +325,21 @@ export const Header = ({
           <nav
             ref={drawerRef}
             className="
-              md:hidden
-              fixed
-              top-[80px] right-0 bottom-0
-              w-[90vw] max-w-[380px]
-              h-[calc(100vh-80px)]
-           bg-[#191931]/80 backdrop-blur-lg
-              shadow-2xl
-              rounded-l-2xl
-              z-50
-              overflow-y-auto
-              transition-all
-              duration-300
-            "
+    md:hidden
+    fixed
+    top-[80px] right-0 bottom-0
+    w-[90vw] max-w-[380px]
+    h-[calc(100vh-80px)]
+    bg-[#0f0f2c]/95 backdrop-blur-md
+    shadow-2xl
+    rounded-l-2xl
+    z-50
+    overflow-y-auto
+    transition-all
+    duration-300
+  "
             style={{
-              boxShadow: "0 6px 40px 0 rgba(26,32,64,0.22)",
+              boxShadow: "0 6px 40px rgba(0, 0, 0, 0.45)",
               fontFamily: "Poppins, sans-serif",
             }}
           >

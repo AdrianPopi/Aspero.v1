@@ -100,12 +100,12 @@ export const FeaturesForInstitutions = () => {
           </div>
           <div style={{ height: "10px" }}></div>
 
-          <div
-            className="text-[15px] md:text-base text-[#22223b] mb-5 text-justify text-features-align"
-            style={{ maxWidth: "90vw", width: "100%" }}
-          >
-            {t.features[0]}
+          <div className="glass-card-light p-6 mb-5 w-full text-features-align">
+            <p className="text-[15px] md:text-base text-[#22223b] text-justify font-poppins leading-relaxed m-0">
+              {t.features[0]}
+            </p>
           </div>
+
           <style jsx>{`
             @media (min-width: 768px) {
               .text-features-align {
@@ -114,21 +114,16 @@ export const FeaturesForInstitutions = () => {
             }
           `}</style>
 
-          <Link href="/features-for-institutions" legacyBehavior>
-            <button
-              onClick={() => {
-                sessionStorage.setItem(
-                  "scroll-position",
-                  String(window.scrollY)
-                );
-                router.push("/features-for-institutions");
-              }}
-              className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
-              style={{ fontWeight: 500 }}
-            >
-              {t.cta}
-            </button>
-          </Link>
+          <button
+            onClick={() => {
+              sessionStorage.setItem("scroll-position", String(window.scrollY));
+              router.push("/features-for-institutions");
+            }}
+            className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
+            style={{ fontWeight: 500 }}
+          >
+            {t.cta}
+          </button>
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex items-start justify-center w-full md:h-[420px] mt-6 md:mt-12">
@@ -142,29 +137,6 @@ export const FeaturesForInstitutions = () => {
           />
         </div>
       </div>
-      {/* Animated Marquee Bar
-      <div className="w-full bg-gradient-to-r from-[#5f67b2] via-[#ba71cf] to-[#ac6dff] overflow-hidden h-10 flex items-center">
-        <div className="marquee whitespace-nowrap text-white text-base md:text-lg font-poppins font-medium px-8">
-          <span>
-            {t.marquee} &nbsp; {t.marquee} &nbsp; {t.marquee} &nbsp;
-          </span>
-        </div>
-        <style jsx>{`
-          .marquee {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 18s linear infinite;
-          }
-          @keyframes marquee {
-            0% {
-              transform: translateX(0%);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-        `}</style>
-      </div> */}
     </section>
   );
 };

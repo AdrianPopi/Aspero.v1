@@ -60,15 +60,27 @@ export const Hero = () => {
           opacity: 1,
         }}
       >
-        <Image
-          src="/images/hero-bubble.png"
-          alt=""
-          width={900}
-          height={900}
-          draggable={false}
-          style={{ width: "100%", height: "auto" }}
-          priority
-        />
+        <div
+          className="absolute z-0 pointer-events-none"
+          style={{
+            top: "-180px",
+            right: "-130px",
+            width: "900px",
+            height: "900px",
+            maxWidth: "none",
+            opacity: 1,
+            position: "relative",
+          }}
+        >
+          <Image
+            src="/images/hero-bubble.png"
+            alt=""
+            fill
+            draggable={false}
+            className="object-contain"
+            priority
+          />
+        </div>
       </div>
 
       {/* Main hero content - your card (unchanged) */}

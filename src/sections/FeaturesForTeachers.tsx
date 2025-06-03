@@ -89,9 +89,12 @@ export const FeaturesForTeachers = () => {
           <div className="text-base md:text-lg text-[#5566b8] mb-2">
             {t.subtitle}
           </div>
-          <div className="text-[15px] md:text-base text-[#22223b] mb-5 text-justify">
-            {t.description}
+          <div className="glass-card-light p-6 mb-5 w-full">
+            <p className="text-[15px] md:text-base text-[#22223b] text-justify font-poppins leading-relaxed m-0">
+              {t.description}
+            </p>
           </div>
+
           <Link href="/features-for-teachers">
             <button
               onClick={() => {

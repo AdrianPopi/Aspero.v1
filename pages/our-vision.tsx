@@ -153,7 +153,8 @@ const OurVisionPage = ({
                   alt="Vision icon"
                   width={48}
                   height={48}
-                  style={{ width: "auto", height: "auto" }}
+                  style={{ width: "100%", height: "auto" }}
+                  priority
                 />
               </div>
               <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">

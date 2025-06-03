@@ -120,8 +120,10 @@ const TeamPage = ({
                   alt={member.name}
                   width={96}
                   height={96}
+                  style={{ width: "auto", height: "auto" }}
                   className="rounded-full object-cover mb-4"
                 />
+
                 <div className="font-poppins font-semibold text-lg">
                   {member.name}
                 </div>

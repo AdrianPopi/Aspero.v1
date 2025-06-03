@@ -87,12 +87,12 @@ export const AboutAspero = () => {
           {content[lang].title}
         </h2>
 
-        <div
-          className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed mb-6"
-          style={{ fontFamily: "Poppins-Regular, Poppins, sans-serif" }}
-        >
-          {content[lang].text}
+        <div className="glass-card p-6 mb-6">
+          <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
+            {content[lang].text}
+          </p>
         </div>
+
         <a
           href="#contact"
           onClick={() =>

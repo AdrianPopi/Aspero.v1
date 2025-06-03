@@ -148,6 +148,7 @@ export const Footer = () => {
                 ref={emailRef}
                 name="email"
                 type="email"
+                autoComplete="email"
                 required
                 placeholder={t.newsletterPlaceholder}
                 className="flex-grow px-4 py-2 text-sm md:text-base text-black placeholder-[#6b7280] font-poppins font-normal outline-none bg-transparent"

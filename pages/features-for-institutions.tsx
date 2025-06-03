@@ -180,11 +180,12 @@ const FeaturesForInstitutionsPage = ({
                 <Image
                   src="/images/observer-icon.png"
                   alt="Observer Icon"
-                  width={64}
-                  height={64}
-                  className="mb-4"
+                  width={54}
+                  height={54}
+                  className="w-16 h-16 mb-4" // echivalent cu 64px, fără conflicte
                   priority
                 />
+
                 <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">
                   {items[2].description}
                 </p>

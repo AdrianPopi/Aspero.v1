@@ -76,12 +76,12 @@ export const FeaturesForStudents = () => {
             {t.subtitle}
           </div>
           <div style={{ height: "10px" }}></div>
-          <div
-            className="text-[15px] md:text-base text-[#22223b] mb-5 text-justify text-features-align"
-            style={{ maxWidth: "90vw", width: "100%" }}
-          >
-            {t.description}
+          <div className="glass-card-light p-6 mb-5 w-full text-features-align">
+            <p className="text-[15px] md:text-base text-[#22223b] text-justify font-poppins leading-relaxed m-0">
+              {t.description}
+            </p>
           </div>
+
           <style jsx>{`
             @media (min-width: 768px) {
               .text-features-align {
@@ -89,7 +89,7 @@ export const FeaturesForStudents = () => {
               }
             }
           `}</style>
-          <Link href="/features-for-students" legacyBehavior>
+          <Link href="/features-for-students">
             <button
               onClick={() => {
                 sessionStorage.setItem(

@@ -61,10 +61,13 @@ export const TeamSection = () => {
           <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-poppins">
             {t.title}
           </h2>
-          <div className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed mb-6 font-poppins">
-            {t.text}
+          <div className="glass-card p-6 mb-6 w-full">
+            <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
+              {t.text}
+            </p>
           </div>
-          <Link href="/team" legacyBehavior>
+
+          <Link href="/team">
             <button
               onClick={() => {
                 sessionStorage.setItem(
@@ -90,9 +93,8 @@ export const TeamSection = () => {
             src="/images/aspero-team.png"
             alt="Aspero Team"
             width={520}
-            height={380}
+            height={390} // sau ce dimensiune ai reală pentru 4:3
             className="image-section"
-            style={{ height: "auto" }}
             priority
           />
         </div>
