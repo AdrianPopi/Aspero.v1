@@ -48,6 +48,10 @@ html {
   .font-poppins {
     font-family: "Poppins", sans-serif;
   }
+  html,
+  body {
+    overflow-x: hidden;
+  }
 
   .image-section {
     width: 100%;
