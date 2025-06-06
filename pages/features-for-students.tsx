@@ -356,7 +356,7 @@ const FeaturesForStudentsPage = ({
         </div>
       </main>
       <BackToTop />
-      <Footer />
+      <Footer isDarkMode={isDarkMode} />
     </>
   );
 };

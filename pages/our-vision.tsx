@@ -71,12 +71,16 @@ const OurVisionPage = ({
     window.scrollTo(0, 0);
   }, []);
 
+  const textColor = isDarkMode ? "text-white" : "text-[#181836]";
+  const bgColor = isDarkMode ? "bg-hero5" : "bg-light-background";
+
   return (
     <>
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 
-      <main className="bg-hero5 bg-cover bg-center text-white pt-32 md:pt-40 pb-16">
-        {/* unified container */}
+      <main
+        className={`${bgColor} bg-cover bg-center ${textColor} pt-32 md:pt-40 pb-16`}
+      >
         <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20">
           {/* 1) HERO */}
           <section className="flex flex-col lg:flex-row items-center gap-10">
@@ -85,10 +89,14 @@ const OurVisionPage = ({
               data-aos="fade-left"
               data-aos-duration="800"
             >
-              <h1 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6">
+              <h1
+                className={`font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 ${textColor}`}
+              >
                 {lang === "ro" ? "Viziunea noastră" : "Our Vision"}
               </h1>
-              <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">
+              <p
+                className={`font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify ${textColor}`}
+              >
                 {text[0].description}
               </p>
             </div>
@@ -110,7 +118,7 @@ const OurVisionPage = ({
 
           {/* 2) Second card */}
           <section
-            className="p-8 border border-blue-500 rounded-2xl"
+            className={`p-8 border border-blue-500 rounded-2xl ${textColor}`}
             data-aos="zoom-in"
             data-aos-delay="200"
             data-aos-duration="800"
@@ -120,7 +128,7 @@ const OurVisionPage = ({
             </p>
           </section>
 
-          {/* 3) Three-paragraph */}
+          {/* 3) Three-paragraph section */}
           <section className="flex flex-col md:flex-row items-center gap-10">
             <div
               className="md:w-1/2"
@@ -136,7 +144,7 @@ const OurVisionPage = ({
               />
             </div>
             <div
-              className="md:w-1/2 space-y-4"
+              className={`md:w-1/2 space-y-4 ${textColor}`}
               data-aos="fade-up-left"
               data-aos-delay="150"
               data-aos-duration="800"
@@ -158,50 +166,55 @@ const OurVisionPage = ({
             </div>
           </section>
 
-          {/* 4) Bottom card + clipped bubble */}
+          {/* 4) Final card */}
           <div className="relative mt-16 overflow-hidden">
-            {/* Card with translucent background, blur, and border */}
             <section
               className="relative z-10 rounded-2xl p-12 text-center"
               data-aos="fade-left"
               data-aos-duration="800"
               data-aos-delay="100"
               style={{
-                backgroundColor: "rgba(64,65,84,0.2)",
+                backgroundColor: isDarkMode
+                  ? "rgba(64,65,84,0.2)"
+                  : "rgba(255,255,255,0.6)",
                 backdropFilter: "blur(12px)",
                 border: "1px solid rgba(255,255,255,0.08)",
               }}
             >
               <div className="mb-4 flex justify-center">
-                <Image
-                  src="/images/icon-vision.png"
-                  alt="Vision icon"
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 md:w-14 md:h-14"
-                  priority
-                />
+                <>
+                  {/* Dark Mode Icon */}
+                  <Image
+                    src="/images/icon-vision.png"
+                    alt="Vision icon dark"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 md:w-14 md:h-14 dark:block hidden"
+                    priority
+                  />
+
+                  {/* Light Mode Icon */}
+                  <Image
+                    src="/images/icon-vision-light.png"
+                    alt="Vision icon light"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 md:w-14 md:h-14 dark:hidden block"
+                    priority
+                  />
+                </>
               </div>
-              <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">
+              <p
+                className={`font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify ${textColor}`}
+              >
                 {text[2].description}
               </p>
             </section>
-
-            {/* Bubble tucked under the card’s corner */}
-            {/* <div className="absolute -bottom-8 -right-8 w-56 h-56 pointer-events-none z-0">
-              <Image
-                src="/images/bubble-contact-footer.png"
-                alt="Bubble graphic"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div> */}
           </div>
         </div>
       </main>
       <BackToTop />
-      <Footer />
+      <Footer isDarkMode={isDarkMode} />
     </>
   );
 };

@@ -3,7 +3,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { useRef, useState } from "react";
 import Link from "next/link";
 
-export const Footer = () => {
+export const Footer = ({ isDarkMode }: { isDarkMode: boolean }) => {
   const { lang } = useLanguage();
   const emailRef = useRef<HTMLInputElement>(null);
 
@@ -24,7 +24,6 @@ export const Footer = () => {
     setSuccessVisible(true);
     form.reset();
 
-    // Dispar automat după 3 secunde
     setTimeout(() => {
       setSuccessVisible(false);
     }, 3000);
@@ -51,14 +50,12 @@ export const Footer = () => {
         { label: "Politica de confidențialitate", href: "/legal/privacy" },
         { label: "Termenii și Condițiile", href: "/legal/terms" },
       ],
-
       socials: [
         { label: "Facebook", href: "https://facebook.com/" },
         { label: "Instagram", href: "https://instagram.com/" },
         { label: "Youtube", href: "https://youtube.com/" },
         { label: "LinkedIn", href: "https://linkedin.com/" },
       ],
-
       subscribeBtn: (
         <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="12" fill="#181836" />
@@ -92,7 +89,6 @@ export const Footer = () => {
         { label: "Privacy Policy", href: "/legal/privacy" },
         { label: "Terms and Conditions", href: "/legal/terms" },
       ],
-
       socials: [
         { label: "Facebook", href: "https://facebook.com/" },
         { label: "Instagram", href: "https://instagram.com/" },
@@ -116,14 +112,17 @@ export const Footer = () => {
   };
 
   const t = content[lang];
+  const outerBg = isDarkMode ? "bg-hero5" : "bg-light-background";
+  const innerBg = isDarkMode ? "bg-[#5566b8]" : "bg-[#9bb1fc]";
+  const textColor = isDarkMode ? "text-white" : "text-[#1a1a1a]";
+  const textColorMuted = isDarkMode ? "text-white/90" : "text-[#1a1a1a]/90";
 
   return (
-    // Outer background (full width, bg-hero5)
-    <div className="w-full bg-[#0c0c29] pt-0 pb-0">
-      {/* Footer card with rounded corners */}
-      <footer className="max-w-7xl mx-auto bg-[#5566b8] rounded-t-[40px] pt-10 pb-6 px-4 md:px-16 mt-0">
+    <div className={`w-full ${outerBg} pt-0 pb-0`}>
+      <footer
+        className={`max-w-7xl mx-auto ${innerBg} rounded-t-[40px] pt-10 pb-6 px-4 md:px-16 mt-0`}
+      >
         <div className="flex flex-col md:flex-row gap-12 md:gap-0">
-          {/* Left: Logo and Newsletter */}
           <div className="flex-1 flex flex-col items-center mb-1 md:mb-0">
             <Image
               src="/images/logo-footer.png"
@@ -134,11 +133,11 @@ export const Footer = () => {
               style={{ height: "auto" }}
               priority
             />
-
-            <p className="font-poppins font-normal text-white text-sm mb-4 text-center max-w-full md:max-w-2xl md:text-base">
+            <p
+              className={`font-poppins font-normal ${textColor} text-sm mb-4 text-center max-w-full md:max-w-2xl md:text-base`}
+            >
               {t.newsletterTitle}
             </p>
-
             <form
               onSubmit={handleSubmit}
               className="w-full max-w-md border border-white bg-white rounded-full flex overflow-hidden"
@@ -171,19 +170,22 @@ export const Footer = () => {
             {successMessage && (
               <p
                 className={`
-    text-white text-sm font-poppins mt-2 transition-opacity duration-500
-    ${successVisible ? "opacity-100" : "opacity-0"}
-  `}
+                  ${textColor} text-sm font-poppins mt-2 transition-opacity duration-500
+                  ${successVisible ? "opacity-100" : "opacity-0"}
+                `}
               >
                 {successMessage}
               </p>
             )}
           </div>
+
           {/* Right: Navigation Columns */}
           <div className="flex-[2] w-full flex flex-col md:flex-row md:justify-evenly md:items-start gap-2 md:gap-0 mt-0.5 md:mt-0">
             {/* Company */}
             <div className="w-full md:w-auto flex flex-col items-center md:items-start text-center md:text-left">
-              <h4 className="font-poppins font-bold text-white text-lg md:text-xl mb-3">
+              <h4
+                className={`font-poppins font-bold ${textColor} text-lg md:text-xl mb-3`}
+              >
                 {lang === "ro" ? "Aspero" : "Aspero"}
               </h4>
               <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:flex-col md:gap-x-0 md:gap-y-2">
@@ -191,7 +193,7 @@ export const Footer = () => {
                   <li key={item.to}>
                     <a
                       href={item.to}
-                      className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
+                      className={`font-poppins font-normal ${textColorMuted} hover:underline text-sm md:text-base`}
                     >
                       {item.label}
                     </a>
@@ -202,7 +204,9 @@ export const Footer = () => {
 
             {/* Information */}
             <div className="w-full md:w-auto flex flex-col items-center md:items-start text-center md:text-left">
-              <h4 className="font-poppins font-bold text-white text-lg md:text-xl mb-3">
+              <h4
+                className={`font-poppins font-bold ${textColor} text-lg md:text-xl mb-3`}
+              >
                 {lang === "ro" ? "Informații" : "Information"}
               </h4>
               <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:flex-col md:gap-x-0 md:gap-y-2">
@@ -219,7 +223,7 @@ export const Footer = () => {
                           );
                         }
                       }}
-                      className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
+                      className={`font-poppins font-normal ${textColorMuted} hover:underline text-sm md:text-base`}
                     >
                       {item.label}
                     </Link>
@@ -230,7 +234,9 @@ export const Footer = () => {
 
             {/* Social */}
             <div className="w-full md:w-auto flex flex-col items-center md:items-start text-center md:text-left">
-              <h4 className="font-poppins font-bold text-white text-lg md:text-xl mb-3">
+              <h4
+                className={`font-poppins font-bold ${textColor} text-lg md:text-xl mb-3`}
+              >
                 {t.social}
               </h4>
               <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:flex-col md:gap-x-0 md:gap-y-2">
@@ -240,7 +246,7 @@ export const Footer = () => {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-poppins font-normal text-white/90 hover:underline text-sm md:text-base"
+                      className={`font-poppins font-normal ${textColorMuted} hover:underline text-sm md:text-base`}
                     >
                       {item.label}
                     </a>

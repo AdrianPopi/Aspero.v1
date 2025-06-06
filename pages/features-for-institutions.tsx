@@ -13,6 +13,7 @@ const features = {
       title: "COORDONARE A CURSURILOR INSTITUȚIEI",
       description: `Platforma permite administratorilor instituțiilor acces la statistici care cuprind atât implicarea studenților, cât și a profesorilor, în actul educațional pentru toate cursurile oferite de către aceste instituții; astfel acestea pot urmări ușor direcția pe care procesul educațional o ia.`,
       img: "/images/line.png",
+      imgLight: "/images/line-light.png",
     },
     {
       title: "ANALIZĂ A STATISTICILOR PENTRU INSTITUȚII",
@@ -30,6 +31,7 @@ const features = {
       title: "INSTITUTION COURSE COORDINATION",
       description: `The platform allows institution administrators access to statistics covering both student and teacher engagement in the educational act for all courses offered by these institutions; thus they can easily track the direction the educational process is taking.`,
       img: "/images/line.png",
+      imgLight: "/images/line-light.png",
     },
     {
       title: "ANALYSIS OF STATISTICS FOR INSTITUTIONS",
@@ -69,6 +71,15 @@ const FeaturesForInstitutionsPage = ({
     lang === "ro" ? "Funcționalități" : "Features for Institutions";
   const cardTitle = lang === "ro" ? "Pentru Instituții" : "For Institutions";
 
+  const iconInstitution = isDarkMode
+    ? "/images/institution-icon-white.png"
+    : "/images/institution-icon.png";
+
+  const bgColor = isDarkMode ? "bg-hero5" : "bg-light-background";
+  const textColor = isDarkMode ? "text-white" : "text-light-text";
+  const cardBg = isDarkMode ? "bg-[#b4c8ff]/10" : "bg-white/80";
+  const cardBorder = isDarkMode ? "border-[#b4c8ff]/25" : "border-light-border";
+
   return (
     <>
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
@@ -76,22 +87,25 @@ const FeaturesForInstitutionsPage = ({
       {/* Hero panel */}
       <section
         id="featuresforinstitutions"
-        className="scroll-mt-24 pt-32 md:pt-24 w-full bg-hero5 flex flex-col md:flex-row items-center justify-between py-8 px-4 md:px-24 gap-8 md:gap-16"
+        className={`scroll-mt-24 pt-32 md:pt-24 w-full ${bgColor} flex flex-col md:flex-row items-center justify-between py-8 px-4 md:px-24 gap-8 md:gap-16`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
-          {/* Left: Text & Icon */}
           <div
             className="flex-1 flex flex-col items-start z-10 w-full max-w-xl"
             data-aos="fade-right"
             data-aos-duration="800"
           >
             <div className="flex items-center mb-3 gap-2">
-              {/* Section title with icon */}
-              <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight font-poppins">
+              <h3
+                className={`text-2xl md:text-4xl font-bold tracking-tight font-poppins ${
+                  isDarkMode ? "text-white" : "text-[#0c0c29]"
+                }`}
+              >
                 {sectionTitle}
               </h3>
+
               <Image
-                src="/images/institution-icon-white.png"
+                src={iconInstitution}
                 alt="institution icon"
                 width={32}
                 height={32}
@@ -99,7 +113,6 @@ const FeaturesForInstitutionsPage = ({
               />
             </div>
 
-            {/* Sub-card title */}
             <div className="flex items-center mb-1 gap-2">
               <span className="text-xl md:text-xl font-bold text-[#5566b8] font-poppins">
                 {cardTitle}
@@ -108,12 +121,13 @@ const FeaturesForInstitutionsPage = ({
 
             <div style={{ height: "10px" }} />
 
-            <div className="text-[15px] md:text-base text-white mb-5 text-justify font-poppins">
+            <div
+              className={`text-[15px] md:text-base ${textColor} mb-5 text-justify font-poppins`}
+            >
               {heroText}
             </div>
           </div>
 
-          {/* Right: Illustration */}
           <div
             className="flex-1 flex items-center justify-center w-full md:h-[420px] mt-6 md:mt-12"
             data-aos="fade-left"
@@ -131,10 +145,12 @@ const FeaturesForInstitutionsPage = ({
         </div>
       </section>
 
-      {/* Actual feature breakdown */}
-      <main className="bg-hero5 bg-cover bg-center text-white pt-8 md:pt-12 pb-8">
+      {/* Feature breakdown */}
+      <main
+        className={`${bgColor} bg-cover bg-center ${textColor} pt-8 md:pt-12 pb-8`}
+      >
         <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20 pt-0 md:pt-16">
-          {/* 1) Coordonare: title above, image+text side by side */}
+          {/* 1) Coordonare */}
           <section className="space-y-6">
             <h3
               className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center"
@@ -150,7 +166,11 @@ const FeaturesForInstitutionsPage = ({
                 data-aos-duration="800"
               >
                 <Image
-                  src={items[0].img}
+                  src={
+                    isDarkMode && items[0].img
+                      ? items[0].img
+                      : items[0].imgLight || items[0].img
+                  }
                   alt={items[0].title}
                   width={600}
                   height={350}
@@ -171,9 +191,9 @@ const FeaturesForInstitutionsPage = ({
             </div>
           </section>
 
-          {/* 2) Analiză statistici: bordered card */}
+          {/* 2) Analiză statistici */}
           <section
-            className="p-8 border border-blue-500 rounded-2xl"
+            className={`p-8 rounded-2xl border ${cardBorder} ${cardBg}`}
             data-aos="fade-up"
             data-aos-duration="900"
           >
@@ -185,7 +205,7 @@ const FeaturesForInstitutionsPage = ({
             </p>
           </section>
 
-          {/* 3) Observator: title, image left + icon+text right */}
+          {/* 3) Observator */}
           <section className="space-y-6">
             <h3
               className="font-poppins font-bold text-xl md:text-2xl mb-4 text-center"
@@ -216,15 +236,18 @@ const FeaturesForInstitutionsPage = ({
                 data-aos-delay="100"
               >
                 <Image
-                  src="/images/observer-icon.png"
+                  src={
+                    isDarkMode
+                      ? "/images/observer-icon.png"
+                      : "/images/observer-icon-light.png"
+                  }
                   alt="Observer Icon"
                   width={54}
                   height={54}
-                  className="w-16 h-16 mb-4" // echivalent cu 64px, fără conflicte
+                  className="w-16 h-16 mb-4"
                   priority
                 />
-
-                <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify">
+                <p className="font-poppins text-xs md:text-sm leading-relaxed text-justify">
                   {items[2].description}
                 </p>
               </div>
@@ -232,8 +255,9 @@ const FeaturesForInstitutionsPage = ({
           </section>
         </div>
       </main>
+
       <BackToTop />
-      <Footer />
+      <Footer isDarkMode={isDarkMode} />
     </>
   );
 };

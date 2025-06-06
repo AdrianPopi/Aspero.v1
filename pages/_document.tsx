@@ -1,18 +1,43 @@
-import { Head, Html, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import Script from "next/script";
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html suppressHydrationWarning>
+        <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+(function () {
+  const storageKey = "usehooks-ts-dark-mode";
+  const classNameDark = "dark";
 
-const Document = () => {
-  return (
-    <Html>
-      <Head />
-      <body>
-        <Script strategy="beforeInteractive" src="/scripts/darkModeScript.js" />
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
-};
+  function setClassOnDocument(darkMode) {
+    if (darkMode) {
+      document.documentElement.classList.add(classNameDark);
+      document.documentElement.style.setProperty("color-scheme", "dark");
+    } else {
+      document.documentElement.classList.remove(classNameDark);
+      document.documentElement.style.setProperty("color-scheme", "light");
+    }
+  }
 
-export default Document;
+  try {
+    const localStorageTheme = localStorage.getItem(storageKey);
+    if (localStorageTheme !== null) {
+      setClassOnDocument(JSON.parse(localStorageTheme));
+    }
+  } catch (e) {}
+})();
+              `,
+            }}
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}

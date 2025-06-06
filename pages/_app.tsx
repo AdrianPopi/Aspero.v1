@@ -6,24 +6,14 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
 import { useEffect } from "react";
-import { useDarkMode, useEffectOnce } from "usehooks-ts";
+import { useDarkMode } from "../src/hooks/useDarkMode"; // ✅ hook-ul tău personalizat
 import { LanguageProvider } from "../src/context/LanguageContext";
 
-const siteTitle = "Aspero ";
+const siteTitle = "Aspero";
 const siteDescription = "Aspero";
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const { isDarkMode, toggle: toggleDarkMode } = useDarkMode();
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-      document.documentElement.style.setProperty("color-scheme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.style.setProperty("color-scheme", "light");
-    }
-  }, [isDarkMode]);
+  const { isDarkMode, toggleDarkMode } = useDarkMode(); // ✅ nume standardizat
 
   // Initialize animations
   useEffect(() => {
@@ -32,7 +22,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       duration: 700,
       easing: "ease-out-cubic",
     });
-  });
+  }, []);
 
   return (
     <LanguageProvider>

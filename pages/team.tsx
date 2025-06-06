@@ -56,28 +56,36 @@ const TeamPage = ({
     window.scrollTo(0, 0);
   }, []);
 
+  const textColor = isDarkMode ? "text-white" : "text-[#1a1a1a]";
+  const bgColor = isDarkMode ? "bg-hero5" : "bg-light-background";
+  const cardBorder = isDarkMode ? "border-[#b4c8ff]/25" : "border-[#d7e3f4]";
+
   return (
     <>
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 
-      <main className="bg-hero5 bg-cover bg-center text-white pt-32 md:pt-40 pb-16">
+      <main
+        className={`${bgColor} bg-cover bg-center ${textColor} pt-32 md:pt-40 pb-16`}
+      >
         <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20">
-          {/* 1) HERO: title + intro + collage */}
+          {/* HERO */}
           <section className="flex flex-col lg:flex-row items-center gap-10">
-            {/* Text */}
             <div
               className="flex-1"
               data-aos="fade-left"
               data-aos-duration="800"
             >
-              <h1 className="font-poppins font-bold text-3xl md:text-4xl mb-6">
+              <h1
+                className={`font-poppins font-bold text-3xl md:text-4xl mb-6 ${textColor}`}
+              >
                 {t.title}
               </h1>
-              <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify whitespace-normal">
+              <p
+                className={`font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify whitespace-pre-line ${textColor}`}
+              >
                 {t.intro}
               </p>
             </div>
-            {/* Collage image */}
             <div
               className="flex-1 flex items-center justify-center min-w-[260px]"
               data-aos="fade-right"
@@ -94,18 +102,20 @@ const TeamPage = ({
             </div>
           </section>
 
-          {/* 2) DETAILS card */}
+          {/* 2) DETAILS CARD */}
           <section
-            className="p-8 border border-blue-500 rounded-2xl"
+            className={`p-8 border rounded-2xl ${cardBorder}`}
             data-aos="zoom-in"
             data-aos-delay="200"
             data-aos-duration="700"
           >
-            <p className="font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify whitespace-pre-line">
+            <p
+              className={`font-poppins font-normal text-xs md:text-sm leading-relaxed text-justify whitespace-pre-line ${textColor}`}
+            >
               {lang === "ro" ? (
                 <>
                   {`Deși am avut oportunitatea de a participa la multe activități extracurriculare care ne-au ajutat să ne lărgim atât orizonturile academice, cât și să legăm relații cu alți elevi și studenți europeni încă din timpul liceului din România, am ajuns când am aplicat la universitate la concluzia că singurul mod în care puteam urmări o educație competitivă la nivel internațional ar fi să plecăm din țară – ceea ce am și făcut. Însă acest lucru ne-a permis să experimentăm abordările acestor instituții educaționale de top, abordări ale căror eficiență ne-a fost confirmată chiar la firul ierbii, sub ochii noștri – și să ajungem la concluzia că `}
-                  <span className="text-[#e8aff6]">
+                  <span className="text-[#e8aff6] dark:text-[#e8aff6]">
                     nu există niciun motiv pentru care acestea n-ar putea fi
                     implementate cu succes și la noi în țară.
                   </span>
@@ -114,7 +124,7 @@ const TeamPage = ({
               ) : (
                 <>
                   {`Although we had the opportunity to participate in many extra-curricular activities that helped us broaden both our academic horizons and build relationships with other European pupils and students since high school in Romania, we came to the conclusion when applying to university that the only way we could pursue an internationally competitive education would be to leave the country – which we did. But this allowed us to experiment with the approaches of these top educational institutions, approaches whose effectiveness was confirmed to us right before our very eyes – and to conclude that `}
-                  <span className="text-[#e8aff6]">
+                  <span className="text-[#e8aff6] dark:text-[#e8aff6]">
                     there is no reason why they could not be successfully
                     implemented in our country.
                   </span>
@@ -124,7 +134,7 @@ const TeamPage = ({
             </p>
           </section>
 
-          {/* 3) Members grid */}
+          {/* MEMBERS */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {t.members.map((member, idx) => (
               <div
@@ -142,7 +152,9 @@ const TeamPage = ({
                   style={{ width: "auto", height: "auto" }}
                   className="rounded-full object-cover mb-4"
                 />
-                <div className="font-poppins font-semibold text-lg">
+                <div
+                  className={`font-poppins font-semibold text-lg ${textColor}`}
+                >
                   {member.name}
                 </div>
               </div>
@@ -150,8 +162,9 @@ const TeamPage = ({
           </div>
         </div>
       </main>
+
       <BackToTop />
-      <Footer />
+      <Footer isDarkMode={isDarkMode} />
     </>
   );
 };

@@ -110,6 +110,7 @@ export const Header = ({
 
   const handleDropdown = (id: string) =>
     setOpenDropdown(openDropdown === id ? null : id);
+
   const Logo = () => (
     <Link
       href="/"

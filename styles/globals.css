@@ -38,6 +38,14 @@ html {
   scroll-padding-top: 6rem;
 }
 
+/* ✅ Light & Dark theme background (automată cu class="dark") */
+body {
+  @apply bg-light-background text-light-text;
+}
+.dark body {
+  @apply bg-hero5 text-white;
+}
+
 /* ✅ 5. Fix focus ring */
 *:focus {
   outline: auto;
@@ -48,6 +56,7 @@ html {
   .font-poppins {
     font-family: "Poppins", sans-serif;
   }
+
   html,
   body {
     overflow-x: hidden;
@@ -60,7 +69,6 @@ html {
     height: auto;
     object-fit: contain;
     border-radius: 16px;
-
     display: block;
   }
 
@@ -70,7 +78,7 @@ html {
     background-color: rgba(180, 200, 255, 0.15);
     border: 1px solid rgba(180, 200, 255, 0.25);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 

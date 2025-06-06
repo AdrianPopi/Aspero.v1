@@ -2,10 +2,9 @@ import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
 import { useRouter } from "next/router";
 
-export const AboutAspero = () => {
+export const AboutAspero = ({ isDarkMode }: { isDarkMode: boolean }) => {
   const { lang } = useLanguage();
   const router = useRouter();
-
   const content = {
     ro: {
       title: "Despre Aspero",
@@ -61,13 +60,23 @@ export const AboutAspero = () => {
     },
   };
 
+  const sectionBg = isDarkMode ? "bg-hero5" : "bg-light-background";
+  const textColor = isDarkMode ? "text-white" : "text-light-text";
+  const cardBg = isDarkMode ? "bg-[#b4c8ff]/15" : "bg-light-surface";
+  const cardBorder = isDarkMode
+    ? "border border-[#b4c8ff]/25"
+    : "border border-light-border";
+  const buttonClass = isDarkMode
+    ? "bg-white text-hero5 hover:bg-hero2 hover:text-[#0c0c29]"
+    : "bg-light-soft text-black hover:bg-[#0c0c29] hover:text-white";
+
   return (
     <section
       id="aboutaspero"
-      className="scroll-mt-24 w-full bg-hero5 pt-4 md:pt-6 pb-8 px-4"
+      className={`scroll-mt-24 w-full ${sectionBg} pt-4 md:pt-6 pb-8 px-4`}
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
-        {/* Right: IMAGE */}
+        {/* IMAGE */}
         <div
           className="flex-1 flex items-center justify-center min-w-[260px]"
           data-aos="fade-left"
@@ -82,39 +91,37 @@ export const AboutAspero = () => {
             priority
           />
         </div>
-        {/* Left: TEXT */}
+
+        {/* TEXT */}
         <div
           className="flex-1 max-w-xl text-center md:text-left"
           data-aos="fade-right"
           data-aos-duration="800"
         >
-          <h2 className="text-white text-2xl md:text-3xl font-bold mb-6 font-poppins">
+          <h2
+            className={`text-2xl md:text-3xl font-bold mb-6 font-poppins ${textColor}`}
+          >
             {content[lang].title}
           </h2>
 
           <div className="relative mb-6 w-full">
             <div
-              className="
-                w-full rounded-[40px] overflow-hidden shadow-2xl
-                bg-[#22223b]/30 backdrop-blur-md
-              "
-              style={{
-                backgroundColor: "rgba(180, 200, 255, 0.15)",
-                border: "1px solid rgba(180, 200, 255, 0.25)",
-              }}
+              className={`w-full rounded-[40px] overflow-hidden shadow-2xl backdrop-blur-md ${cardBg} ${cardBorder}`}
               data-aos="fade-up"
               data-aos-delay="200"
               data-aos-duration="800"
             >
               <div className="p-6">
-                <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
+                <p
+                  className={`text-[15px] md:text-base ${textColor} text-justify leading-relaxed font-poppins`}
+                >
                   {content[lang].text}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="flex justify-start md:justify-start mt-4">
+          <div className="flex justify-start mt-4">
             <a
               href="#contact"
               onClick={() =>
@@ -123,7 +130,7 @@ export const AboutAspero = () => {
                   window.scrollY.toString()
                 )
               }
-              className="bg-[#ffffff] text-hero5 font-poppins text-[15px] font-normal rounded-full px-6 py-2 shadow hover:bg-[#ffffff] transition"
+              className={`rounded-full px-6 py-2 font-poppins text-[15px] font-normal shadow transition ${buttonClass}`}
               data-aos="zoom-in"
               data-aos-delay="400"
               data-aos-duration="800"

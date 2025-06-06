@@ -3,11 +3,10 @@ import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
 import { useRouter } from "next/router";
 
-export const TeamSection = () => {
+export const TeamSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
   const { lang } = useLanguage();
   const router = useRouter();
 
-  // Short summary for the main page
   const teamSummary = {
     ro: {
       title: "Echipa Aspero",
@@ -48,12 +47,22 @@ export const TeamSection = () => {
 
   const t = teamSummary[lang];
 
+  // 🎨 Dinamic theme styling
+  const sectionBg = isDarkMode ? "bg-hero5" : "bg-light-background";
+  const textColor = isDarkMode ? "text-white" : "text-light-text";
+  const cardBg = isDarkMode ? "bg-[#b4c8ff]/15" : "bg-light-surface";
+  const cardBorder = isDarkMode
+    ? "border border-[#b4c8ff]/25"
+    : "border border-light-border";
+  const buttonClass = isDarkMode
+    ? "bg-white text-hero5 hover:bg-hero2 hover:text-[#0c0c29]"
+    : "bg-light-soft text-black hover:bg-[#0c0c29] hover:text-white";
+
   return (
     <section
       id="team"
-      className="w-full bg-hero5 flex justify-center py-4 px-4 md:px-0 min-h-[400px] md:min-h-[500px] lg:min-h-[600px]"
+      className={`w-full ${sectionBg} flex justify-center py-4 px-4 md:px-0 min-h-[400px] md:min-h-[500px] lg:min-h-[600px]`}
     >
-      {/* Container centrat cu max-width */}
       <div className="max-w-7xl mx-auto px-0 md:px-2 flex flex-col md:flex-row items-start justify-between gap-6 md:gap-32 w-full">
         {/* Right: CONTENT */}
         <div
@@ -61,11 +70,17 @@ export const TeamSection = () => {
           data-aos="fade-left"
           data-aos-duration="800"
         >
-          <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-poppins">
+          <h2
+            className={`text-2xl md:text-3xl font-bold mb-4 font-poppins ${textColor}`}
+          >
             {t.title}
           </h2>
-          <div className="glass-card p-6 mb-6 w-full">
-            <p className="text-[15px] md:text-base text-[#fff] text-justify leading-relaxed font-poppins">
+          <div
+            className={`rounded-[40px] shadow-2xl backdrop-blur-md p-6 mb-6 w-full ${cardBg} ${cardBorder}`}
+          >
+            <p
+              className={`text-[15px] md:text-base ${textColor} text-justify leading-relaxed font-poppins`}
+            >
               {t.text}
             </p>
           </div>
@@ -82,7 +97,7 @@ export const TeamSection = () => {
               data-aos="zoom-in"
               data-aos-delay="300"
               data-aos-duration="700"
-              className="mt-2 px-6 py-2 rounded-full bg-[rgb(255,255,255)] text-[#22223b] border border-[#fff] hover:bg-white font-poppins text-[15px] shadow transition"
+              className={`mt-2 px-6 py-2 rounded-full font-poppins text-[15px] shadow transition border ${buttonClass}`}
               style={{
                 fontWeight: 500,
                 fontFamily: "Poppins-Regular, Poppins, sans-serif",
@@ -103,7 +118,7 @@ export const TeamSection = () => {
             src="/images/aspero-team.png"
             alt="Aspero Team"
             width={520}
-            height={390} // sau ce dimensiune ai reală pentru 4:3
+            height={390}
             className="image-section"
             priority
           />

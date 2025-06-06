@@ -31,18 +31,20 @@ const Home = ({
     <div className="overflow-hidden col text-strong">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main>
-        <Hero />
-        <AboutAspero />
-        <Vision />
+        <Hero isDarkMode={isDarkMode} />
+        <AboutAspero isDarkMode={isDarkMode} />
+
+        <Vision isDarkMode={isDarkMode} />
         <FeaturesForInstitutions />
         <FeaturesForTeachers />
         <FeaturesForStudents />
-        <Categories />
-        <TeamSection />
-        <ContactSection />
+        <Categories isDarkMode={isDarkMode} />
+
+        <TeamSection isDarkMode={isDarkMode} />
+        <ContactSection isDarkMode={isDarkMode} />
         <BackToTop />
       </main>
-      <Footer />
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 };

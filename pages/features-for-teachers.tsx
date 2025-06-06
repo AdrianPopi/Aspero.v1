@@ -495,7 +495,7 @@ const FeaturesForTeachersPage = ({
         </div>
       </main>
       <BackToTop />
-      <Footer />
+      <Footer isDarkMode={isDarkMode} />
     </>
   );
 };
