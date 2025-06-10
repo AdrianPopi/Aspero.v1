@@ -2,13 +2,9 @@ import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "usehooks-ts-dark-mode";
 
-export const useDarkMode = (): {
-  isDarkMode: boolean;
-  toggleDarkMode: () => void;
-} => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+export const useDarkMode = () => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window === "undefined") return false;
-
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       return stored ? JSON.parse(stored) : false;
@@ -23,7 +19,6 @@ export const useDarkMode = (): {
     } catch (e) {
       console.warn("Unable to access localStorage:", e);
     }
-
     const html = document.documentElement;
 
     if (isDarkMode) {
@@ -36,7 +31,7 @@ export const useDarkMode = (): {
   }, [isDarkMode]);
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
+    setIsDarkMode((prev: boolean) => !prev);
   };
 
   return { isDarkMode, toggleDarkMode };

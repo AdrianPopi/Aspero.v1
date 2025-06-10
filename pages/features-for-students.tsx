@@ -18,6 +18,29 @@ const FeaturesForStudentsPage = ({
     window.scrollTo(0, 0);
   }, []);
 
+  // Variabile pentru teme light/dark (exact ca la institutions)
+  const bgColor = isDarkMode ? "bg-hero5" : "bg-light-background";
+  const textColor = isDarkMode ? "text-white" : "text-light-text";
+  const cardBg = isDarkMode ? "bg-[#b4c8ff]/10" : "bg-white/80";
+  const cardBorder = isDarkMode ? "border-[#b4c8ff]/25" : "border-light-border";
+
+  // Iconuri în funcție de temă (student, ai, collaborative, stats)
+  const studentIcon = isDarkMode
+    ? "/images/student_ic.png"
+    : "/images/student-icon-white.png";
+  const aiIcon = isDarkMode
+    ? "/images/ai-icon.png"
+    : "/images/ai-icon-light.png";
+  const collabIcon = isDarkMode
+    ? "/images/collaborative-icon.png"
+    : "/images/collaborative-icon-light.png";
+  const statsIcon = isDarkMode
+    ? "/images/stats-icon.png"
+    : "/images/stats-icon-light.png";
+  const exercisesIcon = isDarkMode
+    ? "/images/student-exercises.png"
+    : "/images/student-exercises-light.png";
+
   // Texte pentru hero panel
   const sectionTitle =
     lang === "ro" ? "Funcționalități" : "Features for Students";
@@ -30,15 +53,16 @@ const FeaturesForStudentsPage = ({
       {/* ---------------- HERO PANEL ---------------- */}
       <section
         id="featuresforstudents"
-        className="
+        className={`
           scroll-mt-24
-          pt-32 md:pt-40         /* spaţiu la început, după header */
-          w-full bg-hero5        
+          pt-32 md:pt-40
+          w-full
+          ${bgColor}
           flex flex-col md:flex-row
           items-center justify-between
-          py-8 px-4 md:px-24     /* spaţii sus/jos şi laterale */
+          py-8 px-4 md:px-24
           gap-10 md:gap-20
-        "
+        `}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20">
           {/* --- Textul din stânga (titlu + subtitlu + paragraf) --- */}
@@ -48,11 +72,15 @@ const FeaturesForStudentsPage = ({
             data-aos-duration="700"
           >
             <div className="flex items-center mb-3 gap-2">
-              <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight font-poppins">
+              <h2
+                className={`text-2xl md:text-4xl font-bold tracking-tight font-poppins ${
+                  isDarkMode ? "text-white" : "text-[#181836]"
+                }`}
+              >
                 {sectionTitle}
               </h2>
               <Image
-                src="/images/student-icon-white.png"
+                src={studentIcon}
                 alt="student icon"
                 width={32}
                 height={32}
@@ -69,7 +97,11 @@ const FeaturesForStudentsPage = ({
             {/* spațiu între subtitlu și paragraful hero */}
             <div style={{ height: 10 }} />
 
-            <p className="text-[15px] md:text-base text-white mb-5 text-justify font-poppins">
+            <p
+              className={`text-[15px] md:text-base mb-5 text-justify font-poppins ${
+                isDarkMode ? "text-white" : "text-[#22223b]"
+              }`}
+            >
               {lang === "ro" ? (
                 <>
                   Aspero le oferă studenților un mediu educațional flexibil,
@@ -122,7 +154,9 @@ const FeaturesForStudentsPage = ({
       </section>
 
       {/* -------------- SECȚIUNI DETALIATE -------------- */}
-      <main className="bg-hero5 bg-cover bg-center text-white pt-8 md:pt-16 pb-16">
+      <main
+        className={`${bgColor} bg-cover bg-center ${textColor} pt-8 md:pt-16 pb-16`}
+      >
         <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20">
           {/* ---------------- 1) Exerciții generate procedural ---------------- */}
           <section className="space-y-6">
@@ -139,7 +173,7 @@ const FeaturesForStudentsPage = ({
                 data-aos-duration="700"
               >
                 <Image
-                  src="/images/student-exercises.png"
+                  src={exercisesIcon}
                   alt={
                     lang === "ro"
                       ? "EXERCIȚII GENERATE PROCEDURAL".toUpperCase()
@@ -187,7 +221,7 @@ const FeaturesForStudentsPage = ({
 
           {/* ---------------- 2) Feedback instantaneu (card) ---------------- */}
           <section
-            className="p-8 border border-blue-500 rounded-2xl"
+            className={`p-8 rounded-2xl border ${cardBorder} ${cardBg}`}
             data-aos="fade-up"
             data-aos-duration="700"
           >
@@ -240,7 +274,7 @@ const FeaturesForStudentsPage = ({
               >
                 {/* Iconiță de colaborare */}
                 <Image
-                  src="/images/collaborative-icon.png"
+                  src={collabIcon}
                   alt="Collaborative icon"
                   width={64}
                   height={64}
@@ -271,7 +305,7 @@ const FeaturesForStudentsPage = ({
                 data-aos-duration="700"
               >
                 <Image
-                  src="/images/ai-icon.png"
+                  src={aiIcon}
                   alt="AI icon"
                   width={64}
                   height={64}
@@ -338,7 +372,7 @@ const FeaturesForStudentsPage = ({
                 data-aos-delay="150"
               >
                 <Image
-                  src="/images/stats-icon.png"
+                  src={statsIcon}
                   alt="Statistics icon"
                   width={64}
                   height={64}

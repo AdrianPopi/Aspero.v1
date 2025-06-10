@@ -49,7 +49,7 @@ export const Hero = ({ isDarkMode }: { isDarkMode: boolean }) => {
       subtitle: (
         <>
           A platform created by Romanian students in Europe to bring the most{" "}
-          <span className="font-bold text-black dark:text-whitek">modern</span>{" "}
+          <span className="font-bold text-black dark:text-white">modern</span>{" "}
           educational practices to higher education in Romania.
         </>
       ),

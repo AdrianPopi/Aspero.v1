@@ -37,9 +37,9 @@ const teacherFeatures = {
  Cursurile pot conține diverse tipuri de fișiere care pot fi accesate de studenți în cadrul lecturilor: de la formate clasice precum fișiere text sau slide-uri de prezentare la videoclipuri sau tipuri de fișiere mai nișate, permițând astfel profesorilor să aibă diverse abordări de predare.
      `,
       img: "/images/teachers2.png",
+      imgLight: "/images/teachers2-light.png",
     },
     {
-      // Înlocuim secțiunea normală cu un card. Nu mai afișăm imaginea aici.
       title: "EVALUAREA CURSURILOR",
       description: `
 Statistici despre implicarea studenților
@@ -48,7 +48,7 @@ Creatorii de cursuri au acces la statistici exhaustive despre interacțiunile cu
 Analiză a statisticilor pentru profesori
 În baza statisticilor unei grupe, platforma poate evidenția părțile la care studenții excelează sau la care mai au de lucrat, oferind sugestii punctuale profesorului în ceea ce privește adaptarea cursului la nevoile dinamice ale studenților.
 `,
-      // Eliminăm câmpul img pentru această secțiune, nu vrem imagine.
+
       img: "",
     },
     {
@@ -81,6 +81,7 @@ Courses can include a variety of files accessible to students during lectures: f
 `,
 
       img: "/images/teachers2.png",
+      imgLight: "/images/teachers2-light.png",
     },
     {
       title: "COURSE EVALUATION",
@@ -120,6 +121,23 @@ const FeaturesForTeachersPage = ({
     lang === "ro" ? "Funcționalități" : "Features for Teachers";
   const cardTitle = lang === "ro" ? "Pentru Profesori" : "For Teachers";
 
+  // Light/dark mode style values
+  const bgColor = isDarkMode ? "bg-hero5" : "bg-light-background";
+  const textColor = isDarkMode ? "text-white" : "text-light-text";
+  const cardBg = isDarkMode ? "bg-[#b4c8ff]/10" : "bg-white/80";
+  const cardBorder = isDarkMode ? "border-[#b4c8ff]/25" : "border-light-border";
+  const iconTeacher = isDarkMode
+    ? "/images/profesor-icon-white.png"
+    : "/images/profesor-icon.png";
+  const iconTeacherLast = isDarkMode
+    ? "/images/teachers-icon-last.png"
+    : "/images/teachers-icon-last-light.png";
+
+  const resolveImage = (item: { img: string; imgLight?: string }) => {
+    if (!item.img) return "";
+    return isDarkMode ? item.img : item.imgLight || item.img;
+  };
+
   return (
     <>
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
@@ -127,15 +145,7 @@ const FeaturesForTeachersPage = ({
       {/* ---------------- HERO PANEL ---------------- */}
       <section
         id="featuresforteachers"
-        className="
-          scroll-mt-24
-          pt-32 md:pt-40    /* spațiu la început, după header */
-          w-full bg-hero5
-          flex flex-col md:flex-row
-          items-center justify-between
-          py-8 px-4 md:px-24 /* spații sus/jos și laterale */
-          gap-10 md:gap-20
-        "
+        className={`scroll-mt-24 pt-32 md:pt-40 w-full ${bgColor} flex flex-col md:flex-row items-center justify-between py-8 px-4 md:px-24 gap-10 md:gap-20`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20">
           {/* --- Textul din stânga (titlu + subtitlu + paragraf) --- */}
@@ -145,11 +155,15 @@ const FeaturesForTeachersPage = ({
             data-aos-duration="800"
           >
             <div className="flex items-center mb-3 gap-2">
-              <h2 className="text-2xl md:text-4xl font-bold text-white font-poppins">
+              <h2
+                className={`text-2xl md:text-4xl font-bold font-poppins ${
+                  isDarkMode ? "text-white" : "text-[#0c0c29]"
+                }`}
+              >
                 {sectionTitle}
               </h2>
               <Image
-                src="/images/profesor-icon-white.png"
+                src={iconTeacher}
                 alt="teacher icon"
                 width={32}
                 height={32}
@@ -166,7 +180,9 @@ const FeaturesForTeachersPage = ({
             {/* spațiu între subtitlu și paragraful hero */}
             <div style={{ height: 10 }} />
 
-            <p className="text-[15px] md:text-base text-white mb-5 text-justify font-poppins">
+            <p
+              className={`text-[15px] md:text-base ${textColor} mb-5 text-justify font-poppins`}
+            >
               {lang === "ro" ? (
                 <>
                   Aspero este gândit pentru a simplifica procesul educațional
@@ -223,12 +239,14 @@ const FeaturesForTeachersPage = ({
         </div>
       </section>
 
-      {/* -------------- SECȚIUNI DETALIATE -------------- */}
-      <main className="bg-hero5 bg-cover bg-center text-white pt-8 md:pt-16 pb-16">
+      {/* Main Content */}
+      <main
+        className={`${bgColor} bg-cover bg-center ${textColor} pt-8 md:pt-16 pb-16`}
+      >
         <div className="max-w-7xl mx-auto px-4 md:px-16 space-y-20">
           {items.map((f, i) => (
             <section key={i} className="space-y-6">
-              {/* ... Pentru secțiunile normale (Exerciții, Gestionare), lăsăm <h3> ca înainte ... */}
+              {/* Titlul (pentru majoritatea secțiunilor) */}
               {!(
                 f.title === "EVALUAREA CURSURILOR" ||
                 f.title === "COURSE EVALUATION"
@@ -247,7 +265,6 @@ const FeaturesForTeachersPage = ({
               )}
 
               <div className="flex flex-col md:flex-row items-center gap-10">
-                {/* --- Coloană imagine (nutriție doar pentru secțiunile care au img) --- */}
                 {!(
                   f.title === "EVALUAREA CURSURILOR" ||
                   f.title === "COURSE EVALUATION"
@@ -258,13 +275,9 @@ const FeaturesForTeachersPage = ({
                     data-aos-duration="800"
                   >
                     <Image
-                      src={f.img}
+                      src={resolveImage(f)}
                       alt={
-                        f.title !== "__CUSTOM__"
-                          ? f.title
-                          : lang === "ro"
-                          ? "GESTIONAREA CURSURILOR"
-                          : "COURSE MANAGEMENT"
+                        f.title !== "__CUSTOM__" ? f.title : "Course Management"
                       }
                       width={600}
                       height={350}
@@ -277,7 +290,6 @@ const FeaturesForTeachersPage = ({
                 {/* --- Coloană text --- */}
                 <div
                   className={`${
-                    // Dacă e secțiunea „Evaluarea cursurilor”, extindem textul pe toată lățimea
                     f.title === "EVALUAREA CURSURILOR" ||
                     f.title === "COURSE EVALUATION"
                       ? "w-full"
@@ -286,9 +298,8 @@ const FeaturesForTeachersPage = ({
                 >
                   {f.title === "EVALUAREA CURSURILOR" ||
                   f.title === "COURSE EVALUATION" ? (
-                    // --- Card special pentru „Evaluarea cursurilor” ---
                     <section
-                      className="p-8 border border-blue-500 rounded-2xl"
+                      className={`p-8 border rounded-2xl ${cardBorder} ${cardBg}`}
                       data-aos="fade-up"
                       data-aos-duration="700"
                     >
@@ -378,7 +389,7 @@ const FeaturesForTeachersPage = ({
                       >
                         <div className="flex justify-center mb-4">
                           <Image
-                            src="/images/teachers-icon-last.png"
+                            src={iconTeacherLast}
                             alt="icon gestionare"
                             width={64}
                             height={64}
@@ -421,8 +432,8 @@ const FeaturesForTeachersPage = ({
                       >
                         <div className="flex justify-center mb-4">
                           <Image
-                            src="/images/teachers-icon-last.png"
-                            alt="icon management"
+                            src={iconTeacherLast}
+                            alt="icon gestionare"
                             width={64}
                             height={64}
                             className="w-12 h-12 md:w-14 md:h-14"

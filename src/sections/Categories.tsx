@@ -72,6 +72,7 @@ export const Categories = ({ isDarkMode }: { isDarkMode: boolean }) => {
   const t = courseContent[lang];
   const bubbleImage = "/images/categories-bubble.png";
 
+  const chipBg = isDarkMode ? "bg-transparent" : "bg-white/70 backdrop-blur-sm";
   const textColor = isDarkMode ? "text-white" : "text-[#181836]";
   const chipText = isDarkMode ? "text-white" : "text-[#181836]";
   const chipHover = isDarkMode
@@ -128,11 +129,11 @@ export const Categories = ({ isDarkMode }: { isDarkMode: boolean }) => {
               data-aos="zoom-in"
               data-aos-delay={index * 50}
               className={`
-                font-poppins font-normal px-3 py-1 rounded-full text-[11px]
-                border ${isDarkMode ? "border-white" : "border-[#181836]"}
-                transition shadow-sm whitespace-nowrap
-                bg-transparent ${chipText} ${chipHover}
-              `}
+    font-poppins font-normal px-3 py-1 rounded-full text-[11px]
+    border ${isDarkMode ? "border-white" : "border-[#181836]"}
+    transition shadow-sm whitespace-nowrap
+    ${chipBg} ${chipText} ${chipHover}
+  `}
               style={{ minWidth: 110, fontWeight: 400 }}
             >
               {label}
